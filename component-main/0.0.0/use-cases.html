@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Use Cases :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/component-main/0.0.0/use-cases.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io">Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="component-main" data-version="0.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="concepts.html">Concepts</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">How tos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="howtos/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="howtos/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="howtos/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="howtos/addons.html">Addons</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="about.html">Automatiko Documentation</a></li>
+    <li><a href="use-cases.html">Use cases</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Use Cases</h1>
+<div class="sect1">
+<h2 id="_event_streams"><a class="anchor" href="#_event_streams"></a>Event streams</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Event streams are very popular to represent changes to data. They allow individual
+modifications to be represented as atomic operations that are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>associated with timestamp</p>
+</li>
+<li>
+<p>uniquely identifiable</p>
+</li>
+<li>
+<p>carry all relevant information to the objects they reference</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Workflows are perfect fit into processing event streams as they can provide
+additional view of the domain changes equipped with business logic to allow
+description why and how the data has changed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/use-case-events.png" alt="use case events">
+</div>
+</div>
+<div class="paragraph">
+<p>Above diagram illustrates simple order processing use case that is backed
+by event stream. In this particular example Apache Kafka is used as event log
+broker but any other solution could replace it. Automatiko seamlessly integrates
+with Apache Kafka and thus it is used in the examples that cover supported use cases.</p>
+</div>
+<div class="paragraph">
+<p>Events in this use case are represented as Key-Value Records. Where key is
+the unique identifier e.g. order number and values are appended for each
+change to particular order.
+From workflow point of view, new instance of the workflow is started as soon
+as first event is published with given order number. The order number is
+considered as business key - an unique identifier of the workflow instance.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Automatiko allows to use business key as alternative id of the workflow
+instance and by that can be used to reference given instance via API.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the instance is started, every other event published to the event stream
+with the same key will correlate to already active instance and push event data
+to be able to progress according to business logic defined for given event.</p>
+</div>
+<div class="paragraph">
+<p>What is also important is that business key is not the only correlation that
+Automatiko supports. Workflow tags are also used as correlation. This can enable
+additional features such as receiving events that are associated with customer
+who placed the order, e.g. when customer has updated he shipping address all
+ongoing orders should be notified about this change to make sure they will be
+sent to the correct location.</p>
+</div>
+<div class="paragraph">
+<p>To see this use case implemented with Automatiko have a look at
+ <a href="examples/orders.html">Order</a> example</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_internet_of_things"><a class="anchor" href="#_internet_of_things"></a>Internet of Things</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IoT use case is one of the underestimated when it comes to workflows and at the
+same time is one of the most natural fit for workflows. Data produced by sensors
+do not have too much value on its own. But associated with business logic
+that can produce very powerful solution.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko allows to cover this use case in number of ways</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>minimal - that allows to build automation directly on IoT devices such as
+mini computers (Raspberry PI) or IoT gateways.</p>
+</li>
+<li>
+<p>private network deployments - automation for IoT devices remains in the same
+network as the devices and sensors itself for maximum security and cost efficiency</p>
+</li>
+<li>
+<p>cloud deployments - automation is placed in the cloud that then enables easier
+access to it from any place and any device.</p>
+</li>
+<li>
+<p>mixed of all the above</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The backbone for IoT use case with Automatiko is the MQTT broker that acts as
+hub that allows different components to exchange information in the most efficient
+way.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/use-case-iot.png" alt="use case iot">
+</div>
+</div>
+<div class="paragraph">
+<p>Above diagram presents a simple case for collecting sensor data in kind of home
+automation solution. Different types of sensors publish their data into dedicated
+MQTT topics</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>home/roomxxx/temperature</p>
+</li>
+<li>
+<p>home/roomxxx/humidity</p>
+</li>
+<li>
+<p>home/roomxxx/window</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>where <code>roomxxx</code> is the identifier of a room of the house such as living room,
+bedroom, bathroom, etc.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko allows to define a workflow that can collect sensor data and associate
+them with the room it was published for. In this case the room identifier becomes
+the correlation so each room publishing its data will be kept in single workflow
+instance that allows to build logic around data buckets.
+In addition to that Automatiko comes with notion of time windows that the data will
+be collected for. This essentially means that given workflow instance will be active
+no longer than the time window defines. So one could define business logic
+to collect sensor data for an hour and after one hour such workflow instance will be
+discarded. Subsequent sensor data for the same room will create new workflow
+instance and new time window.</p>
+</div>
+<div class="paragraph">
+<p>To see this use case in action, have a look at
+the <a href="examples/leaks.html">Water leaks detection</a> example</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_human_centric_workflows"><a class="anchor" href="#_human_centric_workflows"></a>Human centric workflows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Human centric workflows is one of the most common use cases for workflows. It was
+often promoted by traditional Business Process Management (BPM) solutions. And
+indeed, it is still a valid use case as in literally every business there is
+human interaction of some kind. Vacation approval, loan application, insurance application
+are examples of human centric workflows.</p>
+</div>
+<div class="paragraph">
+<p>It essentially focuses on automation of human required actions. In some cases
+it is to make sure the most appropriate individuals are found to perform work
+in other it&#8217;s more important that there is a timely response to the assigned
+work. All depends on the domain given workflow is put in.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/use-case-human.png" alt="use case human">
+</div>
+</div>
+<div class="paragraph">
+<p>Above use case handles support cases - incidents reported by end users. There can
+be many channels that such incident can be reported</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>via email</p>
+</li>
+<li>
+<p>via web form</p>
+</li>
+<li>
+<p>via phone call</p>
+</li>
+<li>
+<p>other</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Regardless of how the data is provided the handling of the case will be similar
+or even exactly the same. The case needs to investigated, classified, assigned to
+support engineer and finally the case needs to be resolved. As in the end this is
+the business goal of such workflow.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko provides support for handling all these stages and efficiently manages
+user communication such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>assignment of users via individual or groups assignments</p>
+</li>
+<li>
+<p>notification over email or other channels to make sure assigned actors are aware
+of awaiting tasks.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to that having clear visibility into current state of cases is critical.
+Having option to build dashboards like entries can significantly improve visibility
+and awareness for business stakeholders. In the end it is all about improving
+how human actors work with their daily routines and automate whatever is possible.</p>
+</div>
+<div class="paragraph">
+<p>To see this use case in action, have a look at
+the <a href="examples.html#supportcase">Support case</a> example</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_service_orchestration"><a class="anchor" href="#_service_orchestration"></a>Service orchestration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Service orchestration is another traditional use case coming from SOA
+(Service Oriented Architecture) times. Although it&#8217;s somehow dated it is
+certainly relevant nowadays too. It might be even more relevant than before
+and that is because of the raise of microservices and event driven architectures.</p>
+</div>
+<div class="paragraph">
+<p>These architectures put in front the communication between services, despite
+what communication protocol is used (REST/HTTP, messaging, other) there is
+always a need to coordinate this communication.</p>
+</div>
+<div class="paragraph">
+<p>And for exactly that reason workflows come quite handy to be able to define
+the interactions between services in declarative way. In addition to that
+it comes with built in features to ensure such communication is done easily
+and efficiently. To name just few of these features</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>easy integration with various communication protocols</p>
+<div class="ulist">
+<ul>
+<li>
+<p>REST backed by OpenAPI</p>
+</li>
+<li>
+<p>messaging with out of the box support for Kafka, MQTT</p>
+</li>
+<li>
+<p>integrates with various systems via components backed by Apache Camel</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>declarative security</p>
+</li>
+<li>
+<p>error handling</p>
+</li>
+<li>
+<p>retry for failed invocations</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/use-case-services.png" alt="use case services">
+</div>
+</div>
+<div class="paragraph">
+<p>Above example shows a simple service orchestration aka coordination of services
+that build up rescue personnel information service based on weather forecast.</p>
+</div>
+<div class="paragraph">
+<p>It bundles various features of workflows to provide fully featured coordination
+between independent services.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>instances of the workflow are automatically created based on time intervals - every hour</p>
+</li>
+<li>
+<p>various services are invoked during execution to fetch data (weather service)
+or delegate (alert service, information service, notification service)</p>
+</li>
+<li>
+<p>each and every service can be either not accessible or returns unexpected response
+so workflow is equipped with error handling and retry mechanism to improve fault tolerance</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Service orchestration is not just about calling services or consuming/producing
+events, it is also about control logic. What to do based on various condition
+is one of the most powerful assets o workflows in this use case. One example of
+such control logic is how to handle cases that require undoing already performed
+operations.
+Workflows come with (again) built in feature called compensations. Compensation
+allows to define additional logic that should be invoked when decision about compensating
+is taken. This is all defined within the workflow model and by that made explicit
+to all involved parties.</p>
+</div>
+<div class="paragraph">
+<p>To see this use case in action, have a look at
+the <a href="examples.html#rescue">Rescue information</a> example</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_base_record_processing"><a class="anchor" href="#_data_base_record_processing"></a>Data base record processing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As we know most of the data, nowadays systems deal with are stored in data bases.
+Regardless of their type, this data is always a subject of modification.
+Systems have to create, read, update and delete data stored in database.
+In most of the case all this logic is custom but has well defined life cycle.
+This life cycle is defined by business context it resides in.  All this is actually
+a defined process on how data (and by whom) can be modified.</p>
+</div>
+<div class="paragraph">
+<p>So for that reason, workflows make a good fit for it as well. It is not to replace
+custom code but is to enhance or simplify it.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/use-case-database.png" alt="use case database">
+</div>
+</div>
+<div class="paragraph">
+<p>Above example to handle vacation requests submitted by employees illustrates
+how data base records can be used from within workflow to manage its lifecycle.</p>
+</div>
+<div class="paragraph">
+<p>The use case itself is more about how data is being managed from storage point of view
+but still being part of workflow. Every type of data (here person record and vacation
+request record) is stored securely in database. But most the modifications to it
+are controlled by workflow. Here the benefits of workflow like isolation and
+security are clearly visible - each instance is responsible for given set of
+data base records.</p>
+</div>
+<div class="paragraph">
+<p>On top of this, data are kept in db as any other records (that are not managed
+by workflow) so they are accessible with any other tool available. It can be used
+to build reports, dashboards, backups etc.</p>
+</div>
+<div class="paragraph">
+<p>To see this use case in action, have a look at
+the <a href="examples.html#vacationrequest">Vacation requests</a> example</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

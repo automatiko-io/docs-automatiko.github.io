@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Concepts :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/component-main/0.0.0/concepts.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io">Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="component-main" data-version="0.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="about.html">About</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="concepts.html">Concepts</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">How tos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="howtos/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="howtos/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="howtos/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="howtos/addons.html">Addons</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.0.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="about.html">Automatiko Documentation</a></li>
+    <li><a href="concepts.html">Concepts</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Concepts</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko is based on concept of modeling business logic and decisions to capture
+and express business requirements. It is all about understanding and explaining
+(as model) what the service is about.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_process"><a class="anchor" href="#_process"></a>Process</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Process (aka workflow) is the main entry point of the service. It is (depending on the language)
+a flow chart (BPMN2) or a text based (json/yaml for serverless workflows).</p>
+</div>
+<div class="paragraph">
+<p>Process consists of activities that are executed within the life time of every process
+instance. These activities have different meaning depending of their type or place
+in the model. To just name few</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>activities</strong> that invoke services
+(<em>'service task'</em> in BPMN or <em>'operation state'</em> in serverless workflow)</p>
+</li>
+<li>
+<p><strong>events</strong> that either capture events or produce events</p>
+</li>
+<li>
+<p><strong>subprocesses</strong> that creates new process instance of another process to build
+hierarchy of process instances and take advantage of <strong>process composition</strong> pattern
+(<em>'call activity or reusable subprocess'</em> in BPMN or <em>'subflow'</em> in serverless workflow)</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_identification_and_description"><a class="anchor" href="#_identification_and_description"></a>Identification and description</h3>
+<div class="paragraph">
+<p>Process has to have assigned id. Id serves as unique identification of your process and as such should be</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>short (usually single word in case of multiple words they should be written in camel case)</p>
+</li>
+<li>
+<p>descriptive (carry most important information what the process is dealing with)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The reason why these rules are describe is that process id becomes your service identification
+as well. With that said, it will be the top level resource of the REST api for the process.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Best practice is to thing about process id in context of the domain it is dealing
+with. For example when process is managing orders then process id should be <strong>orders</strong>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition to id, process have name that should be provided as more lengthy description of the logic encapsulated
+in the process definition. It should not be to long so a sentence or two, for more
+documentation like needs process allows to have add extra information on various levels.</p>
+</div>
+<div class="paragraph">
+<p>Documentation can be added to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>process itself</p>
+</li>
+<li>
+<p>every activity of the process</p>
+</li>
+<li>
+<p>every data object (aka variable) of the process</p>
+</li>
+<li>
+<p>every event defined in the process</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Using documentation is recommended as it enhances service description automatically which
+allows service consumers to better understand intention of the service and by that
+ease the integration.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Documentation within the process is not supported in serverless workflows at the moment.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_versioning"><a class="anchor" href="#_versioning"></a>Versioning</h3>
+<div class="paragraph">
+<p>Versioning of a process should be considered from the very beginning as it might have
+severe impact on consumers of the service and maintainability of the service.</p>
+</div>
+<div class="paragraph">
+<p>Following are basic principles to version handling in Automatiko</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>version can be assigned to any process (public and private)</p>
+</li>
+<li>
+<p>version will be part of the service contract - in REST api it will prefix the paths
+e.g. <code>/v1/orders</code> or <code>/v1_2/orders</code> for versions <code>1</code> and <code>1.2</code> respectively.</p>
+</li>
+<li>
+<p>multiple versions of the process should be kept in the same service, meaning new version
+should be a copy of the previous one</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Change version only when there is good reason for it. As a rule of thumb it is
+ recommended to not change version of the process if changes are backward compatible.
+ In other words, change version only when the modifications to the process make the
+ existing instances imposible to continue.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_type_of_processes"><a class="anchor" href="#_type_of_processes"></a>Type of processes</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Process types are currently only supported in BPMN language and not in serverless workflow.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Type of process defines visibility of given process on the service API. There are two
+types of processes</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Public</strong> - these are exposed as top level service endpoints</p>
+</li>
+<li>
+<p><strong>Private</strong> - these are hidden from the service API meaning instances of such processes cannot
+be started from outside.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Private processes are perfect fit for subprocesses to manage creation of new instances
+to be limited to the so called owning process instance.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_process_data"><a class="anchor" href="#_process_data"></a>Process data</h3>
+<div class="paragraph">
+<p>Process data is the most important part. This defines what is the actual domain of the service
+that is being modeled. In the end all services are meant to deal with data and as such alter it.</p>
+</div>
+<div class="paragraph">
+<p>Properly defining data model of the process is extremely important to the service and the
+contract it will expose. To help with that Automatiko promotes use of so called <strong>tags</strong> to
+annotate and enhance data handling.</p>
+</div>
+<div class="sect3">
+<h4 id="_data_object_tags"><a class="anchor" href="#_data_object_tags"></a>Data object tags</h4>
+<div class="paragraph">
+<p>Process data also known as <strong>data objects</strong> or <strong>variables</strong> can be annotated with tags to
+enable additional features</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Tag name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object as input that should be given upon starting new instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object as output that will be returned always when instance is altered or completed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">internal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object as internal that should not be visible from outside</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">notnull</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object as non nullable, meaning once it was assigned a value it cannot be reset to null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">readonly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object as read only meaning that it cannot be changed after being set once</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object as required to start new instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto-initialized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object to be auto initialized upon start meaning
+it guarantees that the value will be set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">business-key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object to be used as business key of the instance, applies only for
+the start of the new instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">initiator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks given data object to be the source of initiator of the instance instead of
+relying on security context</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Serverless workflow does not define data objects explicitly and allows to have data pushed on demand and thus
+do not make use of tags.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_process_instance"><a class="anchor" href="#_process_instance"></a>Process instance</h3>
+<div class="paragraph">
+<p>Process instance is an individual instance of a given process. This is a runtime
+representation of just one item being processed according to the given definition.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the process definition (how it was modeled) it can be a short lived or
+it can span hours, days, months and more.</p>
+</div>
+<div class="paragraph">
+<p>Each process instance is uniquely identified with generate id (of a form of UUID).
+This id remains unchanged during entire life time of the instance.</p>
+</div>
+<div class="sect3">
+<h4 id="_business_key"><a class="anchor" href="#_business_key"></a>Business key</h4>
+<div class="paragraph">
+<p>As an alternative id of process instance, a business key can be assigned. Business key when
+assigned will remain unchanged (same as id) during entire life time of the instance but
+can be used exactly the same as id. Meaning it can be used to reference given instance
+from outside with service API.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Even though business key is assigned the generated id can still be used to
+reference the instance.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Business key must be unique within the scope of a process (or version of the process).
+That means you can have only one active instance with given business key.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h3>
+<div class="paragraph">
+<p>Similar to tags on process data, process itself can define tags. Tags allow to put extra
+information (besides business key) that are used for correlation purpose.</p>
+</div>
+<div class="paragraph">
+<p>Tags can be both simple (constant) values that won&#8217;t change over time or expressions
+that are evaluated every time process instance change.</p>
+</div>
+<div class="paragraph">
+<p>Additional feature of process tags (compared to process data tags) is that tags can be
+added and removed during entire life time of process instance.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Tags defined in process (definition) cannot be removed, only tags added on top
+of active process instance can be removed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_decision"><a class="anchor" href="#_decision"></a>Decision</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Decision is defined to capture decision logic within the process. It is not exposed
+as separate service but instead is invoked from within a process. Decision in Automatiko
+are defined as DMN diagrams which goes hand in have with BPMN to have both defined in graphical
+way.</p>
+</div>
+<div class="paragraph">
+<p>Decision requires following to be properly integrated</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>decisions are identified by <code>model</code> and <code>namespace</code> and optionally <code>decision</code> or <code>decision service</code></p>
+</li>
+<li>
+<p>decisions must define inputs which will be then mapped from the process data</p>
+</li>
+<li>
+<p>decisions define various decision logic constructs such as</p>
+<div class="ulist">
+<ul>
+<li>
+<p>literal expression to encapsulate expression like decisions</p>
+</li>
+<li>
+<p>decision tables</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Decision results are then mapped (by name) to process data.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
