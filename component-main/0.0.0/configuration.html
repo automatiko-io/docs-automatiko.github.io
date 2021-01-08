@@ -147,6 +147,245 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="_configuration_parameters"><a class="anchor" href="#_configuration_parameters"></a>Configuration parameters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Following are set of configuration parameters that can be used to configure Automatiko service:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Base configuration parameters</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.service-url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_SERVICE_URL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines service URL that will be attached to events produced by Automatiko</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.package-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PACKAGE_NAME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines what package name should be used for generated classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'io.automatiko.app'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.include-automatiko-api</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_INCLUDE_AUTOMATIKO_API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determines if Automatiko attached Apis should be included in OpenAPI definitions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Metrics configuration parameters</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.metrics.enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_METRICS_ENABLED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables metrics for Automatiko</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Persistence configuration parameters</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_TYPE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify what persistence should be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.filesystem.path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_FILESYSTEM_PATH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system that will be used to store persistent state</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.db.remove-at-completion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_DB_REMOVE_AT_COMPLETION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if entities created during instance execution should be removed when instance completes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Jobs configuration parameters</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_TYPE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies type of jobs implementation to be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.filesystem.path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_FILESYSTEM_PATH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system where jobs persistent state will be stored</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.filesystem.threads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_FILESYSTEM_THREADS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for jobs execution</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.db.interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DB_INTERVAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies interval (in minutes) how often look for another chunk of jobs to execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.db.threads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DB_THREADS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for job execution</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Security configuration parameters</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.security.authorized-only</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_SECURITY_AUTHORIZED_ONLY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if usr/group information given as query params are ignored or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.security.admin-role-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_SECURITY_ADMIN_ROLE_NAME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What role/group name should be considered as admin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_instructions_during_build"><a class="anchor" href="#_instructions_during_build"></a>Instructions during build</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
@@ -313,245 +552,6 @@ Automatiko also predefines several configuration to simplify use. These configur
 2020-12-31 19:19:13,796 INFO  [io.aut.eng.cod.GeneratorContext] (build-30) ***************************************************************</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_configuration_parameters"><a class="anchor" href="#_configuration_parameters"></a>Configuration parameters</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Following are set of configuration parameters that can be used to configure Automatiko service:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Base configuration parameters</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property name</th>
-<th class="tableblock halign-left valign-top">Environment variable</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.serviceUrl</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_SERVICE_URL</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines service URL that will be attached to events produced by Automatiko</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.packageName</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PACKAGE_NAME</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines what package name should be used for generated classes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'io.automatiko.app'</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.includeAutomatikoApi</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_INCLUDE_AUTOMATIKO_API</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Determines if Automatiko attached Apis should be included in OpenAPI definitions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Metrics configuration parameters</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property name</th>
-<th class="tableblock halign-left valign-top">Environment variable</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.metrics.enabled</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_METRICS_ENABLED</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables metrics for Automatiko</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Persistence configuration parameters</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property name</th>
-<th class="tableblock halign-left valign-top">Environment variable</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_TYPE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify what persistence should be used</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.filesystem.path</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_FILESYSTEM_PATH</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system that will be used to store persistent state</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.db.removeAtCompletion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_DB_REMOVE_AT_COMPLETION</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if entities created during instance execution should be removed when instance completes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Jobs configuration parameters</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property name</th>
-<th class="tableblock halign-left valign-top">Environment variable</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_TYPE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies type of jobs implementation to be used</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.filesystem.path</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_FILESYSTEM_PATH</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system where jobs persistent state will be stored</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.filesystem.threads</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_FILESYSTEM_THREADS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for jobs execution</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.db.interval</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DB_INTERVAL</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies interval (in minutes) how often look for another chunk of jobs to execute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.db.threads</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DB_THREADS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for job execution</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Security configuration parameters</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property name</th>
-<th class="tableblock halign-left valign-top">Environment variable</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.security.authorizedOnly</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_SECURITY_AUTHORIZED_ONLY</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if usr/group information given as query params are ignored or not</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.security.adminRoleName</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_SECURITY_ADMIN_ROLE_NAME</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">What role/group name should be considered as admin</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </article>
