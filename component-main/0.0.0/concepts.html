@@ -136,14 +136,14 @@ and express business requirements. It is all about understanding and explaining
 </div>
 </div>
 <div class="sect1">
-<h2 id="_process"><a class="anchor" href="#_process"></a>Process</h2>
+<h2 id="_workflow"><a class="anchor" href="#_workflow"></a>Workflow</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Process (aka workflow) is the main entry point of the service. It is (depending on the language)
+<p>Workflow (aka process) is the main entry point of the service. It is (depending on the language)
 a flow chart (BPMN2) or a text based (json/yaml for serverless workflows).</p>
 </div>
 <div class="paragraph">
-<p>Process consists of activities that are executed within the life time of every process
+<p>Workflow consists of activities that are executed within the life time of every workflow
 instance. These activities have different meaning depending of their type or place
 in the model. To just name few</p>
 </div>
@@ -157,16 +157,175 @@ in the model. To just name few</p>
 <p><strong>events</strong> that either capture events or produce events</p>
 </li>
 <li>
-<p><strong>subprocesses</strong> that creates new process instance of another process to build
-hierarchy of process instances and take advantage of <strong>process composition</strong> pattern
-(<em>'call activity or reusable subprocess'</em> in BPMN or <em>'subflow'</em> in serverless workflow)</p>
+<p><strong>subworkflows</strong> that creates new workflow instance of another workflow to build
+hierarchy of workflow instances and take advantage of <strong>workflow composition</strong> pattern
+(<em>'call activity or reusable subworkflow'</em> in BPMN or <em>'subflow'</em> in serverless workflow)</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_workflow_as_a_service_waas"><a class="anchor" href="#_workflow_as_a_service_waas"></a>Workflow as a Service (WaaS)</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/workflow-as-service.png" alt="workflow as service">
+</div>
+</div>
+<div class="paragraph">
+<p>Workflow as a service brings an idea of modeling service as a workflow. That will
+then be exposed as fully featured service with dedicated (domain specific) api.
+Workflow as a service aims at covering traditional service deployments that usually
+consists of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>service api exposed over <code>http/rest</code></p>
+</li>
+<li>
+<p>an <code>OpenAPI</code> definition to describe the service to simplify use</p>
+</li>
+<li>
+<p>takes advantage of various integration mechanism to be able to exchange data with
+other services/systems</p>
+</li>
+<li>
+<p>can either be short lived or long running</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Workflow as a service does not really differ from any other developed service, it
+attempts to put it at another level by using BPMN and DMN as programming languages.
+But features provided remain the same as it would be coded by hand.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_workflow_as_a_function_waaf"><a class="anchor" href="#_workflow_as_a_function_waaf"></a>Workflow as a Function (WaaF)</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/workflow-as-function.png" alt="workflow as function">
+</div>
+</div>
+<div class="paragraph">
+<p>Workflow as a function is dedicated for short lived operations that usually last
+no longer that a second. They are expected to be fast and small both at runtime
+and at boot time.</p>
+</div>
+<div class="paragraph">
+<p>Usually these can target deployments in more constrained environments such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AWS lambda</p>
+</li>
+<li>
+<p>Google cloud run</p>
+</li>
+<li>
+<p>Azure functions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Though they are not limited to such deployments as they can be easily invoked over
+HTTP with both <code>POST</code> and <code>GET</code> endpoints.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Functions can map data from payload (<code>POST</code>) and from query parameters
+(<code>GET</code>).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Regardless of how many activities are within the workflow it is always
+exposed as one function, similar to workflow as a service workflow id is
+their <code>public</code> identifier - function name.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_workflow_as_a_function_flow_waaff"><a class="anchor" href="#_workflow_as_a_function_flow_waaff"></a>Workflow as a Function Flow (WaaFF)</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/workflow-as-function-flow.png" alt="workflow as function flow">
+</div>
+</div>
+<div class="paragraph">
+<p>Workflow as function flow is more advanced extension to workflow as a function
+that breaks the workflow into functions.</p>
+</div>
+<div class="paragraph">
+<p>Important to explain what makes a function in workflow terms&#8230;&#8203; a function is
+at most one <code>executing</code> activity. In addition such activity can be grouped
+with others that do not actually perform work but can be one of the following</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>start or end of the workflow</p>
+</li>
+<li>
+<p>control logic - so called gateways</p>
+</li>
+<li>
+<p>pass through activities</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As illustrated on the diagram above same workflow is used for all flavours
+(as service, as function and as function flow) but here it is broken into
+multiple function</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>function <code>A</code> is the start workflow instance function and it consists
+of three activities (<code>start</code>, <code>service A</code>, <code>gateway</code>)</p>
+</li>
+<li>
+<p>function <code>B</code> is the second function of decision was to invoke <code>Service REST B</code>
+and it consists of two activities ()<code>Service REST B</code> and <code>end</code>)</p>
+</li>
+<li>
+<p>function <code>C</code> is third function that is invoked when decision was to invoke
+<code>Service Java C</code> and it consists only of one activity (<code>Service Java C</code>)</p>
+</li>
+<li>
+<p>function <code>D</code> is the last function that is invoked directly after <code>function C</code>
+and consists of two activities (<code>Service Java D</code> and <code>end</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Functions (except the start workflow) are invoked automatically based on
+execution context. This means that function while executing identifies what
+should the next function, this is all taken based on the workflow definition
+e.g. gateways can change what functions to invoke based on data it operates on.</p>
+</div>
+<div class="paragraph">
+<p>Workflow as a function flow always exchanges data as events in <code>CloudEvent</code> format.
+It target deployment environment is <code>Knative Eventing</code> to take advantage of
+routing capabilities for events.</p>
 </div>
 <div class="sect2">
 <h3 id="_identification_and_description"><a class="anchor" href="#_identification_and_description"></a>Identification and description</h3>
 <div class="paragraph">
-<p>Process has to have assigned id. Id serves as unique identification of your process and as such should be</p>
+<p>Workflow has to have assigned id. Id serves as unique identification of your workflow and as such should be</p>
 </div>
 <div class="ulist">
 <ul>
@@ -174,13 +333,13 @@ hierarchy of process instances and take advantage of <strong>process composition
 <p>short (usually single word in case of multiple words they should be written in camel case)</p>
 </li>
 <li>
-<p>descriptive (carry most important information what the process is dealing with)</p>
+<p>descriptive (carry most important information what the workflow is dealing with)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The reason why these rules are describe is that process id becomes your service identification
-as well. With that said, it will be the top level resource of the REST api for the process.</p>
+<p>The reason why these rules are describe is that workflow id becomes your service identification
+as well. With that said, it will be the top level resource of the REST api for the workflow.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -189,16 +348,16 @@ as well. With that said, it will be the top level resource of the REST api for t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Best practice is to thing about process id in context of the domain it is dealing
-with. For example when process is managing orders then process id should be <strong>orders</strong>
+Best practice is to thing about workflow id in context of the domain it is dealing
+with. For example when workflow is managing orders then workflow id should be <strong>orders</strong>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>In addition to id, process have name that should be provided as more lengthy description of the logic encapsulated
-in the process definition. It should not be to long so a sentence or two, for more
-documentation like needs process allows to have add extra information on various levels.</p>
+<p>In addition to id, workflow has a name that should be provided as more lengthy description of the logic encapsulated
+in the workflow definition. It should not be to long so a sentence or two, for more
+documentation like needs workflow allows to have add extra information on various levels.</p>
 </div>
 <div class="paragraph">
 <p>Documentation can be added to:</p>
@@ -206,16 +365,16 @@ documentation like needs process allows to have add extra information on various
 <div class="ulist">
 <ul>
 <li>
-<p>process itself</p>
+<p>workflow itself</p>
 </li>
 <li>
-<p>every activity of the process</p>
+<p>every activity of the workflow</p>
 </li>
 <li>
-<p>every data object (aka variable) of the process</p>
+<p>every data object (aka variable) of the workflow</p>
 </li>
 <li>
-<p>every event defined in the process</p>
+<p>every event defined in the workflow</p>
 </li>
 </ul>
 </div>
@@ -231,7 +390,7 @@ ease the integration.</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Documentation within the process is not supported in serverless workflows at the moment.
+Documentation within the workflow is not supported in serverless workflows at the moment.
 </td>
 </tr>
 </table>
@@ -240,7 +399,7 @@ Documentation within the process is not supported in serverless workflows at the
 <div class="sect2">
 <h3 id="_versioning"><a class="anchor" href="#_versioning"></a>Versioning</h3>
 <div class="paragraph">
-<p>Versioning of a process should be considered from the very beginning as it might have
+<p>Versioning of a workflow should be considered from the very beginning as it might have
 severe impact on consumers of the service and maintainability of the service.</p>
 </div>
 <div class="paragraph">
@@ -249,14 +408,14 @@ severe impact on consumers of the service and maintainability of the service.</p
 <div class="ulist">
 <ul>
 <li>
-<p>version can be assigned to any process (public and private)</p>
+<p>version can be assigned to any workflow (public and private)</p>
 </li>
 <li>
 <p>version will be part of the service contract - in REST api it will prefix the paths
 e.g. <code>/v1/orders</code> or <code>/v1_2/orders</code> for versions <code>1</code> and <code>1.2</code> respectively.</p>
 </li>
 <li>
-<p>multiple versions of the process should be kept in the same service, meaning new version
+<p>multiple versions of the workflow should be kept in the same service, meaning new version
 should be a copy of the previous one</p>
 </li>
 </ul>
@@ -269,8 +428,8 @@ should be a copy of the previous one</p>
 </td>
 <td class="content">
 Change version only when there is good reason for it. As a rule of thumb it is
- recommended to not change version of the process if changes are backward compatible.
- In other words, change version only when the modifications to the process make the
+ recommended to not change version of the workflow if changes are backward compatible.
+ In other words, change version only when the modifications to the workflow make the
  existing instances imposible to continue.
 </td>
 </tr>
@@ -278,7 +437,7 @@ Change version only when there is good reason for it. As a rule of thumb it is
 </div>
 </div>
 <div class="sect2">
-<h3 id="_type_of_processes"><a class="anchor" href="#_type_of_processes"></a>Type of processes</h3>
+<h3 id="_type_of_workflowes"><a class="anchor" href="#_type_of_workflowes"></a>Type of workflowes</h3>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -286,14 +445,14 @@ Change version only when there is good reason for it. As a rule of thumb it is
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Process types are currently only supported in BPMN language and not in serverless workflow.
+workflow types are currently only supported in BPMN language and not in serverless workflow.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Type of process defines visibility of given process on the service API. There are two
-types of processes</p>
+<p>Type of workflow defines visibility of given workflow on the service API. There are two
+types of workflowes</p>
 </div>
 <div class="ulist">
 <ul>
@@ -301,7 +460,7 @@ types of processes</p>
 <p><strong>Public</strong> - these are exposed as top level service endpoints</p>
 </li>
 <li>
-<p><strong>Private</strong> - these are hidden from the service API meaning instances of such processes cannot
+<p><strong>Private</strong> - these are hidden from the service API meaning instances of such workflowes cannot
 be started from outside.</p>
 </li>
 </ul>
@@ -313,28 +472,28 @@ be started from outside.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Private processes are perfect fit for subprocesses to manage creation of new instances
-to be limited to the so called owning process instance.
+Private workflowes are perfect fit for subworkflowes to manage creation of new instances
+to be limited to the so called owning workflow instance.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_process_data"><a class="anchor" href="#_process_data"></a>Process data</h3>
+<h3 id="_workflow_data"><a class="anchor" href="#_workflow_data"></a>workflow data</h3>
 <div class="paragraph">
-<p>Process data is the most important part. This defines what is the actual domain of the service
+<p>workflow data is the most important part. This defines what is the actual domain of the service
 that is being modeled. In the end all services are meant to deal with data and as such alter it.</p>
 </div>
 <div class="paragraph">
-<p>Properly defining data model of the process is extremely important to the service and the
+<p>Properly defining data model of the workflow is extremely important to the service and the
 contract it will expose. To help with that Automatiko promotes use of so called <strong>tags</strong> to
 annotate and enhance data handling.</p>
 </div>
 <div class="sect3">
 <h4 id="_data_object_tags"><a class="anchor" href="#_data_object_tags"></a>Data object tags</h4>
 <div class="paragraph">
-<p>Process data also known as <strong>data objects</strong> or <strong>variables</strong> can be annotated with tags to
+<p>workflow data also known as <strong>data objects</strong> or <strong>variables</strong> can be annotated with tags to
 enable additional features</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -406,23 +565,23 @@ do not make use of tags.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_process_instance"><a class="anchor" href="#_process_instance"></a>Process instance</h3>
+<h3 id="_workflow_instance"><a class="anchor" href="#_workflow_instance"></a>workflow instance</h3>
 <div class="paragraph">
-<p>Process instance is an individual instance of a given process. This is a runtime
-representation of just one item being processed according to the given definition.</p>
+<p>workflow instance is an individual instance of a given workflow. This is a runtime
+representation of just one item being workflowed according to the given definition.</p>
 </div>
 <div class="paragraph">
-<p>Depending on the process definition (how it was modeled) it can be a short lived or
+<p>Depending on the workflow definition (how it was modeled) it can be a short lived or
 it can span hours, days, months and more.</p>
 </div>
 <div class="paragraph">
-<p>Each process instance is uniquely identified with generate id (of a form of UUID).
+<p>Each workflow instance is uniquely identified with generate id (of a form of UUID).
 This id remains unchanged during entire life time of the instance.</p>
 </div>
 <div class="sect3">
 <h4 id="_business_key"><a class="anchor" href="#_business_key"></a>Business key</h4>
 <div class="paragraph">
-<p>As an alternative id of process instance, a business key can be assigned. Business key when
+<p>As an alternative id of workflow instance, a business key can be assigned. Business key when
 assigned will remain unchanged (same as id) during entire life time of the instance but
 can be used exactly the same as id. Meaning it can be used to reference given instance
 from outside with service API.</p>
@@ -447,7 +606,7 @@ reference the instance.
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Business key must be unique within the scope of a process (or version of the process).
+Business key must be unique within the scope of a workflow (or version of the workflow).
 That means you can have only one active instance with given business key.
 </td>
 </tr>
@@ -458,16 +617,16 @@ That means you can have only one active instance with given business key.
 <div class="sect2">
 <h3 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h3>
 <div class="paragraph">
-<p>Similar to tags on process data, process itself can define tags. Tags allow to put extra
+<p>Similar to tags on workflow data, workflow itself can define tags. Tags allow to put extra
 information (besides business key) that are used for correlation purpose.</p>
 </div>
 <div class="paragraph">
 <p>Tags can be both simple (constant) values that won&#8217;t change over time or expressions
-that are evaluated every time process instance change.</p>
+that are evaluated every time workflow instance change.</p>
 </div>
 <div class="paragraph">
-<p>Additional feature of process tags (compared to process data tags) is that tags can be
-added and removed during entire life time of process instance.</p>
+<p>Additional feature of workflow tags (compared to workflow data tags) is that tags can be
+added and removed during entire life time of workflow instance.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -476,8 +635,8 @@ added and removed during entire life time of process instance.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Tags defined in process (definition) cannot be removed, only tags added on top
-of active process instance can be removed.
+Tags defined in workflow (definition) cannot be removed, only tags added on top
+of active workflow instance can be removed.
 </td>
 </tr>
 </table>
@@ -489,8 +648,8 @@ of active process instance can be removed.
 <h2 id="_decision"><a class="anchor" href="#_decision"></a>Decision</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Decision is defined to capture decision logic within the process. It is not exposed
-as separate service but instead is invoked from within a process. Decision in Automatiko
+<p>Decision is defined to capture decision logic within the workflow. It is not exposed
+as separate service but instead is invoked from within a workflow. Decision in Automatiko
 are defined as DMN diagrams which goes hand in have with BPMN to have both defined in graphical
 way.</p>
 </div>
@@ -503,7 +662,7 @@ way.</p>
 <p>decisions are identified by <code>model</code> and <code>namespace</code> and optionally <code>decision</code> or <code>decision service</code></p>
 </li>
 <li>
-<p>decisions must define inputs which will be then mapped from the process data</p>
+<p>decisions must define inputs which will be then mapped from the workflow data</p>
 </li>
 <li>
 <p>decisions define various decision logic constructs such as</p>
@@ -521,7 +680,7 @@ way.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Decision results are then mapped (by name) to process data.</p>
+<p>Decision results are then mapped (by name) to workflow data.</p>
 </div>
 </div>
 </div>
