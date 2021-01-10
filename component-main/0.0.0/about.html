@@ -3,18 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>What&#8217;s Automatiko? :: Automatiko</title>
+    <title>What is Automatiko? :: Automatiko</title>
     <link rel="canonical" href="https://docs.automatiko.io/component-main/0.0.0/about.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
     <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="_images/automatiko-logo-circle.png" type="image/png">
   </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://docs.automatiko.io">Automatiko</a>
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="_images/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -125,7 +126,7 @@
 </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">What&#8217;s Automatiko?</h1>
+<h1 class="page">What is Automatiko?</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="admonitionblock warning">
@@ -135,14 +136,14 @@
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-This is under development and not yet ready for public consumption, stay tuned!
+This content is under active development and not yet ready for public consumption, stay tuned!
 </td>
 </tr>
 </table>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/automatiko.png" alt="automatiko">
+<img src="_images/automatiko.png" alt="Automatiko Overview">
 </div>
 </div>
 </div>
@@ -153,37 +154,37 @@ This is under development and not yet ready for public consumption, stay tuned!
 <div class="paragraph">
 <p>Automatiko is a toolkit that takes advantage of well established and known languages
 to build (but not limited to) self contained services. As the name might suggest its
-main goal is to enable users to automate their daily tasks, be it processing of emails,
-perform schedules actions, collect and transform data and many many more.</p>
+main goal is to enable users to automate their daily tasks, such as processing of emails,
+perform schedules actions, collect and transform data and many more.</p>
 </div>
 <div class="paragraph">
-<p>By "well established and known languages" Automatiko means</p>
+<p>By "well established and known languages" Automatiko means:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>BPMN2 (business process modeling and notation)</p>
+<p><a href="https://www.omg.org/spec/BPMN/">BPMN2</a> (Business Process Modeling and Notation)</p>
 </li>
 <li>
-<p>DMN (decision modeling and notation)</p>
+<p><a href="https://www.omg.org/dmn/">DMN</a> (Decision Modeling and Notation)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>In addition to these already known in the market, a relatively new player is also supported
-in Automatiko</p>
+in Automatiko:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Serverless Workflow ( a Cloud Native Computing Foundation project)</p>
+<p><a href="https://serverlessworkflow.io/">Serverless Workflow</a> (a Cloud Native Computing Foundation project)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Automatiko promotes above mentioned languages as programming languages that can
-be used to build production ready services. Takes advantage of various constructs of
- these languages to provide a service that is:</p>
+<p>Automatiko promotes the above mentioned languages as programming languages that can
+be used to build production ready services. It takes advantage of various constructs of
+ these languages to provide services that are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -197,7 +198,7 @@ be used to build production ready services. Takes advantage of various construct
 <p>secured</p>
 </li>
 <li>
-<p>easy to managed</p>
+<p>easy to manage</p>
 </li>
 <li>
 <p>integrated with other services</p>
@@ -207,18 +208,17 @@ be used to build production ready services. Takes advantage of various construct
 </div>
 </div>
 <div class="sect1">
-<h2 id="_why_should_one_use_automatiko"><a class="anchor" href="#_why_should_one_use_automatiko"></a>Why should one use Automatiko?</h2>
+<h2 id="_why_should_you_use_automatiko"><a class="anchor" href="#_why_should_you_use_automatiko"></a>Why should you use Automatiko?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before answering this fundamental question, where is one even more important to
-start with</p>
+<p>Before answering this fundamental question, we must take a look at its prerequisite:</p>
 </div>
 <div class="sect2">
-<h3 id="_why_should_one_use_workflow"><a class="anchor" href="#_why_should_one_use_workflow"></a>Why should one use workflow?</h3>
+<h3 id="_why_should_you_use_workflow"><a class="anchor" href="#_why_should_you_use_workflow"></a>Why should you use workflow?</h3>
 <div class="paragraph">
-<p>Workflows in general are meant to capture business logic in structured way. That is
-either graphical (like BPMN and DMN do in a form of flow charts) or declarative as
-it is done in serverless workflow. This gives us first reason to use workflows</p>
+<p>Workflows in general are meant to capture business logic in a structured way. That is
+done either graphically (e.g. like BPMN and DMN do with forms of flow charts) or declaratively as
+it is done in Serverless Workflow. This gives us first benefit of using workflows:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -235,17 +235,17 @@ it is done in serverless workflow. This gives us first reason to use workflows</
 </table>
 </div>
 <div class="paragraph">
-<p>Visibility of the business logic that can be applied in both design (development time)
-to make sure the business logic is expressed the way business demands it, at runtime to
-illustrate current state of individual (or aggregated) instances.</p>
+<p>Visibility of business logic that can be applied in both design (development time)
+to make sure the business logic is expressed the way business demands it, as well as runtime to
+illustrate the current state of individual (or aggregated) instances.</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
 <p>Another important aspect of workflows is that they define data objects that are
-required for execution. That applies to workflow as a whole but also to individual
-activities such as service tasks or operations, user interactions. This can be seen
-as second reason</p>
+required for execution. This applies to workflows as well as individual
+workflow activities such as service tasks, operations and user interactions,
+and defines our second main benefit of using workflows:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -262,17 +262,17 @@ as second reason</p>
 </table>
 </div>
 <div class="paragraph">
-<p>Domain data contract allows to clearly define what is an input and what is an output
-of a given activity or the workflow. With this at hand your domain business logic is
+<p>Domain data contract allows us to clearly define what is an input and what is an output
+of a given workflow and/or its individual activities. With this at hand your domain business logic is
 equipped with one of the most powerful tools - self description.</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Next item on the list is the isolation and security of your domain data. As workflows
-define the domain data model (as stated above) at the same time, workflows are
-responsible for security around accessing these data. Not just from authorization
-point of view but also (what is in many case equally important) isolation.</p>
+<p>Next item on the list deals with isolation and security of your domain data.
+As workflows define the domain data model (as stated above), they are also
+responsible for data access security. Security not just from authorization
+point of view but also, and in many case equally important, isolation.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -290,16 +290,17 @@ point of view but also (what is in many case equally important) isolation.</p>
 </div>
 <div class="paragraph">
 <p>Isolation is ensured on individual levels without any extra effort. Workflows are built
-around definition and instances. Definition is a single artefact that is then initialized
-for each individual set of data which then forms an instance. Each instance is kept isolated
- from others while still providing access to each at any point in time.</p>
+around definitions and instances. A definition is a single artefact that is then initialized
+for each individual set of data which forms an instance. Each instance is kept isolated
+ from others while still providing access to other instances at any point in time.</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Yet another argument to use workflows is to use the tools that are available and proven
-instead of attempting to build it from scratch (which is certainly possible but
-  in many cases not worth the effort). Such tools that workflow come out of the box with are:</p>
+<p>Another benefit is the availability of proven workflow tools. These tools
+help us get up and running quicker instead of attempting to build everything from scratch
+(which is certainly possible but in many cases not worth the effort).
+These tools include:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -319,7 +320,7 @@ instead of attempting to build it from scratch (which is certainly possible but
 <p>data driven actions (reacting to data changes to trigger actions)</p>
 </li>
 <li>
-<p>and many many more</p>
+<p>and many more</p>
 </li>
 </ul>
 </div>
@@ -338,22 +339,22 @@ instead of attempting to build it from scratch (which is certainly possible but
 </table>
 </div>
 <div class="paragraph">
-<p>Out of the box tools that come with workflows that are directly available for use
+<p>Out of the box tools that come with workflows and are directly available for use
 regardless of what domain they are used in.</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>So this gives just few arguments to consider why use of workflows makes sense. As usual,
-it all depends on particular use case but as in life everything is a process so
-why not make use of the real life approach to it and model business logic as they are&#8230;&#8203;</p>
+<p>The above list includes just a few of many benefits of using workflows.
+As always the choice is yours. In life everything is a process, so why
+not make use of real life approaches to model your business logic as well?</p>
 </div>
 <div class="sect3">
 <h4 id="_so_why_to_use_automatiko"><a class="anchor" href="#_so_why_to_use_automatiko"></a>So why to use Automatiko?</h4>
 <div class="paragraph">
-<p>Automatiko was designed and built with above principles in mind to allow developers
-an easy and yet powerful way of defining their business logic. It was tailored to
-provide excellent support for number of use cases</p>
+<p>Automatiko was designed and built with above principles in mind to provide developers
+with easy and powerful ways for defining their business logic. It was tailored to
+provide excellent support for a number of use cases, including:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -361,7 +362,7 @@ provide excellent support for number of use cases</p>
 <p>event streams</p>
 </li>
 <li>
-<p>Internet of Things</p>
+<p>Internet of Things (IoT)</p>
 </li>
 <li>
 <p>human centric workflows</p>
@@ -370,17 +371,17 @@ provide excellent support for number of use cases</p>
 <p>service orchestration</p>
 </li>
 <li>
-<p>data base record processing</p>
+<p>database record processing</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>All these use cases you can examine in the <a href="use-cases.html">Use Cases</a> chapter and see them in action.</p>
+<p>You can examine these use cases in the <a href="use-cases.html">Use Cases</a> chapter and see them in action.</p>
 </div>
 <div class="paragraph">
-<p>Automatiko is completely open source under Apache licence.
-Automatiko is written in java and takes advantage of all the modern frameworks and
-libraries that allow it to run on pretty much any environment to name few</p>
+<p>Automatiko is completely open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, version 2.0</a>.
+Automatiko is written in Java and takes advantage of all the modern frameworks and
+libraries which allow it to run on many environments including:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -412,12 +413,12 @@ libraries that allow it to run on pretty much any environment to name few</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>It&#8217;s main aim is to make BPMN (and serverless workflow) and DMN as programming languages that provide value
-to build services that automate your business logic, regardless what the domain is.</p>
+<p>Automatiko allows you to use BPMN, Serverless Workflow, and DMN as programming languages for
+building services that automate your business logic, regardless of its domain.</p>
 </div>
 <div class="paragraph">
-<p>It&#8217;s not intended to replace other programming languages but more of embrace out of the box features of workflows
-that provide significant value with little effort.</p>
+<p>Automatiko is not intended to replace other programming languages, but helps us embrace out of the box and proven
+workflow features that provide significant value with little not no effort on your side.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -428,14 +429,14 @@ that provide significant value with little effort.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<strong>Give it a try and share your feedback</strong>
+<strong>Give Automatiko a try and share your feedback</strong>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><em>So enough of talking, take it for a spin with examples ready for use without much of a hassle.
-Just head to <a href="getting-started.html">Getting started</a> chapter and try it! Don&#8217;t forget to share your feedback
+<p><em>So enough talking, take Automatiko for a spin by checking out the many examples ready for you to run and modify.
+Just head to the <a href="getting-started.html">Getting started</a> chapter and try it! Don&#8217;t forget to share your feedback
 as this will allow us to make it even better.</em></p>
 </div>
 </div>
@@ -452,8 +453,7 @@ as this will allow us to make it even better.</em></p>
 </main>
 </div>
 <footer class="footer">
-  <p>This page was built using the Antora default UI.</p>
-  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
 </footer>
 <script src="../../_/js/site.js"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
