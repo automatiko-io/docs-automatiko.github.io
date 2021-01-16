@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Configuration reference :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.0.0/configuration.html">
+    <link rel="canonical" href="https://docs.automatiko.io/component-main/0.0.0/configuration.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="main" data-version="0.0.0">
+<div class="nav-container" data-component="component-main" data-version="0.0.0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -67,22 +67,19 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Components</span>
+    <span class="nav-text">How tos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="components/security.html">Security</a>
+    <a class="nav-link" href="howtos/security.html">Security</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="components/messaging.html">Messaging</a>
+    <a class="nav-link" href="howtos/messaging.html">Messaging</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="components/persistence.html">Persistence</a>
+    <a class="nav-link" href="howtos/persistence.html">Persistence</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="components/errors.html">Error handling</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="components/management.html">Process management</a>
+    <a class="nav-link" href="howtos/addons.html">Addons</a>
   </li>
 </ul>
   </li>
@@ -159,12 +156,11 @@
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Base configuration parameters</caption>
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
@@ -173,7 +169,6 @@
 <th class="tableblock halign-left valign-top">Description</th>
 <th class="tableblock halign-left valign-top">Required</th>
 <th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">BuildTime only</th>
 </tr>
 </thead>
 <tbody>
@@ -183,7 +178,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines service URL that will be attached to events produced by Automatiko</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.package-name</p></td>
@@ -191,7 +185,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines what package name should be used for generated classes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">'io.automatiko.app'</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.include-automatiko-api</p></td>
@@ -199,27 +192,17 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Determines if Automatiko attached Apis should be included in OpenAPI definitions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.instance-locking</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Determines if instance level locking should be used or not</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Metrics configuration parameters</caption>
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
@@ -228,7 +211,6 @@
 <th class="tableblock halign-left valign-top">Description</th>
 <th class="tableblock halign-left valign-top">Required</th>
 <th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">BuildTime only</th>
 </tr>
 </thead>
 <tbody>
@@ -238,19 +220,17 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables metrics for Automatiko</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 3. Persistence configuration parameters</caption>
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
@@ -259,20 +239,17 @@
 <th class="tableblock halign-left valign-top">Description</th>
 <th class="tableblock halign-left valign-top">Required</th>
 <th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">BuildTime only</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.type</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_TYPE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specify what persistence should be used</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -285,10 +262,8 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system that will be used to store persistent state</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -297,23 +272,21 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.db.remove-at-completion</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_DB_REMOVE_AT_COMPLETION</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if entities created during instance execution should be removed when instance completes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 4. Jobs configuration parameters</caption>
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
@@ -322,20 +295,17 @@
 <th class="tableblock halign-left valign-top">Description</th>
 <th class="tableblock halign-left valign-top">Required</th>
 <th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">BuildTime only</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.type</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_TYPE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies type of jobs implementation to be used</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -348,7 +318,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system where jobs persistent state will be stored</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.filesystem.threads</p></td>
@@ -356,10 +325,8 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for jobs execution</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -372,7 +339,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies interval (in minutes) how often look for another chunk of jobs to execute</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.db.threads</p></td>
@@ -380,19 +346,17 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for job execution</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 5. Security configuration parameters</caption>
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
@@ -401,7 +365,6 @@
 <th class="tableblock halign-left valign-top">Description</th>
 <th class="tableblock halign-left valign-top">Required</th>
 <th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">BuildTime only</th>
 </tr>
 </thead>
 <tbody>
@@ -411,7 +374,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if usr/group information given as query params are ignored or not</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.security.admin-role-name</p></td>
@@ -419,7 +381,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">What role/group name should be considered as admin</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">admin</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
