@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Concepts :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.2.0/concepts.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.3.0/concepts.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -110,6 +110,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
           <a href="../0.2.0/about.html">0.2.0</a>
         </li>
         <li class="version">
@@ -128,7 +131,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../0.2.0/about.html" class="home-link"></a>
+  <a href="../0.3.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="about.html">Automatiko Documentation</a></li>
@@ -138,6 +141,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../0.3.0/concepts.html">0.3.0</a>
     <a class="version" href="../0.2.0/concepts.html">0.2.0</a>
     <a class="version" href="../0.1.0/concepts.html">0.1.0</a>
     <a class="version is-current" href="concepts.html">0.0.0</a>
@@ -346,8 +350,11 @@ This decision is influcenced by both the workflow definition as well as workflow
 It target deployment environment is <a href="https://knative.dev/docs/eventing/"><code>Knative Eventing</code></a> in order to take advantage of
 its routing capabilities for events.</p>
 </div>
-<div class="sect2">
-<h3 id="_identification_and_description"><a class="anchor" href="#_identification_and_description"></a>Identification and description</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_identification_and_description"><a class="anchor" href="#_identification_and_description"></a>Identification and description</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>A workflow must include an assigned id. The id serves as an unique workflow identifier and as such should be:</p>
 </div>
@@ -405,8 +412,10 @@ This allows service consumers to better understand the overall intention of the 
 which can aid with their integration efforts.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_versioning"><a class="anchor" href="#_versioning"></a>Versioning</h3>
+</div>
+<div class="sect1">
+<h2 id="_versioning"><a class="anchor" href="#_versioning"></a>Versioning</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Versioning of a workflow should be considered from the very beginning as it might have
 severe impacts on service consumers and its maintainability.</p>
@@ -445,8 +454,10 @@ Change the version only when there is good reason for it. As a rule of thumb it 
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_types_of_workflows"><a class="anchor" href="#_types_of_workflows"></a>Types of workflows</h3>
+</div>
+<div class="sect1">
+<h2 id="_types_of_workflows"><a class="anchor" href="#_types_of_workflows"></a>Types of workflows</h2>
+<div class="sectionbody">
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -488,8 +499,10 @@ of subworkflows only to their, so called, owning workflow instance.
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_workflow_data"><a class="anchor" href="#_workflow_data"></a>Workflow data</h3>
+</div>
+<div class="sect1">
+<h2 id="_workflow_data"><a class="anchor" href="#_workflow_data"></a>Workflow data</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Workflow data defines the actual domain of the service that is being modeled.
 In the end, all services are meant to deal with data and as such alter it.</p>
@@ -499,8 +512,8 @@ In the end, all services are meant to deal with data and as such alter it.</p>
 contract it will expose. To help with that, Automatiko promotes the use of so called <strong>tags</strong> to
 annotate and enhance data handling.</p>
 </div>
-<div class="sect3">
-<h4 id="_data_object_tags"><a class="anchor" href="#_data_object_tags"></a>Data object tags</h4>
+<div class="sect2">
+<h3 id="_data_object_tags"><a class="anchor" href="#_data_object_tags"></a>Data object tags</h3>
 <div class="paragraph">
 <p>Workflow data, also known as <strong>data objects</strong> or <strong>variables</strong>, can be annotated with tags to
 enable additional features:</p>
@@ -556,6 +569,13 @@ the start of a new instance</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Marks a given data object to be the source of initiator of the instance instead of
 relying on security context</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">versioned</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks a given data object to be versioned. Each change to the variable records the previous one and makes it available
+to be fetched with construct <code>variablename$VERSION</code> for example <code>person$3</code> will get the version 3 of the person variable.
+Note that versions start at 0. <code>person$</code> will return list of all versions of the variable and <code>person$-1</code> will return the
+last version.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="admonitionblock warning">
@@ -573,8 +593,10 @@ do not make use of tags.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_workflow_instance"><a class="anchor" href="#_workflow_instance"></a>Workflow instance</h3>
+</div>
+<div class="sect1">
+<h2 id="_workflow_instance"><a class="anchor" href="#_workflow_instance"></a>Workflow instance</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Workflow instance is an individual instance of a given workflow. This is a runtime
 representation of a single execution according to given workflow definition.</p>
@@ -587,8 +609,8 @@ it can span hours, days, months and more.</p>
 <p>Each workflow instance is uniquely identified with generate id (of a form of UUID).
 This id remains unchanged during the entire life time of the instance.</p>
 </div>
-<div class="sect3">
-<h4 id="_business_key"><a class="anchor" href="#_business_key"></a>Business key</h4>
+<div class="sect2">
+<h3 id="_business_key"><a class="anchor" href="#_business_key"></a>Business key</h3>
 <div class="paragraph">
 <p>Business key can provide an alternative to the workflow instance id. Similarly to the id, a business
 key, when assigned, remains unchaged during the entire live-time of the workflow instance.
@@ -623,8 +645,10 @@ That means you can have only one active instance with a given business key.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h3>
+</div>
+<div class="sect1">
+<h2 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Similar to workflow data tags, a workflow itself can define tags. Tags allow you to put extra
 information (in addition to a business key) used for correlation purpose.</p>
@@ -649,7 +673,6 @@ of active workflow instance can.
 </td>
 </tr>
 </table>
-</div>
 </div>
 </div>
 </div>
