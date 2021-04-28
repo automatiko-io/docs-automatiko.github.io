@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Process management :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.4.0/components/management.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.4.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="errors.html">Error handling</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-tasks.html">User tasks</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../faq.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.4.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Components</li>
+    <li><a href="management.html">Process management</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.4.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="management.html">0.4.0</a>
+    <a class="version" href="../../0.3.0/components/management.html">0.3.0</a>
+    <a class="version" href="../../0.2.0/components/management.html">0.2.0</a>
+    <a class="version" href="../../0.1.0/components/management.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/components/management.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Process management</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Process management addon allows to add extra capabilities on top of the
+domain specific service (the one that is build from workflow definition).</p>
+</div>
+<div class="paragraph">
+<p>Process management comes with two parts</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>REST api</p>
+</li>
+<li>
+<p>Basic UI to visualize current state of the service</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configure"><a class="anchor" href="#_configure"></a>Configure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To enable process management addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-process-management-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will include both the REST api and UI</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rest_api"><a class="anchor" href="#_rest_api"></a>REST api</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>REST api of the process management addon provides following capabilities</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>List of available workflows (definitions)</p>
+</li>
+<li>
+<p>List of available workflow instances of the given workflow</p>
+</li>
+<li>
+<p>Workflow instance details</p>
+</li>
+<li>
+<p>Error of given workflow instance</p>
+</li>
+<li>
+<p>List of active nodes in given workflow instance</p>
+</li>
+<li>
+<p>Retrigger given workflow instance that is in error state</p>
+</li>
+<li>
+<p>Skip node that caused error in given workflow instance and continue with next node</p>
+</li>
+<li>
+<p>Trigger given node in given workflow instance</p>
+</li>
+<li>
+<p>Retrigger active node in given workflow instance</p>
+</li>
+<li>
+<p>Cancels active node in given workflow instance</p>
+</li>
+<li>
+<p>Cancel entire workflow instance</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+REST api of process management addon is not included in the <strong>OpenAPI</strong>
+definition of the service by default. This is to avoid exposing non domain
+specific endpoints in the service. It can be enabled by setting
+<code>quarkus.automatiko.include-automatiko-api</code> property to <code>true</code> in <code>application.properties</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_interface"><a class="anchor" href="#_user_interface"></a>User interface</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Currently UI of process management is read only but over time
+it will be enhanced with majority of the REST api operations
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Process management comes with very basic UI to help visualize the state
+of the service. It can be accessed via
+<a href="http://localhost:8080/management/processes/ui" class="bare">http://localhost:8080/management/processes/ui</a></p>
+</div>
+<div class="paragraph">
+<p>This will show entry point that displays available workflow definitions
+in the service</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/management-ui-entry.png" alt="management ui entry">
+</div>
+</div>
+<div class="paragraph">
+<p>For each of the listed wokflows you can list active instances by clicking on
+the <code>Instances</code> button. This will expand a table with all active instances
+of that workflow.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/management-instances.png" alt="management instances">
+</div>
+</div>
+<div class="paragraph">
+<p>Further you can look at instance details that will include</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>workflow instance visualization with active nodes and retrying nodes annotated</p>
+</li>
+<li>
+<p>list subworkflow instances if any</p>
+</li>
+<li>
+<p>display complete data model of given workflow instance</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/weather-retry-mgmt.png" alt="weather retry mgmt">
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

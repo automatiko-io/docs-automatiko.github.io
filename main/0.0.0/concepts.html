@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Concepts :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.3.0/concepts.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.4.0/concepts.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -87,6 +87,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="components/event-publishers.html">Event publishers</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/user-tasks.html">User tasks</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -110,6 +113,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
           <a href="../0.3.0/about.html">0.3.0</a>
         </li>
         <li class="version">
@@ -131,7 +137,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../0.3.0/about.html" class="home-link"></a>
+  <a href="../0.4.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="about.html">Automatiko Documentation</a></li>
@@ -141,6 +147,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../0.4.0/concepts.html">0.4.0</a>
     <a class="version" href="../0.3.0/concepts.html">0.3.0</a>
     <a class="version" href="../0.2.0/concepts.html">0.2.0</a>
     <a class="version" href="../0.1.0/concepts.html">0.1.0</a>
@@ -543,6 +550,10 @@ enable additional features:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Marks a given data object as internal, meaning it not be visible from the outside</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sensitive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marks a given data object as sensitive, meaning it not be visible from the outside and is not published via events</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">notnull</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Marks a given data object as non-nullable, meaning once it was assigned a value it cannot be reset to null</p></td>
 </tr>
@@ -639,6 +650,26 @@ reference the instance.
 <td class="content">
 Business key must be unique within the scope of a workflow (or version of the workflow).
 That means you can have only one active instance with a given business key.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_execution_timeout"><a class="anchor" href="#_execution_timeout"></a>Execution timeout</h3>
+<div class="paragraph">
+<p>Execution timeout of an instance can be defined within the workflow definition as part of custom attributes.
+It allows to specify the maximum amount of time (since the start) that workflow instance is allowed to
+remain active. It is given as a ISO formatted duration <code>PT5H</code>, <code>P5D</code> (5 hours and 5 days respectively).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To define it add <code>timeout</code> custom attribute on the workflow definition with desired duration
 </td>
 </tr>
 </table>

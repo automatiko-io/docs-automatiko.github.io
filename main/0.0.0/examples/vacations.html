@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Vacation requests :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.3.0/examples/vacations.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.4.0/examples/vacations.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -87,6 +87,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../components/event-publishers.html">Event publishers</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/user-tasks.html">User tasks</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -110,6 +113,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.3.0/about.html">0.3.0</a>
         </li>
         <li class="version">
@@ -131,7 +137,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.3.0/about.html" class="home-link"></a>
+  <a href="../../0.4.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -141,6 +147,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.4.0/examples/vacations.html">0.4.0</a>
     <a class="version" href="../../0.3.0/examples/vacations.html">0.3.0</a>
     <a class="version" href="../../0.2.0/examples/vacations.html">0.2.0</a>
     <a class="version" href="../../0.1.0/examples/vacations.html">0.1.0</a>
@@ -276,6 +283,72 @@ so there is no need for additional components to run this example.</p>
 <p><code>docker run -p 8080:8080 automatiko/vacation-requests</code></p>
 </div>
 <div class="paragraph">
+<p>Alternatively there is also a option to run this service with email notifications enabled. This requires
+some extra environment variables to be set when starting the container</p>
+</div>
+<div class="paragraph">
+<p><code>docker run -p 8080:8080 -e QUARKUS_PROFILE=withemail -e EMAIL_TO=TO -e EMAIL_FROM=FROM  -e EMAIL_HOST=HOST -e EMAIL_PORT=PORT -e EMAIL_USER=USER -e EMAIL_PASSWORD=PASSWORD automatiko/vacation-requests</code></p>
+</div>
+<div class="paragraph">
+<p>You need to set following environment variables with proper email server data</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Environment variables for email notifications</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EMAIL_TO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">email address where all notifications should be sent to</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="mailto:user@gmail.com">user@gmail.com</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EMAIL_FROM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">email address the the emails are sent from</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="mailto:user@gmail.com">user@gmail.com</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EMAIL_HOST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">host name of SMTP server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp.gmail.com</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EMAIL_PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">port number of SMTP server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">587</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EMAIL_USER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">username to be used to authenticate on SMTP server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="mailto:user@gmail.com">user@gmail.com</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EMAIL_PASSWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">password to be used to authenticate on SMTP server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secret_password</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>With above configuration email notifications for user tasks are going to be sent out. Using default template
+for email addresses that will look like this</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/examples-vacation-request-form-email.png" alt="examples vacation request form email">
+</div>
+</div>
+<div class="paragraph">
 <p>once this is done you can see the fully described service at
  <a href="http://localhost:8080/swagger-ui/#/" class="bare">http://localhost:8080/swagger-ui/#/</a></p>
 </div>
@@ -320,7 +393,7 @@ employee, from the submission to either cancelation or its start date.</p>
 with it. Below table represents available users in the service</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Users available</caption>
+<caption class="title">Table 4. Users available</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -384,7 +457,9 @@ manager who has at least one approval task awaiting.
 </td>
 <td class="content">
 Note that there is simple UI for manager to see incoming approval tasks.
-Just open browser at <a href="http://localhost:8080" class="bare">http://localhost:8080</a> and connect using <code>john@email.com</code>
+Just open browser at <a href="http://localhost:8080" class="bare">http://localhost:8080</a> and connect using <code>john@email.com</code>. You can also use this
+UI for employees to see the cancelation of vacation requests, connect using <code>mary@email.com</code> to receive
+tasks assigned to mary as employee.
 </td>
 </tr>
 </table>
@@ -565,6 +640,16 @@ Same is required in the below curl command.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>There is also option to look at the UI based form to work on the approval task. When getting task list for manager
+there are formLink returned that can be easily used to open a form in a browser window. Just prepend the host name
+of the service before the form link and open in the browser which should look like this</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/examples-vacation-request-form-approval.png" alt="examples vacation request form approval">
+</div>
 </div>
 <div class="paragraph">
 <p>complete curl command for this request is as follows</p>
@@ -1036,6 +1121,16 @@ Same is required in the below curl command.
 </table>
 </div>
 <div class="paragraph">
+<p>There is also option to look at the UI based form to work on the approval task. When getting task list for manager
+there are formLink returned that can be easily used to open a form in a browser window. Just prepend the host name
+of the service before the form link and open in the browser which should look like this</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/examples-vacation-request-form-approval.png" alt="examples vacation request form approval">
+</div>
+</div>
+<div class="paragraph">
 <p>complete curl command for this request is as follows</p>
 </div>
 <div class="listingblock">
@@ -1121,6 +1216,16 @@ Same is required in the below curl command.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>There is also option to look at the UI based form to work on the cancel task. When getting task list for employee
+there are formLinks returned that can be easily used to open a form in a browser window. Just prepend the host name
+of the service before the form link and open in the browser which should look like this</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/examples-vacation-request-form-cancel.png" alt="examples vacation request form cancel">
+</div>
 </div>
 <div class="paragraph">
 <p>complete curl command for this request is as follows</p>
