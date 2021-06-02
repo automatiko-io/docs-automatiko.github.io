@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Error handling and retries :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.4.0/components/errors.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.5.0/components/errors.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -38,7 +38,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="main" data-version="0.0.0">
+<div class="nav-container" data-component="main" data-version="0.4.0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -106,14 +106,17 @@
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Automatiko Documentation</span>
-    <span class="version">0.0.0</span>
+    <span class="version">0.4.0</span>
   </div>
   <ul class="components">
     <li class="component is-current">
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
-          <a href="../../0.4.0/about.html">0.4.0</a>
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../about.html">0.4.0</a>
         </li>
         <li class="version">
           <a href="../../0.3.0/about.html">0.3.0</a>
@@ -124,8 +127,8 @@
         <li class="version">
           <a href="../../0.1.0/about.html">0.1.0</a>
         </li>
-        <li class="version is-current">
-          <a href="../about.html">0.0.0</a>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
         </li>
       </ul>
     </li>
@@ -137,7 +140,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.4.0/about.html" class="home-link"></a>
+  <a href="../../0.5.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -146,13 +149,14 @@
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
+  <button class="version-menu-toggle" title="Show other versions of page">0.4.0</button>
   <div class="version-menu">
-    <a class="version" href="../../0.4.0/components/errors.html">0.4.0</a>
+    <a class="version" href="../../0.5.0/components/errors.html">0.5.0</a>
+    <a class="version is-current" href="errors.html">0.4.0</a>
     <a class="version" href="../../0.3.0/components/errors.html">0.3.0</a>
     <a class="version" href="../../0.2.0/components/errors.html">0.2.0</a>
     <a class="version" href="../../0.1.0/components/errors.html">0.1.0</a>
-    <a class="version is-current" href="errors.html">0.0.0</a>
+    <a class="version" href="../../0.0.0/components/errors.html">0.0.0</a>
   </div>
 </div>
 </div>
@@ -329,16 +333,6 @@ e.g. PT5S to retry every 5 seconds</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines how many retries there should be before triggering error
 handler and take the error path</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">retryIncrement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Duration which will be added to the delay between successive retries (ISO 8601 duration format)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PT5M</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">retryMultiplier</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Value by which the delay is multiplied before each attempt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
 </tr>
 </tbody>
 </table>
