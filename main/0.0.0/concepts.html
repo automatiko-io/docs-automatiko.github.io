@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Concepts :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.5.0/concepts.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.6.0/concepts.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -90,13 +90,22 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="components/user-tasks.html">User tasks</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/async-execution.html">Async Execution</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="configuration.html">Configuration reference</a>
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/archive.html">Archive</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="faq.html">FAQ</a>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/email.html">Email</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -113,6 +122,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
           <a href="../0.5.0/about.html">0.5.0</a>
         </li>
         <li class="version">
@@ -140,7 +152,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../0.5.0/about.html" class="home-link"></a>
+  <a href="../0.6.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="about.html">Automatiko Documentation</a></li>
@@ -150,6 +162,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../0.6.0/concepts.html">0.6.0</a>
     <a class="version" href="../0.5.0/concepts.html">0.5.0</a>
     <a class="version" href="../0.4.0/concepts.html">0.4.0</a>
     <a class="version" href="../0.3.0/concepts.html">0.3.0</a>
@@ -676,6 +689,171 @@ remain active. It is given as a ISO formatted duration <code>PT5H</code>, <code>
 To define it add <code>timeout</code> custom attribute on the workflow definition with desired duration
 </td>
 </tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_end_of_instance_strategy"><a class="anchor" href="#_end_of_instance_strategy"></a>End of instance strategy</h3>
+<div class="paragraph">
+<p>When workflow instance reaches its end (either by completing successfully or by being aborted) there might be
+ situations that requires it be handled in one way or another. For this exact purpose, end of instance
+ strategies are provided. These allow to have different behavior depending on your needs.
+ For example due to legal requirements instances must be kept for given amount of time, or they should
+ be archived to another location for reference.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko provides three out of the box strategies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>remove</p>
+</li>
+<li>
+<p>keep</p>
+</li>
+<li>
+<p>archive</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_remove"><a class="anchor" href="#_remove"></a>Remove</h4>
+<div class="paragraph">
+<p>Remove strategy is the default one that simply removes the workflow instance from the data store. That
+operation is permanent and by that means the information about the workflow instance (including
+its data) are gone.</p>
+</div>
+<div class="paragraph">
+<p>This strategy helps at keeping the storage to minimum size by holding only instances that are not yet finished.</p>
+</div>
+<div class="paragraph">
+<p>Configuration of this strategy</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.on-instance-end</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ON_INSTANCE_END</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_keep"><a class="anchor" href="#_keep"></a>Keep</h4>
+<div class="paragraph">
+<p>Keep strategy is the opposite of remove, it will update the status and its content and keep the workflow
+instance in the data store. That will allow to access completed and aborted instances at any time,
+including their data and complete execution path that can also be visualized on the workflow definition
+image.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Keep strategy comes with limitation that does not allow to reuse the same identifiers of workflow
+instances. In most of the cases this is not an issue as identifiers are generated. The situation when
+this can manifest itself is when workflow instances uses business keys. These are considered alternative
+identifiers and by that cannot be reused.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Configuration of this strategy</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.on-instance-end</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ON_INSTANCE_END</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_archive"><a class="anchor" href="#_archive"></a>Archive</h4>
+<div class="paragraph">
+<p>Archive strategy allows to automatically extract complete set of information about workflow instance
+at its completion. That data are then exported into an archive (zip file) that consists of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>process instance export format</p>
+</li>
+<li>
+<p>each variable as separate file (regular variables as json documents, files as dedicated files with proper extensions)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Archives are by default stored on file system so extra configuration property is required. Although this
+is also extensible and custom implementations of <code>io.automatiko.engine.api.workflow.ArchiveStore</code>
+can be provided that will be used to store the produced archive.</p>
+</div>
+<div class="paragraph">
+<p>Archives will be stored in the given directory grouped in folders named based on workflow definition
+id and version. Each archive will be named like <code>{workflow-instance-id}.zip</code> where <code>{workflow-instance-id}</code>
+is going to be replaced with actual id of the workflow instance.</p>
+</div>
+<div class="paragraph">
+<p>Configuration of this strategy</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.on-instance-end</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ON_INSTANCE_END</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">archive</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.archive-path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ARCHIVE_PATH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/my/custom/archive/folder</p></td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>

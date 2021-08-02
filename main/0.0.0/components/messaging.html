@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Messaging :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.5.0/components/messaging.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.6.0/components/messaging.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -90,13 +90,22 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="user-tasks.html">User tasks</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../faq.html">FAQ</a>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Email</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -113,6 +122,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.5.0/about.html">0.5.0</a>
         </li>
         <li class="version">
@@ -140,7 +152,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.5.0/about.html" class="home-link"></a>
+  <a href="../../0.6.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -151,6 +163,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.6.0/components/messaging.html">0.6.0</a>
     <a class="version" href="../../0.5.0/components/messaging.html">0.5.0</a>
     <a class="version" href="../../0.4.0/components/messaging.html">0.4.0</a>
     <a class="version" href="../../0.3.0/components/messaging.html">0.3.0</a>
@@ -705,6 +718,57 @@ this use case service developers can implement converters.</p>
 <li>
 <p><code>V</code> is the data type used in workflow and then <code>T</code> is the type to be sent out
 for <code>OutputConverter</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_apache_camel_connector"><a class="anchor" href="#_apache_camel_connector"></a>Apache Camel connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When using Apache Camel as the connector, in many cases there is a need to specify
+additional information to be available to Camel component. These are usually set as
+Message headers from Camel component point of view.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko allows to specify any number of headers via custom attributes of the message.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Custom attributes that starts with <code>Camel</code> will be considered headers.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example when using Camel Dropbox component to upload files you can specify the target
+file name as custom attribute that will be set as header on Camel&#8217;s message.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/messaging-camel-headers.png" alt="messaging camel headers">
+</div>
+</div>
+<div class="paragraph">
+<p>Headers can be set as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>static value e.g. <code>"my value"</code></p>
+</li>
+<li>
+<p>reference to a workflow variable e.g. <code>myvariable</code></p>
+</li>
+<li>
+<p>reference to a function e.g. <code>buildFileName()</code> or <code>buildFileName(id)</code> where <code>id</code> is workflow
+instance id</p>
 </li>
 </ul>
 </div>
