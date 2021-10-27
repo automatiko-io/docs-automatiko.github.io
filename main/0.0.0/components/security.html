@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Security :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.8.0/components/security.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.9.0/components/security.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -66,6 +66,9 @@
     <a class="nav-link" href="../best-practice.html">Best practice</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Components</span>
 <ul class="nav-list">
@@ -95,6 +98,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="files.html">Handling files</a>
   </li>
 </ul>
   </li>
@@ -131,6 +137,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.8.0/about.html">0.8.0</a>
         </li>
         <li class="version">
@@ -167,7 +176,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.8.0/about.html" class="home-link"></a>
+  <a href="../../0.9.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -178,6 +187,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.9.0/components/security.html">0.9.0</a>
     <a class="version" href="../../0.8.0/components/security.html">0.8.0</a>
     <a class="version" href="../../0.7.0/components/security.html">0.7.0</a>
     <a class="version" href="../../0.6.0/components/security.html">0.6.0</a>
@@ -382,6 +392,112 @@ Initiator is assigned based on authenticated user but it can also be assigned ba
 </div>
 <div class="paragraph">
 <p>An example that uses instance level security is <a href="../examples/vacations.html">Vacation requests</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_encryption_of_data_at_rest"><a class="anchor" href="#_encryption_of_data_at_rest"></a>Encryption of data at rest</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another important part of security is that data stored (workflow instance data) in (whatever) data store might require
+additional encryption at rest. This means that in case someone gains access to the raw data stored won&#8217;t be able to
+easily read and extract information out if it.</p>
+</div>
+<div class="paragraph">
+<p>Encryption at rest is available for any kind of data store supported by Automatiko. It requires enabling the codec that will
+intercept the data to be stored and encode it based on internal implementation details.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko comes with two out of the box codec implementation</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AES</p>
+</li>
+<li>
+<p>Base64</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Base64 is only for test purpose to ensure that data can be easily encrypted and should not be used for production
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_use_it"><a class="anchor" href="#_use_it"></a>Use it</h3>
+<div class="sect3">
+<h4 id="_aes"><a class="anchor" href="#_aes"></a>AES</h4>
+<div class="paragraph">
+<p>To use out of the box AES codec implementation it requires following properties to be set inside <code>application.properties</code> file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.persistence.encryption=aes
+
+automatiko.encryption.aes.key=XXXXXXXXXXXXX</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <code>XXXXXXXXXXXXX</code> is your AES key.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_base64"><a class="anchor" href="#_base64"></a>Base64</h4>
+<div class="paragraph">
+<p>To use out of the box Base64 codec implementation it requires following property to be set inside <code>application.properties</code> file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.persistence.encryption=base64</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implement_custom_codec"><a class="anchor" href="#_implement_custom_codec"></a>Implement custom codec</h3>
+<div class="paragraph">
+<p>Codecs are implemented in pluggable way so there is a way to provide your own implementation with whatever algorithm needed.</p>
+</div>
+<div class="paragraph">
+<p>To do so, create a class that implements <code>io.automatiko.engine.api.workflow.encrypt.StoredDataCodec</code> and implement both methods</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>encode</p>
+</li>
+<li>
+<p>decode</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any exceptions thrown that prevents it from successful encryption should be propagated up to the caller.</p>
+</div>
+<div class="paragraph">
+<p>The codec implementation must be a CDI bean so is discovered and made available to the persistence layer.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only one implementation is allowed for given project.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
