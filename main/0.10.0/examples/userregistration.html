@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>User registration :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.10.0/examples/userregistration.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.10.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started.html">Getting started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/files.html">Handling files</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.10.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li><a href="userregistration.html">User registration</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.10.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="userregistration.html">0.10.0</a>
+    <a class="version" href="../../0.9.0/examples/userregistration.html">0.9.0</a>
+    <a class="version" href="../../0.8.0/examples/userregistration.html">0.8.0</a>
+    <a class="version" href="../../0.7.0/examples/userregistration.html">0.7.0</a>
+    <a class="version" href="../../0.6.0/examples/userregistration.html">0.6.0</a>
+    <a class="version" href="../../0.5.0/examples/userregistration.html">0.5.0</a>
+    <a class="version is-missing" href="../../0.4.0/about.html">0.4.0</a>
+    <a class="version is-missing" href="../../0.3.0/about.html">0.3.0</a>
+    <a class="version is-missing" href="../../0.2.0/about.html">0.2.0</a>
+    <a class="version is-missing" href="../../0.1.0/about.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/examples/userregistration.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">User registration</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>User registration example illustrates <code>Workflow as a Function Flow</code> concept that breaks down a workflow
+definition into functions and automatically invokes them by emitting events (in cloud event format).</p>
+</div>
+<div class="paragraph">
+<p>This example takes a simple user registration use case and implements it as workflow. The logic behind is
+composed of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>validating provided user information</p>
+</li>
+<li>
+<p>generating username and password</p>
+</li>
+<li>
+<p>verifying that given user name is not yet registered in the Swagger PetStore service</p>
+</li>
+<li>
+<p>creating user in the Swagger PetStore service</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So the workflow defines multiple types of operations that are being invoked, starting from java services
+implemented within the service and finishing at REST invocation based on OpenAPI definitions.</p>
+</div>
+<div class="paragraph">
+<p>In addition to that REST calls are equipped with error handling to tackle unexpected responses like server
+errors during creation of a user in Swagger PetStore service or expected situations like user not found in Swagger
+PetStore service.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/examples-user-registration.png" alt="examples user registration"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_run_it"><a class="anchor" href="#_run_it"></a>Run it</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are multiple paths that can be taken during the user registration</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/user-registration-workflow.png" alt="user registration workflow"></span></p>
+</div>
+<div class="paragraph">
+<p>Here is the functions that are broken out of the workflow</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/user-registration-workflow-functions.png" alt="user registration workflow functions"></span></p>
+</div>
+<div class="paragraph">
+<p>A surprising might be that the <code>Notify invalid data</code> is not selected as a function. The reason is that
+the <code>Notify invalid data</code> is combined with <code>Verify user data</code> into single function to show case ability
+of being able to control which activities are included in single function.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/user-registration-workflow-ff-continue.png" alt="user registration workflow ff continue"></span></p>
+</div>
+<div class="paragraph">
+<p>To be able to run it a Kubernetes cluster must be available with KNative Eventing installed. It could be local installation, such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Minikube</p>
+</li>
+<li>
+<p>Kind</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or it can be cloud based Kubernetes cluster like</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Google Kubernetes Engine</p>
+</li>
+<li>
+<p>OpenShift</p>
+</li>
+<li>
+<p>Azure kubernetes Engine</p>
+</li>
+<li>
+<p>others</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To install KNative, look at <a href="https://knative.dev/docs/install">official documentation</a></p>
+</div>
+<div class="paragraph">
+<p>Once the Knative and Kubernates cluster is available you can deploy the example by invoking following commands</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f k8s/user-registration.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is a content of the file for quick reference</p>
+</div>
+<details>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: sources.knative.dev/v1beta1
+kind: SinkBinding
+metadata:
+  name: bind-user-registration
+spec:
+  subject:
+    apiVersion: serving.knative.dev/v1
+    kind: Service
+    name: user-registration
+
+  sink:
+    ref:
+      apiVersion: eventing.knative.dev/v1
+      kind: Broker
+      name: default
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: user-registration
+spec:
+  template:
+    metadata:
+      name: user-registration-v1
+      annotations:
+        autoscaling.knative.dev/target: "1"
+    spec:
+      containers:
+        - image: automatiko/user-registration
+
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: userregistration
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: io.automatiko.examples.userRegistration
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: user-registration
+
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: getuser
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: io.automatiko.examples.userRegistration.getuser
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: user-registration
+
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: notregistered
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: io.automatiko.examples.userRegistration.notregistered
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: user-registration
+
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: generateusernameandpassword
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: io.automatiko.examples.userRegistration.generateusernameandpassword
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: user-registration
+
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: registeruser
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: io.automatiko.examples.userRegistration.registeruser
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: user-registration
+
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: notifyregistered
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: io.automatiko.examples.userRegistration.notifyregistered
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: user-registration
+
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: notifyservererror
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: io.automatiko.examples.userRegistration.notifyservererror
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: user-registration
+
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: servererror
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: io.automatiko.examples.userRegistration.servererror
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: user-registration</code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>Optionally you can also deploy event displayer to see all events flowing through the Knative broker</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">kubectl apply -f - &lt;&lt; EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-display
+spec:
+  replicas: 1
+  selector:
+    matchLabels: &amp;labels
+      app: event-display
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      containers:
+        - name: event-display
+          image: gcr.io/knative-releases/knative.dev/eventing/cmd/event_display
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: event-display
+spec:
+  selector:
+    app: event-display
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+EOF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deploy the trigger for event displayer that will simply consume all events as there is no filter defined</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">kubectl apply -f - &lt;&lt; EOF
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: event-display
+spec:
+  broker: default
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: event-display
+EOF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the url of the default broker use following command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">kubectl get broker default</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which should produce similar output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">NAME      URL                                                                                AGE    READY   REASON
+default   http://broker-ingress.knative-eventing.svc.cluster.local/knativetutorial/default   140d   True</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_happy_path"><a class="anchor" href="#_the_happy_path"></a>The happy path</h3>
+<div class="paragraph">
+<p>Happy path consists of steps that will lead to successful user registration.</p>
+</div>
+<div class="sect3">
+<h4 id="_try_it"><a class="anchor" href="#_try_it"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the happy path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Login to a curler pod that enables an easy access to the broker to send requests as it might not be exposed to
+external traffic (e.g. ingress). If your Knative broker is exposed to external traffic you can skip the curler step.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Issue following curl command from the pod running within cluster so the broker url will be properly resolved.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "http://broker-ingress.knative-eventing.svc.cluster.local/knativetutorial/default" \
+-X POST \
+-H "Ce-Id: 1234" \
+-H "Ce-Specversion: 1.0" \
+-H "Ce-Type: io.automatiko.examples.userRegistration" \
+-H "Ce-Source: curl" \
+-H "Content-Type: application/json" \
+-d '{"user" : {"email" : "mike.strong@email.com",  "firstName" : "mike",  "lastName" : "strong"}}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will send a request to the broker using HTTP binary binding for cloud events. The cloud events information
+are given http headers prefixed with <code>ce-</code>.</p>
+</div>
+<div class="paragraph">
+<p>Taking into consideration that this request was sent for the first time it should register user in Swagger PetStore.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It might result in a already registered when the user was already registered so consider updating the first name
+and last name in the request payload with custom data that will ensure new user
+</td>
+</tr>
+</table>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_invalid_data_path"><a class="anchor" href="#_the_invalid_data_path"></a>The invalid data path</h3>
+<div class="paragraph">
+<p>Invalid data path consists of steps that will lead to fast finish without user registration.</p>
+</div>
+<div class="sect3">
+<h4 id="_try_it_2"><a class="anchor" href="#_try_it_2"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the invalid data path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Login to a curler pod that enables an easy access to the broker to send requests as it might not be exposed to
+external traffic (e.g. ingress). If your Knative broker is exposed to external traffic you can skip the curler step.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Issue following curl command from the pod running within cluster so the broker url will be properly resolved.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "http://broker-ingress.knative-eventing.svc.cluster.local/knativetutorial/default" \
+-X POST \
+-H "Ce-Id: 1234" \
+-H "Ce-Specversion: 1.0" \
+-H "Ce-Type: io.automatiko.examples.userRegistration" \
+-H "Ce-Source: curl" \
+-H "Content-Type: application/json" \
+-d '{"user" : {"email" : "mike.strong@email.com",  "firstName" : "mike",  "lastName" : ""}}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will send a request to the broker using HTTP binary binding for cloud events. The cloud events information
+are given http headers prefixed with <code>ce-</code>.</p>
+</div>
+<div class="paragraph">
+<p>Since user&#8217;s last name is not set the workflow will reject processing due to invalid data</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_already_registered_path"><a class="anchor" href="#_the_already_registered_path"></a>The already registered path</h3>
+<div class="paragraph">
+<p>Already registered path consists of steps that will lead to fast finish without user registration.</p>
+</div>
+<div class="sect3">
+<h4 id="_try_it_3"><a class="anchor" href="#_try_it_3"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the already registered path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Login to a curler pod that enables an easy access to the broker to send requests as it might not be exposed to
+external traffic (e.g. ingress). If your Knative broker is exposed to external traffic you can skip the curler step.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Issue following curl command from the pod running within cluster so the broker url will be properly resolved.
+Main rule here is that there should be already user with same first and last name registered. For example
+that the happy path has been executed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "http://broker-ingress.knative-eventing.svc.cluster.local/knativetutorial/default" \
+-X POST \
+-H "Ce-Id: 1234" \
+-H "Ce-Specversion: 1.0" \
+-H "Ce-Type: io.automatiko.examples.userRegistration" \
+-H "Ce-Source: curl" \
+-H "Content-Type: application/json" \
+-d '{"user" : {"email" : "mike.strong@email.com",  "firstName" : "mike",  "lastName" : "strong"}}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will send a request to the broker using HTTP binary binding for cloud events. The cloud events information
+are given http headers prefixed with <code>ce-</code>.</p>
+</div>
+<div class="paragraph">
+<p>Since user was already registered processing is stopped</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

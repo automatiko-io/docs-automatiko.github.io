@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Concepts :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.9.0/concepts.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.10.0/concepts.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -51,7 +51,19 @@
     <a class="nav-link" href="about.html">About</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="use-cases.html">Use cases</a>
@@ -137,6 +149,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
           <a href="../0.9.0/about.html">0.9.0</a>
         </li>
         <li class="version">
@@ -176,7 +191,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../0.9.0/about.html" class="home-link"></a>
+  <a href="../0.10.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="about.html">Automatiko Documentation</a></li>
@@ -186,6 +201,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../0.10.0/concepts.html">0.10.0</a>
     <a class="version" href="../0.9.0/concepts.html">0.9.0</a>
     <a class="version" href="../0.8.0/concepts.html">0.8.0</a>
     <a class="version" href="../0.7.0/concepts.html">0.7.0</a>
@@ -215,7 +231,7 @@ explain what the service is about.</p>
 <h2 id="_workflow"><a class="anchor" href="#_workflow"></a>Workflow</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Workflow (aka process) is the main entry point of the service. Depending on the language,
+<p>Workflow (aka process) is the main entry point of the service or function. Depending on the language,
 a workflow can be expressed either as flow chart (in case of BPMN2), or a text-based format
 (JSON or YAML in case of Serverless Workflow).</p>
 </div>
@@ -240,166 +256,21 @@ hierarchy of workflow instances and take advantage of <strong>workflow compositi
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_workflow_as_a_service_waas"><a class="anchor" href="#_workflow_as_a_service_waas"></a>Workflow as a Service (WaaS)</h2>
-<div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="_images/workflow-as-service.png" alt="workflow as service">
-</div>
-</div>
 <div class="paragraph">
-<p>Workflow as a service brings an idea of modeling a service as a workflow.
-In this scenario a workflow is exposed as a fully featured service with a dedicated (domain specific) API.
-Workflow as a Service aims to cover more traditional service deployments that usually
-consists of:</p>
+<p>Automatiko comes with following approaches to use workflows</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>a service API exposed over <code>http/rest</code></p>
+<p>Workflow as a service</p>
 </li>
 <li>
-<p>an <code>OpenAPI</code> definition for describing services to simplify their use</p>
+<p>Workflow as a function</p>
 </li>
 <li>
-<p>taking advantage of various integration mechanism to be able to exchange data with
-different services/systems</p>
-</li>
-<li>
-<p>ability to be either short lived or long running</p>
+<p>Workflow as a function flow</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Workflow as a Service does not really differ from any other developed service. The main
-advantage it provides is the ability to use the mentioned well established and known
-workflow languages such as BPMN and DMN as programing languages. Other
-features are for the most part very similar to those that could be
-coded by hand.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_workflow_as_a_function_waaf"><a class="anchor" href="#_workflow_as_a_function_waaf"></a>Workflow as a Function (WaaF)</h2>
-<div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="_images/workflow-as-function.png" alt="workflow as function">
-</div>
-</div>
-<div class="paragraph">
-<p>Workflow as a Function is dedicated for short lived operations that usually last
-no longer that a second. They are expected to be fast and small in size both at runtime
-and at boot time.</p>
-</div>
-<div class="paragraph">
-<p>Workflow as a Function typically targets deployments in more constrained environments such as:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://aws.amazon.com/lambda/">AWS Lambda</a></p>
-</li>
-<li>
-<p><a href="https://cloud.google.com/run">Google Cloud Run</a></p>
-</li>
-<li>
-<p><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview">Azure Functions</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>however are not strictly limited to them, as they can easily be invoked
-over HTTP with both <code>POST</code> and <code>GET</code> endpoints, making them deployable virtually
-anywhere.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Functions can map data from payloads (<code>POST</code>) as well as from query parameters
-(<code>GET</code>).
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Regardless of the number of activities it contains, the workflow is always
-exposed as a single function with its id being its <code>public</code> identifier, namely the function name.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_workflow_as_a_function_flow_waaff"><a class="anchor" href="#_workflow_as_a_function_flow_waaff"></a>Workflow as a Function Flow (WaaFF)</h2>
-<div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="_images/workflow-as-function-flow.png" alt="workflow as function flow">
-</div>
-</div>
-<div class="paragraph">
-<p>Workflow as Function Flow is a more advanced extension to Workflow as a Function
-which breaks the workflow into many different functions.</p>
-</div>
-<div class="paragraph">
-<p>A function, in workflow terms, is a single <code>executing</code> activity. This single
-activity can be grouped with other activities that do not actually perform work but
-can be one of the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>start or end of the workflow</p>
-</li>
-<li>
-<p>control logic (gateways)</p>
-</li>
-<li>
-<p>pass-through activities</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In the diagram above again we see the same workflow example as used in
-the WaaS and WaaF scenarios. This time however we can break it up into multiple
-functions:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>function <code>A</code> defines the start of the workflow instance function and it consists
-of three activities (<code>start</code>, <code>service A</code>, and the`gateway`)</p>
-</li>
-<li>
-<p>function <code>B</code> defines the second function and it consists of two activities, namely <code>Service REST B</code> and <code>end</code>. It is
-invoked when a decision was made to invoke "Service REST B".</p>
-</li>
-<li>
-<p>function <code>C</code> defines the third function which is invoked when a decision is made to invoke
-<code>Service Java C</code> and. It consists only a single activity (<code>Service Java C</code>)</p>
-</li>
-<li>
-<p>function <code>D</code> is the last function that is invoked directly after <code>Function C</code>
-and consists of two activities (<code>Service Java D</code> and <code>end</code>)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>All functions (except "Function A" which defines the workflow start) are invoked automatically based on
-the execution context.
-This means that a function, during its execution, can identify the next function to be invoked.
-This decision is influcenced by both the workflow definition as well as workflow data.</p>
-</div>
-<div class="paragraph">
-<p>Workflow as a function flow always the exchanges of data as events in <a href="https://cloudevents.io/"><code>CloudEvent</code></a> format.
-It target deployment environment is <a href="https://knative.dev/docs/eventing/"><code>Knative Eventing</code></a> in order to take advantage of
-its routing capabilities for events.</p>
 </div>
 </div>
 </div>
