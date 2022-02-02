@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Best Practice :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.12.0/best-practice.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.12.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/files.html">Handling files</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.12.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="about.html">Automatiko Documentation</a></li>
+    <li><a href="best-practice.html">Best practice</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.12.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="best-practice.html">0.12.0</a>
+    <a class="version" href="../0.11.0/best-practice.html">0.11.0</a>
+    <a class="version" href="../0.10.0/best-practice.html">0.10.0</a>
+    <a class="version" href="../0.9.0/best-practice.html">0.9.0</a>
+    <a class="version" href="../0.8.0/best-practice.html">0.8.0</a>
+    <a class="version" href="../0.7.0/best-practice.html">0.7.0</a>
+    <a class="version" href="../0.6.0/best-practice.html">0.6.0</a>
+    <a class="version" href="../0.5.0/best-practice.html">0.5.0</a>
+    <a class="version" href="../0.4.0/best-practice.html">0.4.0</a>
+    <a class="version" href="../0.3.0/best-practice.html">0.3.0</a>
+    <a class="version" href="../0.2.0/best-practice.html">0.2.0</a>
+    <a class="version" href="../0.1.0/best-practice.html">0.1.0</a>
+    <a class="version" href="../0.0.0/best-practice.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Best Practice</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section includes some good practices to follow when building solutions with Automatiko.</p>
+</div>
+<div class="paragraph">
+<p>They are not meant to be one-size-fits-all solutions but a set of guidelines to take
+into consideration.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_a_short_descriptive_workflow_id"><a class="anchor" href="#_use_a_short_descriptive_workflow_id"></a>Use a short, descriptive workflow id</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Workflows must be identified with a descriptive id which is then used as a service
+endpoint. Keeping it as short (usually one or two words) and as descriptive as possible
+ is one of the most important practices. For example if a workflow deals with
+ managing orders, setting the workflow id to <code>orders</code> would be a good practice.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, the workflow name can be more descriptive and does not have to be
+that short.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_define_visibility_of_workflows"><a class="anchor" href="#_define_visibility_of_workflows"></a>Define visibility of workflows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Workflows by default are public. That means they will represent a service
+endpoint. There are situations where not all workflows should be instantiated
+from the outside. In such cases you should set the workflow <code>processType</code> to a <code>private</code>
+in order to make sure it won&#8217;t be exposed as service endpoint through which new
+process instances can be created.</p>
+</div>
+<div class="paragraph">
+<p>A common use case for this is when workflows are used as sub-workflows (Call activities
+in BPMN). The top level workflow is marked as <code>public</code> while all
+sub-workflows are marked as <code>private</code> and thus can be only instantiated from within
+the service and not from outside requests.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_versioning_wisely"><a class="anchor" href="#_use_versioning_wisely"></a>Use versioning wisely</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko supports workflow versioning which in turn will creates a versioned
+service API.</p>
+</div>
+<div class="paragraph">
+<p>For a workflow which has its version set to <code>1.0</code> and its id to <code>orders</code> will create a
+service api with following endpoints</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/v1_0/orders</code></p>
+</li>
+<li>
+<p><code>/v1_0/orders/{id}</code></p>
+</li>
+<li>
+<p>&#8230;&#8203;.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An important good practice when using versions is to change the version only when
+introducing backward incompatible changes to the associated workflow.
+This will make the maintenance of your services much easier.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_workflows"><a class="anchor" href="#_document_workflows"></a>Document workflows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Even tho BPMN allows you to document pretty much any workflow element, good
+documentation is does not necessarily mean documenting every single one.
+Make sure to documenting the most important elements of the workflow, especially those
+that help describe the service API. These include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>documentation of top-level workflow elements</p>
+</li>
+<li>
+<p>documentation of data objects</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Having these two always documented will make your service API much more descriptive.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_business_keys_if_possible"><a class="anchor" href="#_use_business_keys_if_possible"></a>Use business keys if possible</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A business keys is an alternative identifier of the workflow instance.
+Instead of depending on a generated id, you can use a business key to provide
+a more meaningful identification.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s recommended to use a business key whenever possible as it:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>is more domain specific, for example can be order number or employee id</p>
+</li>
+<li>
+<p>is unique, same as generated id</p>
+</li>
+<li>
+<p>can be used directly in the service API</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A business keys can also be used for sub-workflows however its value
+ must be obtained from workflow data
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_define_workflow_tags"><a class="anchor" href="#_define_workflow_tags"></a>Define workflow tags</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Workflow tags allow you to define custom values (or expressions) that will be attached
+to every instance of the workflow. Tags are used not only to improved visibility
+but also for correlation. Workflow instances can be correlated by id or one of the
+tags.</p>
+</div>
+<div class="paragraph">
+<p>Defining tags are a good practice to enable advanced use cases such as matching
+instances by multiple values.</p>
+</div>
+<div class="paragraph">
+<p>A common use case for workflow tags is to
+add extra correlations information, on top of business keys described above.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_describe_intention_of_workflow_data"><a class="anchor" href="#_describe_intention_of_workflow_data"></a>Describe intention of workflow data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Similar to workflow tags, workflow data can also have tags. They are ised to
+express the intention for given data object. There are number of predefined tags
+that are described <a href="concepts.html#_process_data">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>One of the most comm use-cases for this is to mark a given data object as input or output
+which will be expressed in the service API.</p>
+</div>
+<div class="paragraph">
+<p>Other useful tags are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>business-key</strong></p>
+</li>
+<li>
+<p><strong>initiator</strong> - so called owner of the instance used for security checks</p>
+</li>
+<li>
+<p><strong>auto-initialized</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_secure_access_to_workflows"><a class="anchor" href="#_secure_access_to_workflows"></a>Secure access to workflows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Security is an important aspect of workflows that should be taken into account
+from the start. Automatiko comes with two levels of security:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>service level security</p>
+</li>
+<li>
+<p>instance level security</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_service_level_security"><a class="anchor" href="#_service_level_security"></a>Service level security</h3>
+<div class="paragraph">
+<p>Service level security deals with enforcing role based access to the service API.
+That means that anyone who has a particular role will be able to access
+service endpoints. This is sort of a standard web layer security.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_level_security"><a class="anchor" href="#_instance_level_security"></a>Instance level security</h3>
+<div class="paragraph">
+<p>On the other hand, instance level security includes additional checks that
+not only verify the roles but are also based a <code>access policy</code>. This verifies
+if a given user has access to perform a particular operation. Instance level security
+is pluggable and comes with three access policies out of the box:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>permit all - default policy if no other policy has been set</p>
+</li>
+<li>
+<p>participants - policy that allows to perform any operation for the initiator (owner)
+and any user that currently has user tasks assigned to him/her.</p>
+</li>
+<li>
+<p>initiator - similar to <code>participants</code> but updating instance data or deleting instance
+is available for the initiator (owner) only</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With that said, it&#8217;s recommended that security is applied on the service level
+or both service and instance levels.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_process_composition"><a class="anchor" href="#_use_process_composition"></a>Use process composition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Process composition is a fancy name for breaking up your workflows into smaller
+sets. It allows you to have a well-defined entry point (public workflow)
+and a set of private workflows that specialize in daeling with certain parts
+of the whole business problem solution.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_functions_for_custom_logic"><a class="anchor" href="#_use_functions_for_custom_logic"></a>Use "Functions" for custom logic</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko comes with a <code>Functions</code> interface that is meant to simplify
+custom logic used as part of workflow execution as well as enhance reusability.
+The most common use case for using the <code>Functions</code> interface are conditions.
+Conditions may be expressed as simple expressions, for example just <code>a.equals(b)</code>,
+however they can become very complex in real live projects.</p>
+</div>
+<div class="paragraph">
+<p>Instead of having the condition logic embedded in the workflow definition it&#8217;s
+recommended to create a functions class that conforms to the <code>Functions</code> interface
+and just reference it inside the workflow definitions.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example of a simple functions implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.automatiko.engine.api.Functions;
+
+public class VacationFunctions implements Functions {
+
+    public static boolean isNotEligible(Request request, Vacation vacation) {
+        if (vacation.eligible.intValue() &lt;= request.length + vacation.used) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static String vacationUsed(Vacation vacation) {
+        return "Used days " + vacation.used;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once defined, you can reference each defined function by its name, namely
+"isNotEligible" and "vacationUsed" in the above example in your workflow.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_your_workflows"><a class="anchor" href="#_test_your_workflows"></a>Test your workflows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko comes with rather good test support so there is no excuse not to
+ test your workflows. Regardless if the workflow is simple or complex,
+having good test coverage is certainly a good practice.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

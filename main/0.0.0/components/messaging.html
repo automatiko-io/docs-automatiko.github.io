@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Messaging :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.11.0/components/messaging.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.12.0/components/messaging.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -72,7 +72,16 @@
     <a class="nav-link" href="../examples.html">Examples</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../getting-started.html">Getting started</a>
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../best-practice.html">Best practice</a>
@@ -158,6 +167,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.11.0/about.html">0.11.0</a>
         </li>
         <li class="version">
@@ -203,7 +215,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.11.0/about.html" class="home-link"></a>
+  <a href="../../0.12.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -214,6 +226,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.12.0/components/messaging.html">0.12.0</a>
     <a class="version" href="../../0.11.0/components/messaging.html">0.11.0</a>
     <a class="version" href="../../0.10.0/components/messaging.html">0.10.0</a>
     <a class="version" href="../../0.9.0/components/messaging.html">0.9.0</a>
@@ -328,6 +341,11 @@ to various 3rd party systems</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Messaging and Batch</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Similar to JMS but more powerful in terms of messaging capabilities</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Messaging and Orchestration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP based messaging that allows to use simple message posting and receiving</p></td>
+</tr>
 </tbody>
 </table>
 <div class="admonitionblock important">
@@ -339,7 +357,7 @@ to various 3rd party systems</p></td>
 <td class="content">
 In case there is more than one connector defined in the service
 each message definition needs to provide <code>connector</code> custom attribute to
-indicate which connector should be used. Allowed values <code>kafka</code>, <code>mqtt</code>, <code>camel</code>, <code>amqp</code>, <code>jms</code>
+indicate which connector should be used. Allowed values <code>kafka</code>, <code>mqtt</code>, <code>camel</code>, <code>amqp</code>, <code>jms</code>, <code>http</code>
 </td>
 </tr>
 </table>
@@ -508,6 +526,11 @@ event to extract correlation value to be used to find matching workflow instance
 <p><strong>connector</strong> - in case there are multiple connectors used it must be given
 explicitly for every message. Note it is not required if there is only one
 connector - e.g. MQTT or Apache Kafka.</p>
+</li>
+<li>
+<p><strong>filterExpression</strong> - allows to pass a function/expression that will have access
+to message payload (already converted) and message itself to check if given message
+is accepted or not. By default all messages are accepted.</p>
 </li>
 </ul>
 </div>
@@ -870,6 +893,46 @@ Custom attributes that starts with <code>JMS</code> will be considered propertie
 </div>
 <div class="paragraph">
 <p>Properties can be set as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>static value e.g. <code>"my value"</code></p>
+</li>
+<li>
+<p>reference to a workflow variable e.g. <code>myvariable</code></p>
+</li>
+<li>
+<p>reference to a function e.g. <code>buildFileName()</code> or <code>buildFileName(id)</code> where <code>id</code> is workflow
+instance id</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_http_connector"><a class="anchor" href="#_http_connector"></a>HTTP connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HTTP connector requies currently explicitly connector to be set as custom attributes of message.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko allows to specify any number of headers via custom attributes of the message.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Custom attributes that starts with <code>HTTP</code> will be considered headers.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Headers can be set as</p>
 </div>
 <div class="ulist">
 <ul>
