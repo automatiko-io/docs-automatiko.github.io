@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Error handling and retries :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.13.0/components/errors.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.14.0/components/errors.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -170,6 +170,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.13.0/about.html">0.13.0</a>
         </li>
         <li class="version">
@@ -221,7 +224,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.13.0/about.html" class="home-link"></a>
+  <a href="../../0.14.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -232,6 +235,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.14.0/components/errors.html">0.14.0</a>
     <a class="version" href="../../0.13.0/components/errors.html">0.13.0</a>
     <a class="version" href="../../0.12.0/components/errors.html">0.12.0</a>
     <a class="version" href="../../0.11.0/components/errors.html">0.11.0</a>
@@ -381,6 +385,65 @@ mapped to data object of the workflow instance</p>
 exceptions of <code>io.automatiko.engine.api.workflow.ServiceExecutionError</code> type.
 It allows to set the error code that will be used by the workflow instance
 to locate the error handler and the root cause of the error.</p>
+</div>
+<div class="sect2">
+<h3 id="_aborting_workflow_instance_with_an_error"><a class="anchor" href="#_aborting_workflow_instance_with_an_error"></a>Aborting workflow instance with an error</h3>
+<div class="paragraph">
+<p>Sometimes the business logic can lead to an error state that should abort process instance.
+An example of that is when provided information is not valid and thus should not be
+used to continue with execution. In such a case an error should be returned to the client
+to indicate this condition.</p>
+</div>
+<div class="paragraph">
+<p>To be able to define this use case as part of the workflow, a workflow definition can take advantage
+of <code>error end events</code> as illustrated below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/errors-throw.png" alt="errors throw">
+</div>
+</div>
+<div class="paragraph">
+<p>Such <code>error end events</code> use the same error definition as described above.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Errors based on <code>error end events</code> are part of service interface (ReST and GraphQL)
+and will then use <code>error code</code> as response code or message to provide valuable information to the
+consumers of the service.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Error end events cause workflow instance to complete with an error and return to the consumer.
+It&#8217;s important to note that upon such an error the workflow instance data are not sent but instead
+the <code>error data</code>. With that in mind, setting error data (that is usually a subset of workflow instance data)
+is important.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/errors-throw-mapping.png" alt="errors throw mapping">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This logic also applies to event based subprocesses with error start event. The reason for this is
+that error start event always cause workflow instance to abort.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>

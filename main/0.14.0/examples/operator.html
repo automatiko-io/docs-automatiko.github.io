@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MySQL Kubernetes Operator :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.14.0/examples/operator.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.14.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/files.html">Handling files</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.14.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li><a href="operator.html">MySQL Kubernetes Operator</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.14.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="operator.html">0.14.0</a>
+    <a class="version" href="../../0.13.0/examples/operator.html">0.13.0</a>
+    <a class="version" href="../../0.12.0/examples/operator.html">0.12.0</a>
+    <a class="version" href="../../0.11.0/examples/operator.html">0.11.0</a>
+    <a class="version" href="../../0.10.0/examples/operator.html">0.10.0</a>
+    <a class="version" href="../../0.9.0/examples/operator.html">0.9.0</a>
+    <a class="version" href="../../0.8.0/examples/operator.html">0.8.0</a>
+    <a class="version" href="../../0.7.0/examples/operator.html">0.7.0</a>
+    <a class="version" href="../../0.6.0/examples/operator.html">0.6.0</a>
+    <a class="version" href="../../0.5.0/examples/operator.html">0.5.0</a>
+    <a class="version" href="../../0.4.0/examples/operator.html">0.4.0</a>
+    <a class="version" href="../../0.3.0/examples/operator.html">0.3.0</a>
+    <a class="version is-missing" href="../../0.2.0/about.html">0.2.0</a>
+    <a class="version is-missing" href="../../0.1.0/about.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/examples/operator.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">MySQL Kubernetes Operator</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>MySQL Kubernetes Operator example illustrates an operator use case in action. It introduces a custom
+resource definition (<code>MSQLSchema</code>) that can be used to automatically provision MySQL schemas based on
+custom resources.</p>
+</div>
+<div class="paragraph">
+<p>This example watches a Kubernetes cluster (selected namespaces) custom resources of MySQLSchema kind.
+It reacts to change events</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>created</p>
+</li>
+<li>
+<p>updates</p>
+</li>
+<li>
+<p>deleted</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>At any point in time, when custom resource (of MySQLSchema kind) is modified the operator will be notified
+and will perform logic associated with provisioning of the schema with configuration provided as a specification
+of the custom resource.</p>
+</div>
+<div class="paragraph">
+<p>Depending which change event is received different actions will be invoked.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/examples-operator.png" alt="examples operator"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_run_it"><a class="anchor" href="#_run_it"></a>Run it</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To be able to run it a Kubernetes cluster must be available. It could be local installation, such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Minikube</p>
+</li>
+<li>
+<p>Kind</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or it can be cloud based Kubernetes cluster like</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Google Kubernetes Engine</p>
+</li>
+<li>
+<p>OpenShift</p>
+</li>
+<li>
+<p>Azure kubernetes Engine</p>
+</li>
+<li>
+<p>others</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_create_custom_resource_definition_for_mysqlschema"><a class="anchor" href="#_create_custom_resource_definition_for_mysqlschema"></a>Create custom resource definition for MySQLSchema</h3>
+<div class="paragraph">
+<p>Once the Kubernetes cluster is available, let&#8217;s define our custom resource definition to the Kubernetes Cluster is aware of it.</p>
+</div>
+<div class="paragraph">
+<p>Download the k8s descriptors from the project source code that can be found <a href="https://github.com/automatiko-io/automatiko-examples/tree/main/mysql-operator/k8s"><code>here</code></a>.</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl apply -f k8s/crd.yaml</code></p>
+</div>
+<details>
+<summary class="title">Here is a content of the file for quick reference</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: mysqlschemas.mysql.sample.javaoperatorsdk
+spec:
+  group: mysql.sample.javaoperatorsdk
+  version: v1
+  subresources:
+    status: {}
+  scope: Namespaced
+  names:
+    plural: mysqlschemas
+    singular: mysqlschema
+    kind: MySQLSchema
+  validation:
+    openAPIV3Schema:
+      type: object
+      properties:
+        spec:
+          type: object
+          required:
+          - encoding
+          properties:
+            encoding:
+              type: string</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_deploy_mysql_data_base"><a class="anchor" href="#_deploy_mysql_data_base"></a>Deploy MySQL data base</h3>
+<div class="paragraph">
+<p>Since the operator is responsible for provisioning MySQL schemas then there is a need to have MySQL data base
+server where these schemas will be created. For that we simply deploy the MySQL container into the Kubernetes cluster.</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl apply -f k8s/mysql-db.yaml</code></p>
+</div>
+<details>
+<summary class="title">Here is a content of the file for quick reference</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+        # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: mysql</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_deploy_the_operator"><a class="anchor" href="#_deploy_the_operator"></a>Deploy the operator</h3>
+<div class="paragraph">
+<p>Once the custom resource definition is deployed to the cluster, the operator itself can be deployed.
+There are several things that needs to be done to the Kubernetes cluster to make the operator
+fully operational.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deploy the operator container</p>
+</li>
+<li>
+<p>Create service account for the operator</p>
+</li>
+<li>
+<p>Create cluster role</p>
+</li>
+<li>
+<p>Create cluster role binding</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>kubectl apply -f k8s/operator.yaml</code></p>
+</div>
+<details>
+<summary class="title">Here is a content of the file for quick reference</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: mysql-schema
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-schema-operator
+  namespace: mysql-schema
+spec:
+  selector:
+    matchLabels:
+      app: mysql-schema-operator
+  replicas: 1 # we always run a single replica of the operator to avoid duplicate handling of events
+  strategy:
+    type: Recreate # during an upgrade the operator will shut down before the new version comes up to prevent two instances running at the same time
+  template:
+    metadata:
+      labels:
+        app: mysql-schema-operator
+    spec:
+      serviceAccount: mysql-schema-operator # specify the ServiceAccount under which's RBAC persmissions the operator will be executed under
+      containers:
+      - name: operator
+        image: mswiderski/mysql-operator:0.0.0-SNAPSHOT
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MYSQL_HOST
+          value: mysql.mysql # assuming the MySQL server runs in a namespace called "mysql" on Kubernetes
+        - name: MYSQL_USER
+          value: root
+        - name: MYSQL_PASSWORD
+          value: password # sample-level security
+        - name: QUARKUS_LAUNCH_DEVMODE
+          value: 'false' # to allow deployment in development mode
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mysql-schema-operator
+  namespace: mysql-schema
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: mysql-schema-operator
+rules:
+- apiGroups:
+  - mysql.sample.javaoperatorsdk
+  resources:
+  - mysqlschemas
+  verbs:
+  - "*"
+- apiGroups:
+  - mysql.sample.javaoperatorsdk
+  resources:
+  - mysqlschemas/status
+  verbs:
+  - "*"
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - "get"
+  - "list"
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - "*"
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: mysql-schema-operator
+subjects:
+- kind: ServiceAccount
+  name: mysql-schema-operator
+  namespace: mysql-schema
+roleRef:
+  kind: ClusterRole
+  name: mysql-schema-operator
+  apiGroup: ""</code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>This descriptor contains five objects that will be created in Kubernetes cluster</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <code>mysql-schema</code> namespace</p>
+</li>
+<li>
+<p>deployment of the operator container image</p>
+</li>
+<li>
+<p>service account</p>
+</li>
+<li>
+<p>cluster role that grants the access to the api for MySQLSchema resources to be able to interact with them</p>
+</li>
+<li>
+<p>cluter role binding to bind the service account of operator with cluster role</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A dedicated namespace is created for it so it&#8217;s easy to keep it isolated and cleaned up
+after use.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Depending on the Kubernetes cluster used there might be a need for extra object to be created to expose the
+operator web interface to the consumers outside of the Kubernetes cluster. Following is an example for Minikube</p>
+</div>
+<div class="paragraph">
+<p>First expose the deployment via load balancer</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl expose deployment mysql-schema-operator --type=LoadBalancer --port=8080 -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>And then open the service via minikube</p>
+</div>
+<div class="paragraph">
+<p><code>minikube service  mysql-schema-operator  -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>once this is done you can see the fully described service at
+ <a href="http://localhost:PORT/swagger-ui/#/" class="bare">http://localhost:PORT/swagger-ui/#/</a></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can open your browser <a href="http://localhost:PORT/management/processes/ui" class="bare">http://localhost:PORT/management/processes/ui</a>
+to visualize your running service
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There are multiple paths that can be taken during the operator processing a given MySQLSchema resource</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/operator-workflow.png" alt="operator workflow"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_happy_path"><a class="anchor" href="#_the_happy_path"></a>The happy path</h3>
+<div class="paragraph">
+<p>Happy path consists of steps that will lead to successful provisioning of a MySQL schema.</p>
+</div>
+<div class="sect3">
+<h4 id="_try_it"><a class="anchor" href="#_try_it"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the happy path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="paragraph">
+<p>Create new MySQLSchema custom resource in <code>mysql-schema</code> namespace</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl apply -f k8s/schema.yaml -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>Here is a content of the file for quick reference</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: "mysql.sample.javaoperatorsdk/v1"
+kind: MySQLSchema
+metadata:
+  name: mydb-test
+spec:
+  encoding: utf8</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will directly trigger provisioning actual MySQL schema in the data base. In addition to that
+it will also create a secret in the same namespace with name the same as custom resource - <code>mydb-test</code>.</p>
+</div>
+<div class="paragraph">
+<p>At the end it will update the custom resource&#8217;s status with following information</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>status - <code>CREATED</code></p>
+</li>
+<li>
+<p>url - url to the provisioned schema</p>
+</li>
+<li>
+<p>username - user name to be used to connect to the schema</p>
+</li>
+<li>
+<p>secret - name of the secret that holds the password for the schema</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>At this point the schema is successfully provisioned and ready for use. When no loner needed it can be easily removed
+when the custom resource is removed from the cluster.</p>
+</div>
+<div class="paragraph">
+<p>The operator keeps the workflow instance active as long as the associated custom resource is deployed to the
+Kubernetes cluster. You can look at the details of each instance by looking at the process management UI component
+exposed by the operator</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/operator-process-mgmt-1.png" alt="operator process mgmt 1"></span></p>
+</div>
+<div class="paragraph">
+<p>And look at individual instance details</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/operator-process-mgmt-2.png" alt="operator process mgmt 2"></span></p>
+</div>
+<div class="paragraph">
+<p>Lastly you can clean up the custom resource by simply removing it from the cluster</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl delete -f k8s/schema.yaml -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>This will trigger operator that will remove both db schema and user.</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_error_path"><a class="anchor" href="#_the_error_path"></a>The error path</h3>
+<div class="paragraph">
+<p>The error path consists of steps that lead to a failure when creating the schema and
+but that not provisioning it properly.</p>
+</div>
+<div class="sect3">
+<h4 id="_try_it_2"><a class="anchor" href="#_try_it_2"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the happy archive path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="paragraph">
+<p>Create new MySQLSchema custom resource in <code>mysql-schema</code> namespace that has an invalid encoding.</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl apply -f k8s/schema.yaml -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>Here is a content of the file for quick reference</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: "mysql.sample.javaoperatorsdk/v1"
+kind: MySQLSchema
+metadata:
+  name: mydb-test
+spec:
+  encoding: wrong</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will directly trigger provisioning actual MySQL schema in the data base which will fail as there
+is no such encoding as <code>wrong</code>. It will handle error and take an alternative path to update custom
+resource in the cluster with an error message. You can look at the status of the resource</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl describe mysqlschemas.mysql.sample.javaoperatorsdk/mydb-test -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>This will show a error message being set as a status</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+Spec:
+  Encoding:  wrong
+Status:
+  Secret Name:  &lt;nil&gt;
+  Status:       schema creation failure
+  URL:          &lt;nil&gt;
+  User Name:    &lt;nil&gt;
+Events:         &lt;none&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Correct the encoding in <code>k8s/schema.yaml</code> and apply it again</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl apply -f k8s/schema.yaml -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>This time the updated event is processed by the operator and the schema is provisioned successfully, including creation
+of the secret with password to the schema. You can view secrets with following command.</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl get secret -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>Lastly you can clean up the custom resource by simply removing it from the cluster</p>
+</div>
+<div class="paragraph">
+<p><code>kubectl delete -f k8s/schema.yaml -n mysql-schema</code></p>
+</div>
+<div class="paragraph">
+<p>This will trigger operator that will remove both db schema and user.</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_source_code"><a class="anchor" href="#_source_code"></a>Source code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Complete source code of this example can be found
+<a href="https://github.com/automatiko-io/automatiko-examples/tree/main/mysql-operator">in GitHub</a></p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

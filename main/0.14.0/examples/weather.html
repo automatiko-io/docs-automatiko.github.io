@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Weather conditions :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.14.0/examples/weather.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.14.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/files.html">Handling files</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.14.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li><a href="weather.html">Weather conditions</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.14.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="weather.html">0.14.0</a>
+    <a class="version" href="../../0.13.0/examples/weather.html">0.13.0</a>
+    <a class="version" href="../../0.12.0/examples/weather.html">0.12.0</a>
+    <a class="version" href="../../0.11.0/examples/weather.html">0.11.0</a>
+    <a class="version" href="../../0.10.0/examples/weather.html">0.10.0</a>
+    <a class="version" href="../../0.9.0/examples/weather.html">0.9.0</a>
+    <a class="version" href="../../0.8.0/examples/weather.html">0.8.0</a>
+    <a class="version" href="../../0.7.0/examples/weather.html">0.7.0</a>
+    <a class="version" href="../../0.6.0/examples/weather.html">0.6.0</a>
+    <a class="version" href="../../0.5.0/examples/weather.html">0.5.0</a>
+    <a class="version" href="../../0.4.0/examples/weather.html">0.4.0</a>
+    <a class="version" href="../../0.3.0/examples/weather.html">0.3.0</a>
+    <a class="version" href="../../0.2.0/examples/weather.html">0.2.0</a>
+    <a class="version" href="../../0.1.0/examples/weather.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/examples/weather.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Weather conditions</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Weather condition example illustrates <code>service orchestration</code> use case that invokes
+various services</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>REST call to IPStack to collect location information based on IP address given</p>
+</li>
+<li>
+<p>REST call to OpenWeather Map to fetch weather information for given location</p>
+</li>
+<li>
+<p>Java services that show that exactly the same workflow constructs are used regardless of the type
+of the service</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/examples-weather.png" alt="examples weather"></span></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Note that this example is currently not equipped with user facing UI
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>REST calls are done based on <strong>OpenAPI</strong> definitions of the services to be invoked.
+There is no need to manually configure any of the REST parts like http method, params etc.
+All is taken from the OpenApi and prepared for invocation, including security.</p>
+</div>
+<div class="paragraph">
+<p>All service calls (this also include the service that is generated from the workflow)
+are traced and pushed to Jaeger server for further inspection. In addition, Automatiko
+adds extra tags to services being invoked from within the workflow (regardless if
+  they are REST calls or Java services)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>workflow.instance.id</code> - unique id of the workflow instance</p>
+</li>
+<li>
+<p><code>workflow.root.instance.id</code> - unique id of the root workflow instance (the top level instance in case of sub workflows)</p>
+</li>
+<li>
+<p><code>workflow.business.key</code> - unique business key of the workflow instance - only if present</p>
+</li>
+<li>
+<p><code>workflow.business.tags</code> - tags of the workflow instance (as comma separated list) - only if present</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/weather-tracing.png" alt="weather tracing">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_run_it"><a class="anchor" href="#_run_it"></a>Run it</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are few prerequisites to run this example</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Get an API key for IPStack to be able to resolve IP address to location</p>
+</li>
+<li>
+<p>Get an API key for Open Weather to be able to fetch weather information for given location</p>
+</li>
+<li>
+<p>Optionally have an instance of JAEGER running to have tracing data captured</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+API keys for <a href="https://ipstack.com/">IPSTACK</a> and <a href="https://openweathermap.org/">Open Weather</a> API can be freely obtained from the websites.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>docker run -e QUARKUS_JAEGER_ENDPOINT=http://HOST:14268/api/traces -e IPSTACK_API_KEY=YOUR_IPSTACK_KEY -e OPEN_WEATHER_API_KEY=YOUR_OPEN_WEATHER_KEY -p 8080:8080 automatiko/weather-conditions</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To get quickly a running instance of Jaeger to run the tests
+get the docker instance <code>all in one</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>docker run -p 5775:5775/udp -p 6831:6831/udp -p 6832:6832/udp -p 5778:5778 -p 16686:16686 -p 14268:14268 jaegertracing/all-in-one:latest</code></p>
+</div>
+<div class="paragraph">
+<p>once this is done you can see the fully described service at
+ <a href="http://localhost:8080/swagger-ui/#/" class="bare">http://localhost:8080/swagger-ui/#/</a></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can open your browser <a href="http://localhost:8080/management/processes/ui" class="bare">http://localhost:8080/management/processes/ui</a>
+to visualize your running service
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There are multiple paths that can be taken during given order</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/weather-workflow.png" alt="weather workflow">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_happy_path"><a class="anchor" href="#_the_happy_path"></a>The happy path</h3>
+<div class="paragraph">
+<p>Happy path consists of steps that will lead to successful resolving
+of location based on IP address and fetching its weather info.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Depending on the actual weather information different paths can be taken
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_try_it"><a class="anchor" href="#_try_it"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the happy path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="paragraph">
+<p>Here are the steps to try out with happy path</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create new order</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Http Method: <code>POST</code></p>
+</li>
+<li>
+<p>Endpoint: <code><a href="http://localhost:8080/weatherConditions" class="bare">http://localhost:8080/weatherConditions</a></code></p>
+</li>
+<li>
+<p>Payload</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "ip": "134.201.250.155"
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Above IP should evaluate to <em>Los Angeles</em> and the output should be similar
+(except the weather itself :)) to following</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "id": "testing",
+  "location": {
+    "ip": "134.201.250.155",
+    "type": "ipv4",
+    "continent_code": "NA",
+    "continent_name": "North America",
+    "country_code": "US",
+    "country_name": "United States",
+    "region_code": "CA",
+    "region_name": "California",
+    "city": "Los Angeles",
+    "zip": "90012",
+    "latitude": 34.06555,
+    "longitude": -118.24054,
+    "location": {
+      "geoname_id": 5368361,
+      "capital": "Washington D.C.",
+      "languages": [
+        {
+          "code": "en",
+          "name": "English",
+          "native": "English"
+        }
+      ]
+    },
+    "time_zone": null,
+    "currency": null,
+    "connection": null
+  },
+  "forecast": {
+    "coord": {
+      "lon": -118.24,
+      "lat": 34.05
+    },
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01n"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 279.6,
+      "pressure": 1016,
+      "humidity": 70,
+      "temp_min": 279.15,
+      "temp_max": 280.15,
+      "sea_level": null,
+      "grnd_level": null
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 2.57,
+      "deg": 22
+    },
+    "clouds": {
+      "all": 1
+    },
+    "rain": null,
+    "snow": null,
+    "dt": 1609423602,
+    "sys": {
+      "type": 1,
+      "id": 3694,
+      "message": null,
+      "country": "US",
+      "sunrise": 1609426703,
+      "sunset": 1609462430
+    },
+    "id": 5368361,
+    "name": "Los Angeles",
+    "cod": 200
+  }
+}</pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_retry_path"><a class="anchor" href="#_the_retry_path"></a>The retry path</h3>
+<div class="paragraph">
+<p>Retry path consists of steps that will lead to successful resolving
+of location based on IP address and fetching its weather info but the
+<code>Forward forecast</code> task will fail and will be retried after 10 seconds.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The failure in <code>Forward forecast</code> task happens every third request
+so depending how many times it was already used you might have already
+experience this failure. Though it is seamlessly handled in 10 seconds.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_try_it_2"><a class="anchor" href="#_try_it_2"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the happy path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="paragraph">
+<p>Here are the steps to try out with happy path</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create new order</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Http Method: <code>POST</code></p>
+</li>
+<li>
+<p>Endpoint: <code><a href="http://localhost:8080/weatherConditions" class="bare">http://localhost:8080/weatherConditions</a></code></p>
+</li>
+<li>
+<p>Payload</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "ip": "134.201.250.155"
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can open process management view to see the failed instance and its
+task that is about to be retried is marked with <code>warning icon</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/weather-retry-mgmt.png" alt="weather retry mgmt">
+</div>
+</div>
+<div class="paragraph">
+<p>On top of that tracing also includes failure indication that allows to
+easily spot issues.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/weather-tracing-error.png" alt="weather tracing error">
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_source_code"><a class="anchor" href="#_source_code"></a>Source code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Complete source code of this example can be found
+<a href="https://github.com/automatiko-io/automatiko-examples/tree/main/weather-conditions">in GitHub</a></p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

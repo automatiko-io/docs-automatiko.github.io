@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Security :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.14.0/components/security.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.14.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="files.html">Handling files</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.14.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Components</li>
+    <li><a href="security.html">Security</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.14.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="security.html">0.14.0</a>
+    <a class="version" href="../../0.13.0/components/security.html">0.13.0</a>
+    <a class="version" href="../../0.12.0/components/security.html">0.12.0</a>
+    <a class="version" href="../../0.11.0/components/security.html">0.11.0</a>
+    <a class="version" href="../../0.10.0/components/security.html">0.10.0</a>
+    <a class="version" href="../../0.9.0/components/security.html">0.9.0</a>
+    <a class="version" href="../../0.8.0/components/security.html">0.8.0</a>
+    <a class="version" href="../../0.7.0/components/security.html">0.7.0</a>
+    <a class="version" href="../../0.6.0/components/security.html">0.6.0</a>
+    <a class="version" href="../../0.5.0/components/security.html">0.5.0</a>
+    <a class="version" href="../../0.4.0/components/security.html">0.4.0</a>
+    <a class="version" href="../../0.3.0/components/security.html">0.3.0</a>
+    <a class="version" href="../../0.2.0/components/security.html">0.2.0</a>
+    <a class="version" href="../../0.1.0/components/security.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/components/security.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Security</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko comes with two levels of security</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>service level</p>
+</li>
+<li>
+<p>instance level</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_service_level_security"><a class="anchor" href="#_service_level_security"></a>Service level security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>security on service level is based on RBAC (Roles Baesd Access Control) which is applied on every service api endpoint.
+Service level security is taken directly from the workflow definion&#8217;s custom attributes. Attribute name
+used for defining service level security is called <code>securityRoles</code> and accepts comma separated
+list of roles.</p>
+</div>
+<div class="paragraph">
+<p>This in turn will annotate every endpoint of the service for that workflow
+(and its sub workflows) with <code>@RolesAllowed("managers", "admin")</code>.</p>
+</div>
+<div class="paragraph">
+<p>With that to be enforced requires one of possible configurations of service authentication.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://quarkus.io/guides/security-properties">property based</a></p>
+</li>
+<li>
+<p><a href="https://quarkus.io/guides/security-jpa">jpa based</a></p>
+</li>
+<li>
+<p><a href="https://quarkus.io/guides/security-jdbc">jdbc based</a></p>
+</li>
+<li>
+<p><a href="https://quarkus.io/guides/security-ldap">ldap based</a></p>
+</li>
+<li>
+<p><a href="https://quarkus.io/guides/security-openid-connect">openid connect based</a></p>
+</li>
+<li>
+<p><a href="https://quarkus.io/guides/security-keycloak-authorization">keycloak based</a></p>
+</li>
+<li>
+<p>and more&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example that uses property based security is <a href="../examples/vacations.html">Vacation requests</a></p>
+</div>
+<div class="paragraph">
+<p>That configuration will secure the service api and will allow access to it for authenticated users that are members
+of defined roles.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This level of security is considered the as base and should be enabled for most (if not all) services that
+run in production.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition to securing the service api, enabling service level security will also automatically set so called <em>initiator</em>
+of the instance. That means user who issued request that resulted in creating new instance will be associated with it as
+initiator/owner. This is prerequisite for the next level of security - instance level security.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_instance_level_security"><a class="anchor" href="#_instance_level_security"></a>Instance level security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Security on the instance level allows to authorize access based on context of the instance. A common access policy is
+based on initiator to give either exclusive rights on given instance to the initiator or some kind of special rights.</p>
+</div>
+<div class="paragraph">
+<p>An example of such access policy is that only initiator/owner can abort running instance.</p>
+</div>
+<div class="paragraph">
+<p>Instance level security is implemented by <a href="https://github.com/automatiko-io/automatiko-engine/blob/master/api/automatiko-engine-api/src/main/java/io/automatiko/engine/api/auth/AccessPolicy.java">Access Policy</a></p>
+</div>
+<div class="paragraph">
+<p>As can be noticed on the above interface, access policy restrict access on various operation types
+that can be executed on given instance</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>create instance check - who can create new instances</p>
+</li>
+<li>
+<p>read instance check - who can see the instance</p>
+</li>
+<li>
+<p>update instance check - who can update data of the instance</p>
+</li>
+<li>
+<p>delete instance check - who can delete (abort) the instance</p>
+</li>
+<li>
+<p>signal instance check - who can signal the instance</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This allows fine grained access restrictions that can take into account entire context of the instance.
+This also includes actual data of the instance at a given point in time.</p>
+</div>
+<div class="paragraph">
+<p>Instance level security is taken directly from the workflow definion&#8217;s custom attributes. Attribute name
+used for defining service level security is called <code>accessPolicy</code> and accepts single policy identifier listed below.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko comes with few out of the box access policies</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>allow all</p>
+</li>
+<li>
+<p>participants</p>
+</li>
+<li>
+<p>initiator</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_allow_all_access_policy"><a class="anchor" href="#_allow_all_access_policy"></a>Allow all access policy</h3>
+<div class="paragraph">
+<p><code>allow all</code> access policy is the default access policy if none is defined. It essentially does not make any checks.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_participants_access_policy"><a class="anchor" href="#_participants_access_policy"></a>Participants access policy</h3>
+<div class="paragraph">
+<p><code>participants</code> access policy is one of the most common as it restrict access for every check to either</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the initaiator</p>
+</li>
+<li>
+<p>users that have currently assigned user tasks</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initiator_access_policy"><a class="anchor" href="#_initiator_access_policy"></a>Initiator access policy</h3>
+<div class="paragraph">
+<p><code>initiator</code> access policy is an extension to <code>participants</code> access policy that will restrict access to delete operation to initator
+only. That means that users who have currently assigned user tasks can still access the instance and work on tasks but won&#8217;t be able
+to delete such instance.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Initiator is assigned based on authenticated user but it can also be assigned based on data object that is tagged with
+<code>initiator</code> tag. This allows to create instances on behalf of someone or in case user info is not directly available e.g. messaging.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>An example that uses instance level security is <a href="../examples/vacations.html">Vacation requests</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_encryption_of_data_at_rest"><a class="anchor" href="#_encryption_of_data_at_rest"></a>Encryption of data at rest</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another important part of security is that data stored (workflow instance data) in (whatever) data store might require
+additional encryption at rest. This means that in case someone gains access to the raw data stored won&#8217;t be able to
+easily read and extract information out if it.</p>
+</div>
+<div class="paragraph">
+<p>Encryption at rest is available for any kind of data store supported by Automatiko. It requires enabling the codec that will
+intercept the data to be stored and encode it based on internal implementation details.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko comes with two out of the box codec implementation</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AES</p>
+</li>
+<li>
+<p>Base64</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Base64 is only for test purpose to ensure that data can be easily encrypted and should not be used for production
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_use_it"><a class="anchor" href="#_use_it"></a>Use it</h3>
+<div class="sect3">
+<h4 id="_aes"><a class="anchor" href="#_aes"></a>AES</h4>
+<div class="paragraph">
+<p>To use out of the box AES codec implementation it requires following properties to be set inside <code>application.properties</code> file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.persistence.encryption=aes
+
+automatiko.encryption.aes.key=XXXXXXXXXXXXX</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <code>XXXXXXXXXXXXX</code> is your AES key.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_base64"><a class="anchor" href="#_base64"></a>Base64</h4>
+<div class="paragraph">
+<p>To use out of the box Base64 codec implementation it requires following property to be set inside <code>application.properties</code> file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.persistence.encryption=base64</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implement_custom_codec"><a class="anchor" href="#_implement_custom_codec"></a>Implement custom codec</h3>
+<div class="paragraph">
+<p>Codecs are implemented in pluggable way so there is a way to provide your own implementation with whatever algorithm needed.</p>
+</div>
+<div class="paragraph">
+<p>To do so, create a class that implements <code>io.automatiko.engine.api.workflow.encrypt.StoredDataCodec</code> and implement both methods</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>encode</p>
+</li>
+<li>
+<p>decode</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any exceptions thrown that prevents it from successful encryption should be propagated up to the caller.</p>
+</div>
+<div class="paragraph">
+<p>The codec implementation must be a CDI bean so is discovered and made available to the persistence layer.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only one implementation is allowed for given project.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Persistence :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.13.0/components/persistence.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.14.0/components/persistence.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -170,6 +170,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.13.0/about.html">0.13.0</a>
         </li>
         <li class="version">
@@ -221,7 +224,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.13.0/about.html" class="home-link"></a>
+  <a href="../../0.14.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -232,6 +235,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.14.0/components/persistence.html">0.14.0</a>
     <a class="version" href="../../0.13.0/components/persistence.html">0.13.0</a>
     <a class="version" href="../../0.12.0/components/persistence.html">0.12.0</a>
     <a class="version" href="../../0.11.0/components/persistence.html">0.11.0</a>
@@ -1352,7 +1356,119 @@ to provide persistence of timers defined in workflows
 </tbody>
 </table>
 <div class="paragraph">
-<p>Full configuration reference for dynamodb can be found <a href="https://quarkus.io/guides/mongodb#configuration-reference">here</a></p>
+<p>Full configuration reference for mongodb can be found <a href="https://quarkus.io/guides/mongodb#configuration-reference">here</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_transaction_log"><a class="anchor" href="#_transaction_log"></a>Transaction log</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Use of transaction log comes with performance penalty as it records to disk each activity
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When using persistence, regardless what is the actual data store (file system, Cassandra, DynamoDB, MongoDB etc) there is
+always a risk that the service might crash while performing operations and before the result of the operation is
+written to data store.</p>
+</div>
+<div class="paragraph">
+<p>At the same time, service can be one of the mission critical services that cannot effort to loose the work that was
+in flight. To allow to have more fault tolerance support to avoid lost work a transaction log can be enabled in the service
+to record individual steps and in case of a crash perform automatic recovery on next start of the service.</p>
+</div>
+<div class="paragraph">
+<p>Transaction log records every activity of the workflow that is being executed and stores it in transaction log
+store. In case of a crash of the system, next start will look up into transaction log store to find in flight transactions.
+Every in flight transaction found will be automatically recovered from the last activity recorded meaning it won&#8217;t
+re-execute already performed activities and resume from last one directly. No need to have administrators to do any
+action to make this happen.</p>
+</div>
+<div class="paragraph">
+<p>Worth noting is that recovery is done as part of the startup process which blocks and prevents from complete startup until
+recovery is completed. This is done on purpose to ensure no requests get in the way during recovery. This is important from
+health check probes point of view especially readiness check as it might lead to service being killed by orchestrator
+(e.g. Kubernetes) during recovery. Recovery is usually very fast but if there are many instances to be recovered or the actions recovery starts from is
+blocking for long time it might affect overall startup time.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Configure readiness check accordingly to avoid intermittent pod evictions during long recovery.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_configuration_6"><a class="anchor" href="#_configuration_6"></a>Configuration</h3>
+<div class="paragraph">
+<p>Transaction log is disabled by default and must be explicitly enabled. Once enabled it must provide a folder location
+where transaction logs will be written. This folder must be a persistent folder that will survive service crashes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Transaction log configuration parameters</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.transaction-log.enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_TRANSACTION_LOG_ENABLED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables transaction log for workflows to always record activities that are performed to automatically recover after crash</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.transaction-log.folder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_TRANSACTION_LOG_FOLDER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system that will be used to store transaction log entries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes (if transaction log is enabled)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_transaction_log_store"><a class="anchor" href="#_transaction_log_store"></a>Transaction log store</h3>
+<div class="paragraph">
+<p>Transaction log records every activity execution and places that into transaction log store. Currently there is
+only one transaction log store based on file system that records individual instances grouped by transaction id.
+It is not the most efficient storage option but already provides significant value but with more performance overhead.</p>
+</div>
+<div class="paragraph">
+<p>Transaction log store can be provided by application developers by implementing
+<code>io.automatiko.engine.api.uow.TransactionLogStore</code> interface. In addition there are plans to also implement other
+store implementation out of the box.</p>
 </div>
 </div>
 </div>
