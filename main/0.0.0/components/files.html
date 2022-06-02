@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Handling files :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.15.0/components/files.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.16.0/components/files.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -151,6 +151,9 @@
     <span class="nav-text">Migration guide</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -173,6 +176,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.16.0/about.html">0.16.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.15.0/about.html">0.15.0</a>
         </li>
         <li class="version">
@@ -230,7 +236,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.15.0/about.html" class="home-link"></a>
+  <a href="../../0.16.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -241,6 +247,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.16.0/components/files.html">0.16.0</a>
     <a class="version" href="../../0.15.0/components/files.html">0.15.0</a>
     <a class="version" href="../../0.14.0/components/files.html">0.14.0</a>
     <a class="version" href="../../0.13.0/components/files.html">0.13.0</a>
@@ -343,6 +350,9 @@ Currently there are following addons</p>
 </li>
 <li>
 <p><a href="https://cloud.google.com/storage">Google Storage</a></p>
+</li>
+<li>
+<p>MongoDB based on GridFS</p>
 </li>
 </ul>
 </div>
@@ -547,6 +557,60 @@ quarkus.google.cloud.service-account-location=/path/service-account-key.json</co
 Replace <code>BUCKET_NAME</code> with the actual name of the bucket where files should be stored and
 <code>PROJECT_ID</code> with the Google Cloud project to be used. Lastly, point to service account key to
 authorize access to the Google Cloud Storage service
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mongodb_gridfs_addon"><a class="anchor" href="#_mongodb_gridfs_addon"></a>MongoDB (GridFS) AddOn</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MongoDB (based on GridFS) AddOn allows to put file content into MongoDB instance. The data will not be persisted with workflow instance
+itself but externalized. In addition to that a dedicated endpoint to download the file is also provided.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+See more information about <a href="https://www.mongodb.com/docs/manual/core/gridfs">MongoDB GridFS</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To enable this addon add following dependency to the project</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-files-mongodb-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that, following properties can be set in <code>application.properties</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.files.mongodb.database=NAME_OF_DB
+quarkus.automatiko.files.mongodb.chunk-size=12345</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Replace <code>NAME_OF_DB</code> with the name of database where files should be stored, if not given it defaults to <code>automatiko</code>. Chunk size
+can also be given (in bytes) to control the size of the chunks stored in Mongo via GridFS.
 </td>
 </tr>
 </table>
