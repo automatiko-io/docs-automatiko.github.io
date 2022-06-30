@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Service interfaces :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.17.0/service-interfaces.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.17.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.17.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="about.html">0.17.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.16.0/about.html">0.16.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.15.0/about.html">0.15.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="about.html">Automatiko Documentation</a></li>
+    <li><a href="service-interfaces.html">Service interface</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.17.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="service-interfaces.html">0.17.0</a>
+    <a class="version" href="../0.16.0/service-interfaces.html">0.16.0</a>
+    <a class="version" href="../0.15.0/service-interfaces.html">0.15.0</a>
+    <a class="version" href="../0.14.0/service-interfaces.html">0.14.0</a>
+    <a class="version" href="../0.13.0/service-interfaces.html">0.13.0</a>
+    <a class="version" href="../0.12.0/service-interfaces.html">0.12.0</a>
+    <a class="version" href="../0.11.0/service-interfaces.html">0.11.0</a>
+    <a class="version" href="../0.10.0/service-interfaces.html">0.10.0</a>
+    <a class="version" href="../0.9.0/service-interfaces.html">0.9.0</a>
+    <a class="version is-missing" href="../0.8.0/about.html">0.8.0</a>
+    <a class="version is-missing" href="../0.7.0/about.html">0.7.0</a>
+    <a class="version is-missing" href="../0.6.0/about.html">0.6.0</a>
+    <a class="version is-missing" href="../0.5.0/about.html">0.5.0</a>
+    <a class="version is-missing" href="../0.4.0/about.html">0.4.0</a>
+    <a class="version is-missing" href="../0.3.0/about.html">0.3.0</a>
+    <a class="version is-missing" href="../0.2.0/about.html">0.2.0</a>
+    <a class="version is-missing" href="../0.1.0/about.html">0.1.0</a>
+    <a class="version" href="../0.0.0/service-interfaces.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Service interfaces</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As described in the concepts chapter, Automatiko exposes workflows as services. These services can be
+directly used by consumers meaning they act as entry points of the API. Depending on the workflow design
+there might be various ways how to interact with these services:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>REsT interface</p>
+</li>
+<li>
+<p>GraphQL interface</p>
+</li>
+<li>
+<p>Message based interface (limited to trigger)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rest_interface"><a class="anchor" href="#_rest_interface"></a>REsT interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>REsT interface is the default and always present service interface. That means each public workflow definition
+will have dedicated endpoint created for it and named based on workflow definition id.</p>
+</div>
+<div class="paragraph">
+<p>So when there is a workflow definition that processes orders with following</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>workflow definition id - <code>orders</code></p>
+</li>
+<li>
+<p>workflow definition name - <code>Process incoming orders</code></p>
+</li>
+<li>
+<p>version - <code>1.0</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then the REsT service interface will be created with following path <code>/v1_0/orders</code></p>
+</div>
+<div class="paragraph">
+<p>It will have number of additional endpoints (under the main path <code>/v1_0/orders</code>) created to expose additional
+capabilities of the service based on workflow definition. To name some</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>user tasks - each user task will have three endpoints to</p>
+<div class="ulist">
+<ul>
+<li>
+<p>get task inputs</p>
+</li>
+<li>
+<p>complete task</p>
+</li>
+<li>
+<p>abort task</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>signals - each signal event will have dedicated endpoint</p>
+</li>
+<li>
+<p>subprocesses - each subprocess will have dedicated endpoints based on sub workflow definition</p>
+</li>
+<li>
+<p>workflow definition image and workflow instance image</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_versioned_endpoints"><a class="anchor" href="#_versioned_endpoints"></a>Versioned endpoints</h3>
+<div class="paragraph">
+<p>ReST endpoints can be versioned based on the version attribute of the workflow definition. In case versions are in
+use routing to latest version can be enabled. To make use of the routing following property needs to be set:
+<code>quarkus.automatiko.service-route-to-latest=true</code> inside the <code>application.properties</code> file or via variables (env etc)</p>
+</div>
+<div class="paragraph">
+<p>This will allow to use enpoints without the version prefix and by that target the latest one or the one given
+workflow instance belongs to. See version support in this section</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_graphql_interface"><a class="anchor" href="#_graphql_interface"></a>GraphQL interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to REsT interface users can enhance their service with GraphQL interface. That is to allow more advanced
+operation to be performed that take advantage of under-fetching and over-fetching principles promoted by GraphQL.</p>
+</div>
+<div class="paragraph">
+<p>It follows the same principle as REsT interfaces, each public workflow definition will have dedicated GraphQL
+operations created, including</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>user tasks</p>
+</li>
+<li>
+<p>signal events</p>
+</li>
+<li>
+<p>subprocesses</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To enable GraphQL interface add following dependency to your project</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-graphql-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once that is added, service will be equipped with following capabilities of GraphQL that are based on workflow
+definition:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>mutations - each operation that manipulates workflow instance will have dedicated mutation (e.g. start new instance, abort, etc)</p>
+</li>
+<li>
+<p>queries - each operation that allows to retrieve workflow instance information will have dedicated query (e.g. list instances, get instance details, etc)</p>
+</li>
+<li>
+<p>subscription - each workflow definition will have set of subscriptions available to get notifications when:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>new instance is created</p>
+</li>
+<li>
+<p>instance is completed</p>
+</li>
+<li>
+<p>instance is aborted</p>
+</li>
+<li>
+<p>instance fails (ends with error status)</p>
+</li>
+<li>
+<p>instance is updated</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to above subscriptions there is also a generic <code>userTasks</code> subscriptions that allows to get access to
+user tasks managed by this service.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+All subscriptions are security context aware meaning notifications are sent based on access rights of the
+caller who created subscription
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Subscriptions are based on websocket protocol so to create subscription from client side following code can be used</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">let ws = new WebSocket("ws://localhost:8080/graphql");
+
+ws.onopen = function() {
+
+	ws.send('{ "query" : "subscription {userTasks(user:\\\"john\\\", groups:[]) {id, taskName, state, formLink}}"}');
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will subscribe to <code>userTasks</code> as user <code>john</code> so only user tasks that <code>john</code> is allowed to work on will be delivered.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_errors_from_workflow_definitions"><a class="anchor" href="#_errors_from_workflow_definitions"></a>Errors from workflow definitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Defining errors as part of workflow definition is a common practice. In some situations errors are the exit state
+of a given path of the workflow, meaning it will lead to completion of that instance.
+See more about error end events in <a href="components/errors.html#_aborting_workflow_instance_with_an_error" class="page">this section</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/errors-throw.png" alt="errors throw">
+</div>
+</div>
+<div class="paragraph">
+<p>An important aspect of the error end events is that service interface operations will be equipped with
+error information only when there is direct path to that error without any wait states in between.</p>
+</div>
+<div class="paragraph">
+<p>Looking at the example workflow definition above there are three error end events:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Payment required (error code 402)</p>
+</li>
+<li>
+<p>Length Required (error code 411)</p>
+</li>
+<li>
+<p>Too Early (error code 425)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>and here is how the end points of the service will be described with error responses</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Payment Required</code> will be defined on update message operation as this is a a wait state (signal)</p>
+</li>
+<li>
+<p><code>Length Required</code> will be defined on the start instance end point as there are no wait states that lead to the error</p>
+</li>
+<li>
+<p><code>Too Early</code> will be defined on the user task end point as user task is also a wait state</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Use of gateways will not be taken into account as from definition perspective it&#8217;s not possible to
+distinguish if given error will be encountered or not but it certainly can be and that&#8217;s why it is defined
+on the service interface operation level.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_errors_in_rest_service_interface"><a class="anchor" href="#_errors_in_rest_service_interface"></a>Errors in ReST service interface</h3>
+<div class="paragraph">
+<p>These errors (expressed as <code>error end events</code>) are represented as additional responses of the ReST operation.
+Such responses will follow normal definition and will include.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>response code - based on error code thus it must be a valid HTTP response code (three digits)</p>
+</li>
+<li>
+<p>schema of the response - based on error data type</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With that information consumers of the ReST service interface have all the information required to properly interact
+with the service.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/service-interface-rest-errors.png" alt="service interface rest errors">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_errors_in_graphql_service_interface"><a class="anchor" href="#_errors_in_graphql_service_interface"></a>Errors in GraphQL service interface</h3>
+<div class="paragraph">
+<p>GraphQL does not use response code as ReST do but instead all information is provided via response payload.
+In case of an error, GraphQL response will have both <code>errors</code> and <code>data</code> provided</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "errors": [
+    {
+      "message": "Process instance with id 098f6bcd-4621-3373-8ade-4e832627b4f6 was aborted with defined error code 411",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "create_errors"
+      ],
+      "extensions": {
+        "classification": "DataFetchingException"
+      }
+    }
+  ],
+  "data": {
+    "create_errors": {
+      "id": "test",
+      "name": "john",
+      "errorInfo": {
+        "details": "here is an error"
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The main difference for GraphQL service interface is that the error information must be set for the workflow instance
+output model. The reason for that is GraphQL has only one message type defined for the output of
+the mutation and by that can only return single type of information.
+It is called <strong>partial results</strong> in GraphQL which is not complete but of the same type.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_message_based_interface"><a class="anchor" href="#_message_based_interface"></a>Message based interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Last but not least, service can also be equipped with message based interface such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apache Kafka</p>
+</li>
+<li>
+<p>MQTT</p>
+</li>
+<li>
+<p>Apache Camel components</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The main difference for this interface (compared to REsT and GraphQL) is that it is tailored for just one
+type of workflow constructs - <code>message events</code></p>
+</div>
+<div class="paragraph">
+<p>Message based interface is both inbound and outbound so it can consume and produce messages depending on the type of
+message event used within workflow definition (catching or throwing respectively).</p>
+</div>
+<div class="paragraph">
+<p>To enable it one (or more) of the messaging providers must be added to your project. The easiest way is to
+use Automatiko archetypes to bootstrap project with defined dependencies.
+See <a href="#../../getting-started.adoc#_create_project" class="page unresolved">Getting started guide</a> for details.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
