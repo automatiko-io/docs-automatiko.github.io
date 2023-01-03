@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Getting started based on BPMN2 :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.21.0/getting-started-bpmn.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.21.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.21.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="about.html">0.21.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.20.0/about.html">0.20.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.19.0/about.html">0.19.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.18.0/about.html">0.18.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.17.0/about.html">0.17.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.16.0/about.html">0.16.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.15.0/about.html">0.15.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="about.html">Automatiko Documentation</a></li>
+    <li>Getting started</li>
+    <li><a href="getting-started-bpmn.html">Based on BPMN2</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.21.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="getting-started-bpmn.html">0.21.0</a>
+    <a class="version" href="../0.20.0/getting-started-bpmn.html">0.20.0</a>
+    <a class="version" href="../0.19.0/getting-started-bpmn.html">0.19.0</a>
+    <a class="version" href="../0.18.0/getting-started-bpmn.html">0.18.0</a>
+    <a class="version" href="../0.17.0/getting-started-bpmn.html">0.17.0</a>
+    <a class="version" href="../0.16.0/getting-started-bpmn.html">0.16.0</a>
+    <a class="version" href="../0.15.0/getting-started-bpmn.html">0.15.0</a>
+    <a class="version" href="../0.14.0/getting-started-bpmn.html">0.14.0</a>
+    <a class="version" href="../0.13.0/getting-started-bpmn.html">0.13.0</a>
+    <a class="version" href="../0.12.0/getting-started-bpmn.html">0.12.0</a>
+    <a class="version is-missing" href="../0.11.0/about.html">0.11.0</a>
+    <a class="version is-missing" href="../0.10.0/about.html">0.10.0</a>
+    <a class="version is-missing" href="../0.9.0/about.html">0.9.0</a>
+    <a class="version is-missing" href="../0.8.0/about.html">0.8.0</a>
+    <a class="version is-missing" href="../0.7.0/about.html">0.7.0</a>
+    <a class="version is-missing" href="../0.6.0/about.html">0.6.0</a>
+    <a class="version is-missing" href="../0.5.0/about.html">0.5.0</a>
+    <a class="version is-missing" href="../0.4.0/about.html">0.4.0</a>
+    <a class="version is-missing" href="../0.3.0/about.html">0.3.0</a>
+    <a class="version is-missing" href="../0.2.0/about.html">0.2.0</a>
+    <a class="version is-missing" href="../0.1.0/about.html">0.1.0</a>
+    <a class="version" href="../0.0.0/getting-started-bpmn.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Getting started based on BPMN2</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Best place to start is by trying the <a href="examples.html">examples</a>
+that will let you feel the Automatiko in action before getting your hands dirty
+ &#8230;&#8203; just in case you haven&#8217;t tried them yet
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here you can find all that is needed to get you started with Automatiko</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_required_software"><a class="anchor" href="#_required_software"></a>Required software</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Following are the required software before you can get started with Automatiko</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java (version 11 or higher)</p>
+</li>
+<li>
+<p>Apache Maven (version 3.6.3 or higher)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, following are good to have though they are not mandatory</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Docker</p>
+</li>
+<li>
+<p>GraalVM</p>
+</li>
+<li>
+<p>Kubernetes like environment (MiniKube, OpenShift, K3s/K3d)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_required_tooling"><a class="anchor" href="#_required_tooling"></a>Required tooling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko takes advantage of BPMN at the core so it requires BPMN editor. To
+have well working modelling environment Automatiko delivers a customized version
+of Eclipse BPMN2 Modeller. Thus it requires Eclipse IDE to run this editor.</p>
+</div>
+<div class="paragraph">
+<p>Get Eclipse from <a href="https://www.eclipse.org/eclipseide/">Eclipse IDE</a> website</p>
+</div>
+<div class="paragraph">
+<p>Once Eclipse is up and running install Automatiko BPMN modeller from following
+<a href="https://github.com/automatiko-io/bpmn2-modeler/releases/download/2.0.0/org.eclipse.bpmn2.modeler.updatesite-2.0.0.zip">update site</a></p>
+</div>
+<div class="paragraph">
+<p>Steps to install Automatiko BPMN modeler</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Download latest update site of Automtiko modeler from <code><a href="https://github.com/automatiko-io/bpmn2-modeler/releases/latest" class="bare">https://github.com/automatiko-io/bpmn2-modeler/releases/latest</a></code>
+into local folder</p>
+</li>
+<li>
+<p>Select <code>Help</code> from the menu</p>
+</li>
+<li>
+<p>Select <code>Install new software</code></p>
+</li>
+<li>
+<p>Enter location of the downloaded zip file into <code>Work with</code> text field and press enter</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It will display found components from the update site and should look like below</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/getting-started-eclipse-plugin-install.png" alt="getting started eclipse plugin install">
+</div>
+</div>
+<div class="paragraph">
+<p>Follow wizard steps to complete the installation and restart Eclipse when asked.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_project"><a class="anchor" href="#_create_project"></a>Create project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In Eclipse create new <code>Maven Project</code> that allows to base it on archetype.
+Automatiko comes with number of archetypes that allow to easily create project
+with preconfigured set of dependencies needed for given use case</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Automatiko archetypes</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic project type that comes with basic setup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-orchestration-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored for service orchestration scenarios</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-event-stream-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for event stream use case backed by Apache Kafka</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-iot-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for IoT use case backed by MQTT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-db-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for database record processing use case</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-batch-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for batch processing use case</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-function-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for workflow as a function use case</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-function-flow-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for function flow use case backed by KNative</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-operator-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for building Kubernetes Operators</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Select archetype that matches the best for the type of automation you&#8217;re going
+to work with. Fill in the details of the wizard and the project will be created.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively use following command to generate project based on <strong>automatiko-orchestration-archetype</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">mvn archetype:generate                                      \
+  -DarchetypeGroupId=io.automatiko.archetypes               \
+  -DarchetypeArtifactId=automatiko-orchestration-archetype  \
+  -DarchetypeVersion=LATEST                                 \
+  -DgroupId=com.acme.workflows                              \
+  -DartifactId=workflow-service</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is standard Maven folder structure so should be rather familiar to most people
+but to just highlight most important parts of it</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>pom.xml - configuration of the project that is</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven coordinates (group artifact version)</p>
+</li>
+<li>
+<p>Name and description</p>
+</li>
+<li>
+<p>Dependencies</p>
+</li>
+<li>
+<p>Profiles</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>src/main/java</code> folder where all java classes should be created</p>
+</li>
+<li>
+<p><code>src/main/resources</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>folder where application configuration is located - <code>application.properties</code></p>
+</li>
+<li>
+<p>folder where all business assets such as workflow or decision files are to be created</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>src/test/java</code> folder where all test related java classes should be created</p>
+</li>
+<li>
+<p><code>src/test/resources</code> folder where all test related additional files should be created</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_workflow_file"><a class="anchor" href="#_create_workflow_file"></a>Create workflow file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create new workflow file by using Eclipse File menu option <code>New</code> and selecting
+<code>BPMN2 &#8594; Automatiko Process Diagram</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/getting-started-new-wizard-1.png" alt="getting started new wizard 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Next fill the details of your workflow</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/getting-started-wizard-2.png" alt="getting started wizard 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Once this is completed and editor with workflow will open, with just single start
+event placed on the canvas.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/getting-started-workflow.png" alt="getting started workflow">
+</div>
+</div>
+<div class="paragraph">
+<p>Based on the requirements start modeling the workflow with elements from the
+right hand side palette. There you will find different type of BPMN2 constructs
+such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tasks (service, user)</p>
+</li>
+<li>
+<p>events (timers, messages, compensation)</p>
+</li>
+<li>
+<p>subprocesses (aka sub workflows)</p>
+</li>
+<li>
+<p>data objects</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_local_execution_mode"><a class="anchor" href="#_local_execution_mode"></a>Local execution mode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you&#8217;re ready (at least to get it running) with your workflow run a local
+execution mode (development mode) by issuing following command in the top level
+folder of your project</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean quarkus:dev</code></p>
+</div>
+<div class="paragraph">
+<p>This will launch (after sometime when executed for the first time&#8230;&#8203;) a service
+that will have REST api available at <a href="http://localhost:8080/swagger-ui" class="bare">http://localhost:8080/swagger-ui</a></p>
+</div>
+<div class="paragraph">
+<p>At this point you can use swagger ui to try out your newly built service
+from the workflow.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In case there is no REST api generated for your workflow make sure that
+the process type of the workflow is set to <code>Public</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>While the service is running you can start modifying the workflow without
+the need to restart the service. In Local execution mode changes are reflected
+directly after saving file and issuing another request to the service.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Live reload is still considered as experimental feature so please
+report issues in case you run into problems.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_test_case_for_the_workflow"><a class="anchor" href="#_create_test_case_for_the_workflow"></a>Create test case for the workflow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It&#8217;s really important to make sure that the service build from workflow is
+working as expected and the best way to do that is by testing it.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko allows you to easily write tests against the service interface
+regardless if the entry point to the service is</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>REST/Http</p>
+</li>
+<li>
+<p>Kafka Broker</p>
+</li>
+<li>
+<p>MQTT broker</p>
+</li>
+<li>
+<p>File polling</p>
+</li>
+<li>
+<p>and more</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All of them can be tested that will be part of the build to make sure only
+valid (tested) service will be eligible for deployment.</p>
+</div>
+<div class="paragraph">
+<p>Testing mainly focuses on verifying the service interface and the most simple
+one would look like the below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>@QuarkusTest <i class="conum" data-value="1"></i><b>(1)</b>
+public class VerificationTests {
+
+    @Test
+    public void testProcessNotVersioned() {
+        // start new instance with below payload
+        String addPayload = "{\"name\" : \"john\"}";<i class="conum" data-value="2"></i><b>(2)</b>
+        given()
+          .contentType(ContentType.JSON)
+          .accept(ContentType.JSON)
+          .body(addPayload)
+          .when()
+              .post("/greetings")
+          .then()
+              //.log().body(true)
+              .statusCode(200)
+              .body("id", notNullValue(), "name", equalTo("john"), "message", equalTo("Hello john"), "lastName", nullValue());<i class="conum" data-value="3"></i><b>(3)</b>
+        // since this is straight through workflow it should directly complete
+        given()
+            .accept(ContentType.JSON)
+        .when()
+            .get("/greetings")
+        .then().statusCode(200)
+            .body("$.size()", is(0));<i class="conum" data-value="4"></i><b>(4)</b>
+    }
+  }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Declare on class level that this is a <code>@QuarkusTest</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create JSON payload that will represent the input of workflow instance</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Send HTTP POST request and verify the response body</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Lastly send another HTTP request (GET) to see if there are any active instances</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This just illustrates how workflow testing looks like, more advanced test cases
+can be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/automatiko-io/automatiko-examples">in examples</a></p>
+</li>
+<li>
+<p><a href="https://github.com/automatiko-io/automatiko-engine/integration-tests">in tests of Automatiko</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_build"><a class="anchor" href="#_build"></a>Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Building the service depends on the type of output you&#8217;re interested in</p>
+</div>
+<div class="sect2">
+<h3 id="_build_executable_jar"><a class="anchor" href="#_build_executable_jar"></a>Build executable jar</h3>
+<div class="paragraph">
+<p>To build executable jar issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package</code></p>
+</div>
+<div class="paragraph">
+<p>after build completes there will be <code>{artifactId-version}-runner.jar</code>
+in the <code>target</code> directory. You can easily execute this service by</p>
+</div>
+<div class="paragraph">
+<p><code>java -jar target/{artifactId-version}-runner.jar</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_native_image"><a class="anchor" href="#_build_native_image"></a>Build native image</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+To build native image a GraalVM is required.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To build native image issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package -Pnative</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Native image compilation is heavy operation and resource hungry
+so don&#8217;t be surprised it takes time and the computer is "really" busy&#8230;&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>after build completes there will be <code>{artifactId-version}-runner</code>
+in the <code>target</code> directory. You can easily execute this service by</p>
+</div>
+<div class="paragraph">
+<p><code>./target/{artifactId-version}-runner</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_container_image"><a class="anchor" href="#_build_container_image"></a>Build container image</h3>
+<div class="paragraph">
+<p>To build container image issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package -Pcontainer</code></p>
+</div>
+<div class="paragraph">
+<p>after build completes there will be image created in local container registry.
+You can easily execute this service by</p>
+</div>
+<div class="paragraph">
+<p><code>docker run -p 8080:8080 {username}/{artifactId}:{version}</code></p>
+</div>
+<div class="paragraph">
+<p>replace the username, artifact and version with OS user, adrtifactId of your project
+and version of your project.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Various configuration options can be specified which are based on
+Quarkus so have a look at <a href="https://quarkus.io/guides/container-image#customizing">Config Options</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_container_image_with_native_executable"><a class="anchor" href="#_build_container_image_with_native_executable"></a>Build container image with native executable</h3>
+<div class="paragraph">
+<p>To build container image with native executable issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package -Pcontainer-native</code></p>
+</div>
+<div class="paragraph">
+<p>after build completes there will be image created in local container registry.
+You can easily execute this service by</p>
+</div>
+<div class="paragraph">
+<p><code>docker run -p 8080:8080 {username}/{artifactId}:{version}</code></p>
+</div>
+<div class="paragraph">
+<p>replace the username, artifact and version with OS user, adrtifactId of your project
+and version of your project.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Various configuration options can be specified which are based on
+Quarkus so have a look at <a href="https://quarkus.io/guides/container-image#customizing">Config Options</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_container_image_for_kubernetes"><a class="anchor" href="#_build_container_image_for_kubernetes"></a>Build container image for Kubernetes</h3>
+<div class="paragraph">
+<p>To build container image issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package -Pkubernetes</code></p>
+</div>
+<div class="paragraph">
+<p>after build completes there will image created in local container registry.
+Depending where is your Kubernetes environment there might be a need to push
+the image to external registry.</p>
+</div>
+<div class="paragraph">
+<p>As part of the build there are Kubernetes descriptor files created to help
+with deployment, they can be found in <code>target/kubernetes</code> directory</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Various configuration options can be specified which are based on
+Quarkus so have a look at <a href="https://quarkus.io/guides/deploying-to-kubernetes#configuration-options">Config Options</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

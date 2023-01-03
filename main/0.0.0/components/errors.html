@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Error handling and retries :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.20.0/components/errors.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.21.0/components/errors.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -179,6 +179,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.21.0/about.html">0.21.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.20.0/about.html">0.20.0</a>
         </li>
         <li class="version">
@@ -251,7 +254,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.20.0/about.html" class="home-link"></a>
+  <a href="../../0.21.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -262,6 +265,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.21.0/components/errors.html">0.21.0</a>
     <a class="version" href="../../0.20.0/components/errors.html">0.20.0</a>
     <a class="version" href="../../0.19.0/components/errors.html">0.19.0</a>
     <a class="version" href="../../0.18.0/components/errors.html">0.18.0</a>
@@ -554,6 +558,139 @@ When using process management addon there is an instance visualization
 that will mark activities that are in retry with a warning icon.
 </td>
 </tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_automatic_error_recovery"><a class="anchor" href="#_automatic_error_recovery"></a>Automatic error recovery</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>During execution, unhandled errors will put workflow instance into an error state. This means that it requires additional
+action to resolve the error and resume execution. There are two possible ways of recovering from error state:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>retry the failed node</p>
+</li>
+<li>
+<p>skip the failed node</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Retry means that the same node will be executed once again. Depending on the error, retry might already resolve the problem
+(in case it was an temporary problem like lost network connection or similar). But in other situations it might require additional
+action to be performed - like updating data objects of the workflow instance.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, skipping means that the failed node won&#8217;t be executed at all and execution will be resumed from the next node
+in the workflow definition.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko comes with an addon that aims at automating error recovery based on time scoped retry mechanism.
+Each failed instance will be scheduled for automatic retry which by default will</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>run every 30 seconds</p>
+</li>
+<li>
+<p>attempt to retry it at most 10 times</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+It&#8217;s important to note that automatic error recovery does not perform any other action that retry of the failed node.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_use_it"><a class="anchor" href="#_use_it"></a>Use it</h3>
+<div class="paragraph">
+<p>First of all, a dependency to <code>automatiko-error-management-addon</code> needs to be added to the project.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-error-management-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Following are parameters that can configure this addon to have more control on how it behaves</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.error-recovery.delay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ERROR_RECOVERY_DELAY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies delays for error recovery attempts as ISO 8601 period format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PT30S</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.error-recovery.excluded</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ERROR_RECOVERY_EXCLUDED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies comma separated package names (of workflows) to be excluded from error recovery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.error-recovery.max-increment-attempts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ERROR_RECOVERY_MAX_INCREMENT_ATTEMPTS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies maximum number of recovery attempts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.error-recovery.ignored-error-codes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ERROR_RECOVERY_IGNORED_ERROR_CODES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies comma separated error codes that should be ignored from error recovery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.error-recovery.increment-factor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_ERROR_RECOVERY_INCREMENT_FACTOR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies increment factor in gradually increase the delay between attempts. Expected values are from 0.1 to 1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
