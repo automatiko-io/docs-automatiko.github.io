@@ -305,7 +305,7 @@ There might be various types of operations such as</p>
 <p>java method in one of the service classes of the project itself</p>
 </li>
 <li>
-<p>ReST call to remote service</p>
+<p>REST call to remote service</p>
 </li>
 </ul>
 </div>
@@ -450,7 +450,7 @@ from being blocked.</p>
 common when implementing orchestration based service where coordination of various external systems is a key.</p>
 </div>
 <div class="paragraph">
-<p>To make this possible, service tasks allow to invoke ReST services based on OpenAPI service description.</p>
+<p>To make this possible, service tasks allow to invoke REST services based on OpenAPI service description.</p>
 </div>
 <div class="paragraph">
 <p>Main part required for this use case is the OpenAPI service description that is either locally
@@ -492,7 +492,7 @@ common when implementing orchestration based service where coordination of vario
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Note that ReST service when being referenced needs to select the <code>webservice</code> as implementation
+Note that REST service when being referenced needs to select the <code>webservice</code> as implementation
 </td>
 </tr>
 </table>
@@ -519,17 +519,17 @@ the service task</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>This is all that it takes to invoke a ReST service operation from within workflow.</p>
+<p>This is all that it takes to invoke a REST service operation from within workflow.</p>
 </div>
 <div class="sect2">
 <h3 id="_asynchronous_service_invocation_2"><a class="anchor" href="#_asynchronous_service_invocation_2"></a>Asynchronous service invocation</h3>
 <div class="paragraph">
-<p>Similar to local service calls, ReST service invocation can also be made asynchronous. Here it is
-even more important as going to remote ReST service over the network is certainly a blocking operation
+<p>Similar to local service calls, REST service invocation can also be made asynchronous. Here it is
+even more important as going to remote REST service over the network is certainly a blocking operation
 with no clear information how fast or how slow it can be.</p>
 </div>
 <div class="paragraph">
-<p>To make the ReST operation asynchronous, workflow definition must declare that on the interface operation level
+<p>To make the REST operation asynchronous, workflow definition must declare that on the interface operation level
 as additional parameter on top of the operation name e.g. <code>createUser?mode=async</code></p>
 </div>
 <div class="paragraph">
