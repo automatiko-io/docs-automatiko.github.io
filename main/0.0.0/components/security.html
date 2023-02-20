@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Security :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.21.0/components/security.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.22.0/components/security.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -179,6 +179,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.22.0/about.html">0.22.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.21.0/about.html">0.21.0</a>
         </li>
         <li class="version">
@@ -254,7 +257,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.21.0/about.html" class="home-link"></a>
+  <a href="../../0.22.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -265,6 +268,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.22.0/components/security.html">0.22.0</a>
     <a class="version" href="../../0.21.0/components/security.html">0.21.0</a>
     <a class="version" href="../../0.20.0/components/security.html">0.20.0</a>
     <a class="version" href="../../0.19.0/components/security.html">0.19.0</a>
@@ -482,6 +486,108 @@ Initiator is assigned based on authenticated user but it can also be assigned ba
 </div>
 <div class="paragraph">
 <p>An example that uses instance level security is <a href="../examples/vacations.html">Vacation requests</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_composite_access_policy"><a class="anchor" href="#_composite_access_policy"></a>Composite access policy</h3>
+<div class="paragraph">
+<p>Composite access policy allows to combine multiple access polcies where all of them must be satisfied to be considered valid.</p>
+</div>
+<div class="paragraph">
+<p>Composite policy is configured by using <code>composite:policy1,policy2,policy3</code> syntax. So the <code>composite</code> is the identifier of the access policy
+and the part after <code>:</code> are the options in this case the policies (their identifiers) that are part of the composite access control.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_custom_access_policy"><a class="anchor" href="#_custom_access_policy"></a>Custom access policy</h3>
+<div class="paragraph">
+<p>Users can create their own access policies by implementing <code>io.automatiko.engine.api.auth.NamedAccessPolicy</code> interface. This interface
+is an extension to regular <code>AccessPolicy</code> interface to enforce the identifier that will be used to register the policy.</p>
+</div>
+<div class="paragraph">
+<p>Reference from workflow perspective stays exactly the same, meaning it is referenced by the identifier.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Custom access policies are expected to be CDI beans to be able to be discovered and registered. This is both an advantage (can reference other beans)
+and disadvantage (are bound to declared scope - usually application scope and by that can be shared across workflows), so keep in mind the consequences.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Below is a sample custom access policy that takes advantage of http request information to restrict access to localhost only.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import java.util.Set;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
+import io.automatiko.engine.api.auth.IdentityProvider;
+import io.automatiko.engine.api.auth.NamedAccessPolicy;
+import io.automatiko.engine.api.workflow.ProcessInstance;
+import io.automatiko.engine.workflow.AbstractProcessInstance;
+import io.vertx.core.http.HttpServerRequest;
+
+@ApplicationScoped
+public class LocalHostOnlyAccessPolicy&lt;T&gt; implements NamedAccessPolicy&lt;ProcessInstance&lt;T&gt;&gt; {
+
+    @Inject
+    HttpServerRequest injectedHttpServletRequest;
+
+    private boolean allowFromLocalhostOnly() {
+
+        if (injectedHttpServletRequest != null &amp;&amp; injectedHttpServletRequest.host() != null
+                &amp;&amp; !injectedHttpServletRequest.host().toLowerCase().startsWith("localhost")) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean canCreateInstance(IdentityProvider identityProvider) {
+        return allowFromLocalhostOnly();
+    }
+
+    @Override
+    public boolean canReadInstance(IdentityProvider identityProvider, ProcessInstance&lt;T&gt; instance) {
+        return allowFromLocalhostOnly();
+    }
+
+    @Override
+    public boolean canUpdateInstance(IdentityProvider identityProvider, ProcessInstance&lt;T&gt; instance) {
+        return allowFromLocalhostOnly();
+    }
+
+    @Override
+    public boolean canDeleteInstance(IdentityProvider identityProvider, ProcessInstance&lt;T&gt; instance) {
+        return allowFromLocalhostOnly();
+    }
+
+    @Override
+    public boolean canSignalInstance(IdentityProvider identityProvider, ProcessInstance&lt;T&gt; instance) {
+        return allowFromLocalhostOnly();
+    }
+
+    @Override
+    public Set&lt;String&gt; visibleTo(ProcessInstance&lt;?&gt; instance) {
+        return ((AbstractProcessInstance&lt;?&gt;) instance).visibleTo();
+    }
+
+    @Override
+    public String identifier() {
+        return "localHostOnly";
+    }
+
+}</code></pre>
+</div>
 </div>
 </div>
 </div>

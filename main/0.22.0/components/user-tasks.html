@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>User tasks :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.22.0/components/user-tasks.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.22.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.22.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.22.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.21.0/about.html">0.21.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.20.0/about.html">0.20.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.19.0/about.html">0.19.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.18.0/about.html">0.18.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.17.0/about.html">0.17.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.16.0/about.html">0.16.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.15.0/about.html">0.15.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Components</li>
+    <li><a href="user-tasks.html">User tasks</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.22.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="user-tasks.html">0.22.0</a>
+    <a class="version" href="../../0.21.0/components/user-tasks.html">0.21.0</a>
+    <a class="version" href="../../0.20.0/components/user-tasks.html">0.20.0</a>
+    <a class="version" href="../../0.19.0/components/user-tasks.html">0.19.0</a>
+    <a class="version" href="../../0.18.0/components/user-tasks.html">0.18.0</a>
+    <a class="version" href="../../0.17.0/components/user-tasks.html">0.17.0</a>
+    <a class="version" href="../../0.16.0/components/user-tasks.html">0.16.0</a>
+    <a class="version" href="../../0.15.0/components/user-tasks.html">0.15.0</a>
+    <a class="version" href="../../0.14.0/components/user-tasks.html">0.14.0</a>
+    <a class="version" href="../../0.13.0/components/user-tasks.html">0.13.0</a>
+    <a class="version" href="../../0.12.0/components/user-tasks.html">0.12.0</a>
+    <a class="version" href="../../0.11.0/components/user-tasks.html">0.11.0</a>
+    <a class="version" href="../../0.10.0/components/user-tasks.html">0.10.0</a>
+    <a class="version" href="../../0.9.0/components/user-tasks.html">0.9.0</a>
+    <a class="version" href="../../0.8.0/components/user-tasks.html">0.8.0</a>
+    <a class="version" href="../../0.7.0/components/user-tasks.html">0.7.0</a>
+    <a class="version" href="../../0.6.0/components/user-tasks.html">0.6.0</a>
+    <a class="version" href="../../0.5.0/components/user-tasks.html">0.5.0</a>
+    <a class="version" href="../../0.4.0/components/user-tasks.html">0.4.0</a>
+    <a class="version is-missing" href="../../0.3.0/about.html">0.3.0</a>
+    <a class="version is-missing" href="../../0.2.0/about.html">0.2.0</a>
+    <a class="version is-missing" href="../../0.1.0/about.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/components/user-tasks.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">User tasks</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>User assigned tasks are rather common in workflow based systems. They usually represent some need of either doing
+manual work by human actors or there is a need to collect some data from users. In anyway there is often the need
+to present this is human readable way (user interface) and to make sure people are aware of the tasks is to notify
+them.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko comes with following addons that help with user tasks within workflows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>automatiko-user-tasks-management-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-email-addon</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_management"><a class="anchor" href="#_user_tasks_management"></a>User tasks management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>User task management addon brings basic support for displaying user focused information about tasks assigned
+to human actors. That is usually in form format where users can provide input required to continue with
+the workflow instance.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Automatiko does not aim at providing you with auto generated forms as this is usually more complex than
+automatic generation can handle. For instance layout of the form might be really complex, data that the form
+displays can come from various places and not all of them are kept in workflow instance etc.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Forms are based on templates that are suppose to be given as part of your service where Automatiko can locate them
+and present to the user when requested. All will be rendered as fully featured website so it can be easily embedded
+ in custom websites for integration purpose.</p>
+</div>
+<div class="paragraph">
+<p>Templates are based on <a href="https://quarkus.io/guides/qute">Qute templating engine</a>.</p>
+</div>
+<div class="paragraph">
+<p>Developers can build their templates for each task to ensure that proper readability of the work to be done is given
+to users who get tasks assigned. Template files should be located in <code>src/main/resources/templates</code> folder of your
+service project. Files are expected to have following extensions</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>.html</code></p>
+</li>
+<li>
+<p><code>.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is recommended to use <code>html</code> as it is closer to the actual content of it.</p>
+</div>
+<div class="paragraph">
+<p>Naming convention of the template files is as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>task name property defined on the user task</p>
+</li>
+<li>
+<p>name of the user task</p>
+</li>
+<li>
+<p>workflow identifier with task name property defined on the user task</p>
+</li>
+<li>
+<p>workflow identifier with name of the user task</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example when you have a task named <code>My Task</code> that has task name property <code>approval</code> within workflow with id 'vacations'
+ then you can create following template files that will be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approval.html</code></p>
+</li>
+<li>
+<p><code>vacations.approval.html</code></p>
+</li>
+<li>
+<p><code>My Task.html</code></p>
+</li>
+<li>
+<p><code>vacations.My Task.html</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Recommended it to use simple names that are defined as <code>TaskName</code> property of the user task as template name as it
+is also used as part of service api (REST api) so it will be easier to correlate these two.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Since these files are considered to be templates there are several variables given that will represent various data
+of the user task assigned.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">task instance in simplified format giving access to task name, description workflow metadata etc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link to the endpoint to work on a user task instance, allows to push data and complete it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input data of the user task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">results</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">results data of the user task - this will be populated with inputs if the match by name and do not have value set</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When there is no template file found for given task a default form will be returned but it will only
+provide simple text based form inputs. It is recommended to always provide custom templates for user tasks.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_external_templates_loaded_at_runtime"><a class="anchor" href="#_external_templates_loaded_at_runtime"></a>External templates loaded at runtime</h4>
+<div class="paragraph">
+<p>Not always templates can be provided at build time, for instance when the existing ones should be customized.
+To be able to allow customization templates can be loaded at runtime based on folder path given by
+<code>quarkus.automatiko.templates-folder</code> configuration property.</p>
+</div>
+<div class="paragraph">
+<p>All files with <code>.html</code> extension will be loaded and registered to the templating engine and by that can
+be used by user task forms and emails.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure"><a class="anchor" href="#_configure"></a>Configure</h3>
+<div class="paragraph">
+<p>To enable user tasks management addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-management-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_email_notifications"><a class="anchor" href="#_user_tasks_email_notifications"></a>User tasks email notifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Human actors usually prefer to receive notifications when there is an awaiting task assigned to them. This is where
+email notifications come handy. Similar to forms, email notifications are template based but here relying on defaults
+might be actually a good thing.</p>
+</div>
+<div class="paragraph">
+<p>Here is a sample email with default template for user task</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/email-notification.png" alt="email notification">
+</div>
+</div>
+<div class="paragraph">
+<p>Them main purpose for the notification is to give a hint there is something and provide base set of information.</p>
+</div>
+<div class="paragraph">
+<p>Naming convention of the template files is as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>task name property defined on the user task with suffix <code>-email.html</code></p>
+</li>
+<li>
+<p>name of the user task with suffix <code>-email.html</code></p>
+</li>
+<li>
+<p>workflow identifier with task name property defined on the user task with suffix <code>-email.html</code></p>
+</li>
+<li>
+<p>workflow identifier with name of the user task with suffix <code>-email.html</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example when you have a task named <code>My Task</code> that has task name property <code>approval</code> within workflow with id 'vacations'
+ then you can create following template files that will be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approval-email.html</code></p>
+</li>
+<li>
+<p><code>vacations.approval-email.html</code></p>
+</li>
+<li>
+<p><code>My Task-email.html</code></p>
+</li>
+<li>
+<p><code>vacations.My Task-email.html</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There might be some special cases where extra information should be included but by default notifications via email
+aim at not exposing too much of the task context like input information.</p>
+</div>
+<div class="paragraph">
+<p>Note that in case of multiple users are assigned to the task or assignment is based on group, all of these will receive an email
+It will be sent with dedicated link to the form so access to the task is really simple.</p>
+</div>
+<div class="paragraph">
+<p>Since these files are considered to be templates there are several variables given that will represent various data
+of the user task assigned.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the user task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the user task (can be null or empty)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">taskId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the task instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instanceId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the workflow instance task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identifier of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current data set for the user task - in form of a Map</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">direct and absolute link to the form for user task</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_customize_email_subject_for_notifications"><a class="anchor" href="#_customize_email_subject_for_notifications"></a>Customize email subject for notifications</h3>
+<div class="paragraph">
+<p>Email subject that is sent for user task notifications is by default a fixed name
+with following value:</p>
+</div>
+<div class="paragraph">
+<p><code>New task has been assigned to you (NAME OF THE TASK)</code></p>
+</div>
+<div class="paragraph">
+<p>That&#8217;s not always desired and more tailored email subject is required.
+This can be achieved on each user task level by setting the
+<code>EmailSubject</code> data input to the value that should be used for
+actual notification email subject.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The email subject can also be generated based on data object via expressions.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_customize_email_templates"><a class="anchor" href="#_customize_email_templates"></a>Customize email templates</h3>
+<div class="paragraph">
+<p>In cases where email templates have to customized at runtime they can be provided via application
+property that points to a folder where <code>*.html</code> files will be loaded at startup and registered.</p>
+</div>
+<div class="paragraph">
+<p>It can be given as environment variable <code>QUARKUS_AUTOMATIKO_TEMPLATES_FOLDER=/templates</code> or system property
+<code>-Dquarkus.automatiko.templates.folder=/templates</code></p>
+</div>
+<div class="paragraph">
+<p>Naming convention is the same as for creating templates as part of the source code.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_2"><a class="anchor" href="#_configure_2"></a>Configure</h3>
+<div class="paragraph">
+<p>To enable user tasks email addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-email-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that there must be configuration of your email server also provided. Usually this is set in
+<code>application.properties</code> of your service but can also be given as system properties or environment variables</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.mailer.auth-methods=DIGEST-MD5 CRAM-SHA256 CRAM-SHA1 CRAM-MD5 PLAIN LOGIN
+quarkus.mailer.from=YOUR_EMAIL@gmail.com
+quarkus.mailer.host=smtp.gmail.com
+quarkus.mailer.port=587
+quarkus.mailer.start-tls=REQUIRED
+quarkus.mailer.username=YOUR_EMAIL@gmail.com
+quarkus.mailer.password=PASSWORD</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition, service url must also be defined as it is used to construct the absolute url of the form sent out
+via email.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.serviceUrl=https://myservice.hostname.com</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When you run your service in development mode or test mode email are not being sent out so you can easily
+work on them without spamming too much. You can also use mock inbox to validate emails being sent out in your tests.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Email is sent only to valid email addresses so when your user ids are not represented as email address then you need
+to provide custom implementation of <code>io.automatiko.engine.addons.usertasks.email.EmailAddressResolver</code> interface that
+is responsible for resolving user and groups to their email addresses.
+You can also use that interface to suppress sending emails for certain users and/or groups.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

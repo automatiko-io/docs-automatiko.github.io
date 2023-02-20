@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Getting started based on Java DSL :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.22.0/getting-started-code.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.22.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components/audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.22.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="about.html">0.22.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.21.0/about.html">0.21.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.20.0/about.html">0.20.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.19.0/about.html">0.19.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.18.0/about.html">0.18.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.17.0/about.html">0.17.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.16.0/about.html">0.16.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.15.0/about.html">0.15.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="about.html">Automatiko Documentation</a></li>
+    <li>Getting started</li>
+    <li><a href="getting-started-code.html">Based on Java DSL</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.22.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="getting-started-code.html">0.22.0</a>
+    <a class="version" href="../0.21.0/getting-started-code.html">0.21.0</a>
+    <a class="version" href="../0.20.0/getting-started-code.html">0.20.0</a>
+    <a class="version" href="../0.19.0/getting-started-code.html">0.19.0</a>
+    <a class="version" href="../0.18.0/getting-started-code.html">0.18.0</a>
+    <a class="version is-missing" href="../0.17.0/about.html">0.17.0</a>
+    <a class="version is-missing" href="../0.16.0/about.html">0.16.0</a>
+    <a class="version is-missing" href="../0.15.0/about.html">0.15.0</a>
+    <a class="version is-missing" href="../0.14.0/about.html">0.14.0</a>
+    <a class="version is-missing" href="../0.13.0/about.html">0.13.0</a>
+    <a class="version is-missing" href="../0.12.0/about.html">0.12.0</a>
+    <a class="version is-missing" href="../0.11.0/about.html">0.11.0</a>
+    <a class="version is-missing" href="../0.10.0/about.html">0.10.0</a>
+    <a class="version is-missing" href="../0.9.0/about.html">0.9.0</a>
+    <a class="version is-missing" href="../0.8.0/about.html">0.8.0</a>
+    <a class="version is-missing" href="../0.7.0/about.html">0.7.0</a>
+    <a class="version is-missing" href="../0.6.0/about.html">0.6.0</a>
+    <a class="version is-missing" href="../0.5.0/about.html">0.5.0</a>
+    <a class="version is-missing" href="../0.4.0/about.html">0.4.0</a>
+    <a class="version is-missing" href="../0.3.0/about.html">0.3.0</a>
+    <a class="version is-missing" href="../0.2.0/about.html">0.2.0</a>
+    <a class="version is-missing" href="../0.1.0/about.html">0.1.0</a>
+    <a class="version" href="../0.0.0/getting-started-code.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Getting started based on Java DSL</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Java DSL of Automatiko allows developers to define their workflows as Java code. This is another
+alternative to BPMN (visual modeling) and Serverless Workflow (json and yaml). The main advantage is
+that there is nothing else then regular IDE required.</p>
+</div>
+<div class="paragraph">
+<p>Java DSL follows fluent API pattern to provide easy to write and easy to read domain specific language
+to express the workflow definition. At the same time it aims at building fully type based so all
+code that is going to be executed by workflow is given as code rather than string representation of it.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All described examples below can be found in <a href="https://github.com/automatiko-io/automatiko-examples/tree/main/workflows-java-dsl">Automatiko Examples repository</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_required_software"><a class="anchor" href="#_required_software"></a>Required software</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Following are the required software before you can get started with Automatiko</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java (version 11 or higher)</p>
+</li>
+<li>
+<p>Apache Maven (version 3.6.3 or higher)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, following are good to have though they are not mandatory</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Docker</p>
+</li>
+<li>
+<p>GraalVM</p>
+</li>
+<li>
+<p>Kubernetes like environment (MiniKube, OpenShift, K3s/K3d)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_project"><a class="anchor" href="#_create_project"></a>Create project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko comes with number of archetypes that allow to easily create project
+with preconfigured set of dependencies needed for given use case</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Automatiko archetypes</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic project type that comes with basic setup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-orchestration-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored for service orchestration scenarios</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-event-stream-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for event stream use case backed by Apache Kafka</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-iot-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for IoT use case backed by MQTT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-db-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for database record processing use case</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-batch-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for batch processing use case</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-function-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for workflow as a function use case</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-function-flow-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for function flow use case backed by KNative</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko-operator-archetype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tailored project type for building Kubernetes Operators</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Select archetype that matches the best for the type of automation you&#8217;re going
+to work with.</p>
+</div>
+<div class="paragraph">
+<p>Use following command to generate project based on <strong>automatiko-orchestration-archetype</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">mvn archetype:generate                                      \
+  -DarchetypeGroupId=io.automatiko.archetypes               \
+  -DarchetypeArtifactId=automatiko-orchestration-archetype  \
+  -DarchetypeVersion=LATEST                                 \
+  -DgroupId=com.acme.workflows                              \
+  -DartifactId=workflow-service</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is standard Maven folder structure so should be rather familiar to most people
+but to just highlight most important parts of it</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>pom.xml - configuration of the project that is</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven coordinates (group artifact version)</p>
+</li>
+<li>
+<p>Name and description</p>
+</li>
+<li>
+<p>Dependencies</p>
+</li>
+<li>
+<p>Profiles</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>src/main/java</code> folder where all java classes should be created</p>
+</li>
+<li>
+<p><code>src/main/resources</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>folder where application configuration is located - <code>application.properties</code></p>
+</li>
+<li>
+<p>folder where all business assets such as workflow or decision files are to be created</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>src/test/java</code> folder where all test related java classes should be created</p>
+</li>
+<li>
+<p><code>src/test/resources</code> folder where all test related additional files should be created</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_workflow_definitions"><a class="anchor" href="#_create_workflow_definitions"></a>Create workflow definitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Workflow definitions created via Java DSL should be placed in class that is annotated with
+<code>io.automatiko.engine.api.Workflows</code>. Each public method that returns <code>io.automatiko.engine.workflow.builder.WorkflowBuilder</code>
+is considered a new workflow definition.</p>
+</div>
+<div class="paragraph">
+<p>Below is the hello world example of workflow definition with Java DSL</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Workflows
+public class MyWorkflows {
+
+    public WorkflowBuilder helloWorld() {
+
+        WorkflowBuilder builder = WorkflowBuilder.newWorkflow("hello", "Sample Hello World workflow", "1")
+                .dataObject("name", String.class);
+
+                builder
+                .start("start here").then()
+                .log("say hello", "Hello world").then()
+                .end("done");
+
+        return builder;
+    }
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That is all needed to build the workflow via Java DSL that is then processed at build time as any other
+workflow format (e.g. BPMN) and a fully featured service is built from it.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at different workflow constructs that can be used.</p>
+</div>
+<div class="sect2">
+<h3 id="_branching_execution"><a class="anchor" href="#_branching_execution"></a>Branching execution</h3>
+<div class="paragraph">
+<p>A very common use case is to split the execution within the workflow based on conditions.</p>
+</div>
+<div class="paragraph">
+<p>Java DSL supports following types</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>exclusive based on data object conditions - only one path is taken</p>
+</li>
+<li>
+<p>inclusive based on data object conditions - multiple paths can be taken</p>
+</li>
+<li>
+<p>parallel - all paths are taken</p>
+</li>
+<li>
+<p>event based - reacts to incoming events - only one path is taken of the event that arrived first</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Workflows
+public class MyWorkflows {
+
+    public WorkflowBuilder split() {
+
+		WorkflowBuilder builder = WorkflowBuilder.newWorkflow("split", "Sample workflow with exclusive split");
+
+        String x = builder.dataObject(String.class, "x");
+        String y = builder.dataObject(String.class, "y");
+
+        SplitNodeBuilder split = builder.start("start here").then()
+                .log("log values", "X is {} and Y is {}", "x", "y")
+                .thenSplit("split");
+
+        split.when(() -&gt; x != null).log("first branch", "first branch").then().end("done on first");
+
+        split.when(() -&gt; y != null).log("second branch", "second branch").then().end("done on second");
+
+        return builder;
+    }
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to splitting the execution, another common need is to be able to join (also referred to as merge) of
+multiple execution paths. Here is similar to split, there are different types</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>exclusive - waits for only one path</p>
+</li>
+<li>
+<p>inclusive - waits for all path that are active</p>
+</li>
+<li>
+<p>parallel - waits for all paths</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Workflows
+public class MyWorkflows {
+
+    public WorkflowBuilder splitAndJoin() {
+
+		WorkflowBuilder builder = WorkflowBuilder.newWorkflow("splitAndJoin", "Sample workflow with exclusive split and join");
+
+        String x = builder.dataObject(String.class, "x");
+        String y = builder.dataObject(String.class, "y");
+
+        SplitNodeBuilder split = builder.start("start here").then()
+                .log("log values", "X is {} and Y is {}", "x", "y")
+                .thenSplit("split");
+
+        JoinNodeBuilder join = split.when(() -&gt; x != null).log("first branch", "first branch").thenJoin("join");
+
+        split.when(() -&gt; y != null).log("second branch", "second branch").thenJoin("join");
+
+        join.then().log("after join", "joined").then().end("done");
+
+        return builder;
+    }
+ }</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Join relies on the name to be able to correlate paths properly so if you want to join different paths
+ via the same join node always use the same name e.g. <code>.thenJoin("join")</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>And last sample workflow is to use event based split that will wait either for message arrival or timeout</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Workflows
+public class MyWorkflows {
+
+    public WorkflowBuilder splitOnEvents() {
+
+		WorkflowBuilder builder = WorkflowBuilder.newWorkflow("splitOnEvents", "Sample workflow with exclusive split on events")
+		.dataObject("customer", Customer.class);
+
+		EventSplitNodeBuilder split = builder.start("start here").then()
+				.log("log", "About to wait for events")
+                .thenSplitOnEvents("wait for events");
+
+        split.onMessage("events").toDataObject("customer").then().log("after message", "Message arrived").then()
+                .end("done on message");
+        split.onTimer("timeout").after(30, TimeUnit.SECONDS).then().log("after timeout", "Timer fired").then()
+                .end("done on timeout");
+
+        return builder;
+    }
+ }</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This workflow uses message events and by that requires additional dependency in the project. Add
+<code>io.quarkus:quarkus-smallrye-reactive-messaging-kafka</code> to the project <code>pom.xml</code> to have fully working example
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_invoking_services"><a class="anchor" href="#_invoking_services"></a>Invoking services</h3>
+<div class="paragraph">
+<p>Workflow in most of the cases will delegate the execution to other services, either local (java service methods)
+or external (REST invocation). For this exact purpose a service node is available in Java DSL.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Workflows
+public class MyWorkflows {
+
+    public WorkflowBuilder serviceCall() {
+
+		WorkflowBuilder builder = WorkflowBuilder.newWorkflow("service", "Sample workflow calling local service", "1")
+                .dataObject("name", String.class, INPUT_TAG)
+                .dataObject("greeting", String.class, OUTPUT_TAG)
+                .dataObject("age", Integer.class);
+
+        ServiceNodeBuilder service = builder.start("start here").then()
+                .log("execute script", "Hello world").then()
+                .service("greet");
+
+        service.toDataObject("greeting",
+                service.type(MyService.class).sayHello(service.fromDataObject("name"))).then()
+                .end("that's it");
+
+        return builder;
+    }
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Few important aspects to note here:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>use of <code>service.type(clazz)</code> returns an instance of the service that provides access to its methods so
+definition can be fully type safe and checked by the compiler</p>
+</li>
+<li>
+<p>same foes for parameters that rely on <code>service.fromDataObject(name)</code> that will fetch the given data object
+and use it as parameter of the method at runtime</p>
+</li>
+<li>
+<p>lastly, use of <code>service.toDataObject(name, value)</code> is setting the value of the given data object to the
+value returned from the service method call</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In similar way, a REST service call can be made with following workflow definition</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Workflows
+public class MyWorkflows {
+
+    public WorkflowBuilder restServiceCall() {
+
+		WorkflowBuilder builder = WorkflowBuilder.newWorkflow("restService", "Sample workflow calling REST service", "1")
+                .dataObject("petId", Long.class, INPUT_TAG)
+                .dataObject("pet", Object.class, OUTPUT_TAG);
+
+        RestServiceNodeBuilder service = builder.start("start here").then()
+                .log("execute script", "Hello world").then()
+                .restService("get pet from the store");
+
+        service.toDataObject("pet",
+                service.openApi("/api/swagger.json").operation("getPetById").fromDataObject("petId")).then()
+                .end("that's it");
+
+		service.onError("404").then().log("log error", "Unable to find pet with id {}", "petId").then().end("not found");
+
+        return builder;
+    }
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This workflow will take the OpenAPI definition and reference its operation based on given id.
+Then it will create RestClient to invoke it and pass given parameters. Result can be easily mapped
+back to data object.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_assigning_work_to_human_actors"><a class="anchor" href="#_assigning_work_to_human_actors"></a>Assigning work to human actors</h3>
+<div class="paragraph">
+<p>In some situations there is a need to involve human actors in the course of workflow execution. This is where
+there must be import given, decision made and so on. Java DSL exposes that capability via <code>user</code> builder that
+can be used in following way</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Workflows
+public class MyWorkflows {
+
+    public WorkflowBuilder userTasks() {
+
+		WorkflowBuilder builder = WorkflowBuilder.newWorkflow("userTasks", "Sample workflow with user tasks")
+                .dataObject("x", Integer.class)
+                .dataObject("y", String.class);
+
+        builder.start("start here").then()
+        	.user("FirstTask").description("A description of the task")
+        			.users("john").outputToDataObject("value", "y").then()
+            .user("SecondTask").users("john").dataObjectAsInput("x").then()
+            .end("done");
+
+        return builder;
+    }
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>User node allows to assign users and groups that will allow such users and members of the group to work on the
+task. In addition, data objects can be mapped as inputs and then outputs of the user node can be mapped back
+to data objects for further processing.</p>
+</div>
+<div class="paragraph">
+<p>Since this is the user facing activity, optionally form template can also be developed and then referenced by name
+using the <code>form</code> method of the builder.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sending_and_receiving_messages"><a class="anchor" href="#_sending_and_receiving_messages"></a>Sending and receiving messages</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This workflow uses message events and by that requires additional dependency in the project. Add
+<code>io.quarkus:quarkus-smallrye-reactive-messaging-kafka</code> to the project <code>pom.xml</code> to have fully working example
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Interaction with external world is also very common, sending and receiving various types of messages can
+be defined in the workflow via Java DSL in following way</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Workflows
+public class MyWorkflows {
+
+    public WorkflowBuilder receiveAndSendMessages() {
+
+		WorkflowBuilder builder = WorkflowBuilder.newWorkflow("messages", "Workflow with messages");
+        				builder.dataObject("customer", Customer.class)
+                .startOnMessage("customers").toDataObject("customer").topic("org.acme.customers")
+                .then()
+                .sendMessage("new message").fromDataObject("customer").topic("published")
+                .then()
+                .log("log message", "Logged customer with id {}", "customer")
+                .then()
+                .waitOnMessage("updates").toDataObject("customer")
+                .then()
+                .endWithMessage("done").fromDataObject("customer");
+
+        return builder;
+    }
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This workflow will be triggered by a message that arrives at topic called <code>org.acme.customers</code> and will be
+unmarshalled into the <code>Customer</code> from <code>JSON</code> structure (this is the default expectations that the message body
+is in JSON format).</p>
+</div>
+<div class="paragraph">
+<p>Next, another message will be sent to <code>published</code> topic with payload being the customer data object serialized to
+JSON.</p>
+</div>
+<div class="paragraph">
+<p>Then it will wait for another message to be sent to <code>updates</code> topic (it is taken from the name of the node if topic is
+not explicitly given) and here it needs to be correlated. The correlation is taken from the message and is specific to
+connector in use. For example for Apache Kafka, the key of the Kafka record will be taken as correlation key.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, upon completion it will send another message to <code>done</code> topic with payload of customer data object in JSON
+format. This will end the workflow instance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_and_more"><a class="anchor" href="#_and_more"></a>And more</h3>
+<div class="paragraph">
+<p>There are other constructs available such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>sub workflows</p>
+</li>
+<li>
+<p>timers</p>
+</li>
+<li>
+<p>expressions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>that can be used via Java DSL of Automatiko workflows. Have a look a the API of <code>WorkflowBuilder</code> to know more.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_build"><a class="anchor" href="#_build"></a>Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Building the service depends on the type of output you&#8217;re interested in</p>
+</div>
+<div class="sect2">
+<h3 id="_build_executable_jar"><a class="anchor" href="#_build_executable_jar"></a>Build executable jar</h3>
+<div class="paragraph">
+<p>To build executable jar issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package</code></p>
+</div>
+<div class="paragraph">
+<p>after build completes there will be <code>{artifactId-version}-runner.jar</code>
+in the <code>target</code> directory. You can easily execute this service by</p>
+</div>
+<div class="paragraph">
+<p><code>java -jar target/{artifactId-version}-runner.jar</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_native_image"><a class="anchor" href="#_build_native_image"></a>Build native image</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+To build native image a GraalVM is required.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To build native image issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package -Pnative</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Native image compilation is heavy operation and resource hungry
+so don&#8217;t be surprised it takes time and the computer is "really" busy&#8230;&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>after build completes there will be <code>{artifactId-version}-runner</code>
+in the <code>target</code> directory. You can easily execute this service by</p>
+</div>
+<div class="paragraph">
+<p><code>./target/{artifactId-version}-runner</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_container_image"><a class="anchor" href="#_build_container_image"></a>Build container image</h3>
+<div class="paragraph">
+<p>To build container image issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package -Pcontainer</code></p>
+</div>
+<div class="paragraph">
+<p>after build completes there will be image created in local container registry.
+You can easily execute this service by</p>
+</div>
+<div class="paragraph">
+<p><code>docker run -p 8080:8080 {username}/{artifactId}:{version}</code></p>
+</div>
+<div class="paragraph">
+<p>replace the username, artifact and version with OS user, adrtifactId of your project
+and version of your project.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Various configuration options can be specified which are based on
+Quarkus so have a look at <a href="https://quarkus.io/guides/container-image#customizing">Config Options</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_container_image_with_native_executable"><a class="anchor" href="#_build_container_image_with_native_executable"></a>Build container image with native executable</h3>
+<div class="paragraph">
+<p>To build container image with native executable issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package -Pcontainer-native</code></p>
+</div>
+<div class="paragraph">
+<p>after build completes there will be image created in local container registry.
+You can easily execute this service by</p>
+</div>
+<div class="paragraph">
+<p><code>docker run -p 8080:8080 {username}/{artifactId}:{version}</code></p>
+</div>
+<div class="paragraph">
+<p>replace the username, artifact and version with OS user, adrtifactId of your project
+and version of your project.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Various configuration options can be specified which are based on
+Quarkus so have a look at <a href="https://quarkus.io/guides/container-image#customizing">Config Options</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_container_image_for_kubernetes"><a class="anchor" href="#_build_container_image_for_kubernetes"></a>Build container image for Kubernetes</h3>
+<div class="paragraph">
+<p>To build container image issue following command</p>
+</div>
+<div class="paragraph">
+<p><code>mvn clean package -Pkubernetes</code></p>
+</div>
+<div class="paragraph">
+<p>after build completes there will image created in local container registry.
+Depending where is your Kubernetes environment there might be a need to push
+the image to external registry.</p>
+</div>
+<div class="paragraph">
+<p>As part of the build there are Kubernetes descriptor files created to help
+with deployment, they can be found in <code>target/kubernetes</code> directory</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Various configuration options can be specified which are based on
+Quarkus so have a look at <a href="https://quarkus.io/guides/deploying-to-kubernetes#configuration-options">Config Options</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
