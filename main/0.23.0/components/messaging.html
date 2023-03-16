@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Messaging :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.23.0/components/messaging.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.23.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.23.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.23.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.22.0/about.html">0.22.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.21.0/about.html">0.21.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.20.0/about.html">0.20.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.19.0/about.html">0.19.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.18.0/about.html">0.18.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.17.0/about.html">0.17.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.16.0/about.html">0.16.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.15.0/about.html">0.15.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Components</li>
+    <li><a href="messaging.html">Messaging</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.23.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="messaging.html">0.23.0</a>
+    <a class="version" href="../../0.22.0/components/messaging.html">0.22.0</a>
+    <a class="version" href="../../0.21.0/components/messaging.html">0.21.0</a>
+    <a class="version" href="../../0.20.0/components/messaging.html">0.20.0</a>
+    <a class="version" href="../../0.19.0/components/messaging.html">0.19.0</a>
+    <a class="version" href="../../0.18.0/components/messaging.html">0.18.0</a>
+    <a class="version" href="../../0.17.0/components/messaging.html">0.17.0</a>
+    <a class="version" href="../../0.16.0/components/messaging.html">0.16.0</a>
+    <a class="version" href="../../0.15.0/components/messaging.html">0.15.0</a>
+    <a class="version" href="../../0.14.0/components/messaging.html">0.14.0</a>
+    <a class="version" href="../../0.13.0/components/messaging.html">0.13.0</a>
+    <a class="version" href="../../0.12.0/components/messaging.html">0.12.0</a>
+    <a class="version" href="../../0.11.0/components/messaging.html">0.11.0</a>
+    <a class="version" href="../../0.10.0/components/messaging.html">0.10.0</a>
+    <a class="version" href="../../0.9.0/components/messaging.html">0.9.0</a>
+    <a class="version" href="../../0.8.0/components/messaging.html">0.8.0</a>
+    <a class="version" href="../../0.7.0/components/messaging.html">0.7.0</a>
+    <a class="version" href="../../0.6.0/components/messaging.html">0.6.0</a>
+    <a class="version" href="../../0.5.0/components/messaging.html">0.5.0</a>
+    <a class="version" href="../../0.4.0/components/messaging.html">0.4.0</a>
+    <a class="version" href="../../0.3.0/components/messaging.html">0.3.0</a>
+    <a class="version" href="../../0.2.0/components/messaging.html">0.2.0</a>
+    <a class="version" href="../../0.1.0/components/messaging.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/components/messaging.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Messaging</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>One of the important parts of workflow is ability to interact with outside
+world. In many cases this means sending and receiving data from other
+systems.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko makes it easy to consume and produce events that are relevant to
+the workflow definition. These are defined in the workflow definition as
+message events (in BPMN) and events (in serverless workflow).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/water-leaks-workflow-msg.png" alt="water leaks workflow msg">
+</div>
+</div>
+<div class="paragraph">
+<p>In the above workflow definition there are three message events</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Water measurement</strong> - it&#8217;s a start event that is triggered based on
+incoming event</p>
+</li>
+<li>
+<p><strong>Humidity measurement</strong> - it&#8217;s another start event that is triggered based
+on incoming event</p>
+</li>
+<li>
+<p><strong>Publish hourly measurement</strong> - is an end event that will publish an event</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This illustrates that workflow can consume and produce messages as messages.</p>
+</div>
+<div class="paragraph">
+<p>There are several things that must be provided to make sure that events can
+be consumed or produced.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_connectors"><a class="anchor" href="#_connectors"></a>Connectors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko uses connectors to provide connectivity with other systems.
+There are several out of the box connectors available depending which
+use case for the service you selected (<strong>event streams</strong>, <strong>IoT</strong>, <strong>messaging</strong>, etc).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Supported expressions</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Connector</th>
+<th class="tableblock halign-left valign-top">Automatiko use case</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Apache Kafka</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Event Streams</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preconfigured connector for EventStream use case
+to take advantage of Kafka records as the format of the events.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MQTT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IoT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preconfigured connector for IoT use case to allow simple integrations
+with Internet of Things appliances e.g. sensors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Apache Camel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EventStreams and Batch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preconfigured for Batch Processing use case
+as Apache Camel comes with comprehensive list of components that allow to connect
+to various 3rd party systems</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JMS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Messaging and Batch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to use JMS as traditional messaging middleware as part of workflows</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AMQP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Messaging and Batch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Similar to JMS but more powerful in terms of messaging capabilities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Messaging and Orchestration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP based messaging that allows to use simple message posting and receiving</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+In case there is more than one connector defined in the service
+each message definition needs to provide <code>connector</code> custom attribute to
+indicate which connector should be used. Allowed values <code>kafka</code>, <code>mqtt</code>, <code>camel</code>, <code>amqp</code>, <code>jms</code>, <code>http</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_of_the_connector"><a class="anchor" href="#_configuration_of_the_connector"></a>Configuration of the connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In most of the cases there is no need to explicitly configure any of the connector
+properties as Automatiko will do that for you and will print instructions at build
+time</p>
+</div>
+<div class="paragraph">
+<p>Expand <code>Build time instructions</code> section to see an example of instructions generated during build.</p>
+</div>
+<details>
+<summary class="title">Build time instructions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>59) ****************** Automatiko Instructions *********************
+602
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) Following are set of information that can be useful down the line...
+603
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) Properties for MQTT based message event 'Water measurement'
+604
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.water.topic' should be used to configure MQTT topic defaults to 'building/+/+/water'
+605
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.water.host' should be used to configure MQTT host that defaults to localhost
+606
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.water.port' should be used to configure MQTT port that defaults to 1883
+607
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.water.client-id' should be used to configure MQTT client id that defaults to 'Waterleaks-consumer'
+608
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) Properties for MQTT based message event 'Humidity measurement'
+609
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.humidity.topic' should be used to configure MQTT topic defaults to 'building/+/+/humidity'
+610
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.humidity.host' should be used to configure MQTT host that defaults to localhost
+611
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.humidity.port' should be used to configure MQTT port that defaults to 1883
+612
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.humidity.client-id' should be used to configure MQTT client id that defaults to 'Waterleaks-consumer'
+613
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) Properties for MQTT based message event 'Report received'
+614
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.buildingreports.topic' should be used to configure MQTT topic defaults to 'reports/+/+/hourly'
+615
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.buildingreports.host' should be used to configure MQTT host that defaults to localhost
+616
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.buildingreports.port' should be used to configure MQTT port that defaults to 1883
+617
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.incoming.buildingreports.client-id' should be used to configure MQTT client id that defaults to 'Reports-consumer'
+618
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) Properties for MQTT based message event 'Publish hourly measurement'
+619
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.outgoing.reports.topic' should be used to configure MQTT topic defaults to 'reports'
+620
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.outgoing.reports.host' should be used to configure MQTT host that defaults to localhost
+621
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.outgoing.reports.port' should be used to configure MQTT port that defaults to 1883
+622
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) 	'mp.messaging.outgoing.reports.client-id' should be used to configure MQTT client id that defaults to 'Waterleaks-producer'
+623
+2020-12-31 19:18:15,246 INFO  [io.aut.eng.cod.GeneratorContext] (build-59) ***************************************************************</code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>In case you will have to change them or add extra configuration properties,
+you can do that in three ways</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>directly in <code>application.properties</code> file in <code>src/main/resources</code></p>
+</li>
+<li>
+<p>via system properties (<code>-Dprop=value</code>)</p>
+</li>
+<li>
+<p>via environment variables</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_consuming_events"><a class="anchor" href="#_consuming_events"></a>Consuming events</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Consuming events can be applied in workflow in three scenarios</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>to start an instance of the workflow</p>
+</li>
+<li>
+<p>to continue already started instance as part of the main path (so called
+intermediate events)</p>
+</li>
+<li>
+<p>to trigger alternative paths in already started workflow instance (so
+called event sub workflows/process)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To be able to consume events in the workflow there must be a message
+definition present</p>
+</div>
+<div class="paragraph">
+<p>A properly defined message must consists of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name</p>
+</li>
+<li>
+<p>data type</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Name of the message is by default used as topic on message broker
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/messaging-definition-message.png" alt="messaging definition message">
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that there are optional attributes that can be specified to
+instruct the runtime on expected execution behaviour. These are given
+via <em>custom attributes</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>topic</strong> - instructs what is the expected topic in the message broker this
+message should be connected to - if not defined name of the message is used</p>
+</li>
+<li>
+<p><strong>correlation</strong> - a static value used to do correlation between incoming message
+and active workflow instances - see correlation section for details</p>
+</li>
+<li>
+<p><strong>correlationExpression</strong> - an expression that will be applied on the incoming
+event to extract correlation value to be used to find matching workflow instances</p>
+</li>
+<li>
+<p><strong>connector</strong> - in case there are multiple connectors used it must be given
+explicitly for every message. Note it is not required if there is only one
+connector - e.g. MQTT or Apache Kafka.</p>
+</li>
+<li>
+<p><strong>filterExpression</strong> - allows to pass a function/expression that will have access
+to message payload (already converted) and message itself to check if given message
+is accepted or not. By default all messages are accepted.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/messaging-definition-general.png" alt="messaging definition general">
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example <code>topic</code> and <code>correlationExpression</code> are defined to connect
+to MQTT message broker and reply on MQTT feature called wildcard topic. It will
+receive events from any building and room of that building for water measurements.</p>
+</div>
+<div class="paragraph">
+<p>Expression <code>topic(message, 1, 2)</code> is a function available out of the box that
+allows to extract elements of the actual topic event was received from.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Event published to <code>building/ABC/room1/water</code> will extract correlation of <code>ABC-room1</code>
+and use it to either find existing instances or start new instance
+and assign that value as business key.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition to defining the message the received event (which data type was
+given on the message definition) needs to be mapped to workflow data objects</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/messaging-data-mapping.png" alt="messaging data mapping">
+</div>
+</div>
+<div class="paragraph">
+<p>Event can be mapped directly to given data object (above) or as expression (below)
+that allows more options like adding to a list. In this example received event
+is added to a list of <code>measurements</code> data object.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/messaging-data-mapping-expr.png" alt="messaging data mapping expr">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Supported expressions</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Expression</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">var.field.another</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dot notation for data objects to fill in given attribute of the data
+object instead of the entire data object. Note that data object needs to be initialised
+to be able to fill in its attributes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list[+]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add item to a data object that is of <code>List</code> type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list[-]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove item from a data object that is of <code>List</code> type, it relies on
+identity of the data objects to be properly removed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_producing_events"><a class="anchor" href="#_producing_events"></a>Producing events</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Producing events can be applied in workflow in three scenarios</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>to end an instance of the workflow</p>
+</li>
+<li>
+<p>to push out data of the instance as part of the main path (so called
+intermediate events)</p>
+</li>
+<li>
+<p>to end an alternative paths in workflow instance (so
+called event sub workflows/process)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To be able to produce events in the workflow there must be a message
+definition present</p>
+</div>
+<div class="paragraph">
+<p>A properly defined message must consists of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name</p>
+</li>
+<li>
+<p>data type</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Name of the message is by default used as topic on message broker
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition to that there are optional attributes that can be specified to
+instruct the runtime on expected execution behaviour. These are given
+via <em>custom attributes</em></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/messaging-publishing-attr.png" alt="messaging publishing attr">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>topicExpression</strong> - instructs what is the expected topic in the message broker this
+message should be sent to - if not defined name of the message is used - applies to MQTT only</p>
+</li>
+<li>
+<p><strong>addressExpression</strong> - instructs what is the expected address in the message broker this
+message should be sent to - if not defined name of the message is used - applies to AMQP only</p>
+</li>
+<li>
+<p><strong>keyExpression</strong> - instructs what is the expected key for a Kafka record being sent -
+if not defined busienss key is used which can be null and by that no key is set - applies to Apache Kafka only</p>
+</li>
+<li>
+<p><strong>connector</strong> - in case there are multiple connectors used it must be given
+explicitly for every message. Note it is not required if there is only one
+connector - e.g. MQTT or Apache Kafka.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>topicExpression</code> provides an flexible way to define location where
+the event should be published - it is dedicated to <strong>MQTT</strong>,
+similar <code>addressExpression</code> provides same flexibility for dynamically
+selecting address that message should be pushed to - this one is dedicated to <strong>AMQP</strong>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Similar to consuming events, producing events also requires data mapping. This
+is to instruct what should be the payload of the event</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/messaging-publishing-mapping.png" alt="messaging publishing mapping">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_correlation"><a class="anchor" href="#_correlation"></a>Correlation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Correlation refers to finding workflow instances that should be given the received
+event. Automatiko allows to define correlation related attributes on each message
+event within the workflow.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>correlation</strong> - a static value used to do correlation between incoming message
+and active workflow instances - see correlation section for details</p>
+</li>
+<li>
+<p><strong>correlationExpression</strong> - an expression that will be applied on the incoming
+event to extract correlation value to be used to find matching workflow instances</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Correlation expression can be defined in <code>Functions</code> specific to the service
+to hide the complexity of the correlation.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In case correlation attribute (either <code>correlation</code> or <code>correlationExpression</code>)
+is found it will be used to look up workflow instances. Look up mechanism takes
+into consideration two items of the workflow instance</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>business key</p>
+</li>
+<li>
+<p>workflow instance tags</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In case any of these two matches the correlation that workflow instance will
+be given the event via the message event defined in the workflow.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There is additional correlation used in case of Apache Kafka used as
+message broker - that is the <code>key</code> of the kafka record.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_event_payload_converters"><a class="anchor" href="#_event_payload_converters"></a>Event payload converters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Messages defined in workflow must have data type configured but sometimes
+the data type cannot be easily mapped to the received event. To accommodate
+this use case service developers can implement converters.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>io.automatiko.engine.api.io.InputConverter&lt;D&gt;</code></p>
+</li>
+<li>
+<p><code>io.automatiko.engine.api.io.OutputConverter&lt;V, T&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>where</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>D</code> for <code>InputConverter</code> is the actual data type expected by message.</p>
+</li>
+<li>
+<p><code>V</code> is the data type used in workflow and then <code>T</code> is the type to be sent out
+for <code>OutputConverter</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_apache_camel_connector"><a class="anchor" href="#_apache_camel_connector"></a>Apache Camel connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When using Apache Camel as the connector, in many cases there is a need to specify
+additional information to be available to Camel component. These are usually set as
+Message headers from Camel component point of view.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko allows to specify any number of headers via custom attributes of the message.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Custom attributes that starts with <code>Camel</code> will be considered headers.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example when using Camel Dropbox component to upload files you can specify the target
+file name as custom attribute that will be set as header on Camel&#8217;s message.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/messaging-camel-headers.png" alt="messaging camel headers">
+</div>
+</div>
+<div class="paragraph">
+<p>Headers can be set as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>static value e.g. <code>"my value"</code></p>
+</li>
+<li>
+<p>reference to a workflow variable e.g. <code>myvariable</code></p>
+</li>
+<li>
+<p>reference to a function e.g. <code>buildFileName()</code> or <code>buildFileName(id)</code> where <code>id</code> is workflow
+instance id</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jms_connector"><a class="anchor" href="#_jms_connector"></a>JMS connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In many situations when using JMS as the messaging provider there is a need to set message properties.
+It is really handy when combined with <code>message selectors</code> to filter efficiently messages that should
+not be consumed.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko allows to specify any number of properties via custom attributes of the message.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Custom attributes that starts with <code>JMS</code> will be considered properties.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Properties can be set as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>static value e.g. <code>"my value"</code></p>
+</li>
+<li>
+<p>reference to a workflow variable e.g. <code>myvariable</code></p>
+</li>
+<li>
+<p>reference to a function e.g. <code>buildFileName()</code> or <code>buildFileName(id)</code> where <code>id</code> is workflow
+instance id</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_http_connector"><a class="anchor" href="#_http_connector"></a>HTTP connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HTTP connector requies currently explicitly connector to be set as custom attributes of message.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko allows to specify any number of headers via custom attributes of the message.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Custom attributes that starts with <code>HTTP</code> will be considered headers.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Headers can be set as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>static value e.g. <code>"my value"</code></p>
+</li>
+<li>
+<p>reference to a workflow variable e.g. <code>myvariable</code></p>
+</li>
+<li>
+<p>reference to a function e.g. <code>buildFileName()</code> or <code>buildFileName(id)</code> where <code>id</code> is workflow
+instance id</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

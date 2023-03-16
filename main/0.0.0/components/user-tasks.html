@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>User tasks :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.22.0/components/user-tasks.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.23.0/components/user-tasks.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -179,6 +179,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.23.0/about.html">0.23.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.22.0/about.html">0.22.0</a>
         </li>
         <li class="version">
@@ -257,7 +260,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.22.0/about.html" class="home-link"></a>
+  <a href="../../0.23.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -268,6 +271,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.23.0/components/user-tasks.html">0.23.0</a>
     <a class="version" href="../../0.22.0/components/user-tasks.html">0.22.0</a>
     <a class="version" href="../../0.21.0/components/user-tasks.html">0.21.0</a>
     <a class="version" href="../../0.20.0/components/user-tasks.html">0.20.0</a>
@@ -316,7 +320,26 @@ them.</p>
 <li>
 <p>automatiko-user-tasks-email-addon</p>
 </li>
+<li>
+<p>automatiko-user-tasks-slack-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-teams-addon</p>
+</li>
 </ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Regardless of type of notifications it can be disabled globally by setting (<code>QUARKUS_AUTOMATIKO_NOTIFICATIONS_DISABLED=true</code>)
+or on each user task via custom attribute called <code>notification</code> with value set to <code>disabled</code>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -496,6 +519,96 @@ be used by user task forms and emails.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_start_process_forms"><a class="anchor" href="#_start_process_forms"></a>Start process forms</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of user task management addon, forms to start instances can also be provided. It works in exactly the same way as user tasks forms
+- based on template files. Templates must be named in following way:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>{processid}.html</code> where <code>processid</code> is the identifier used for process definition</p>
+</li>
+<li>
+<p><code>{processid}_{version}.html</code> where <code>processid</code> is the identifier used for process definition and <code>version</code> of the process definition if version is used</p>
+</li>
+<li>
+<p><code>org/acme/test/{processid}.html</code> where <code>org/acme/test</code> is the package name used for process definition transformed to a path (<code>org.acme.test</code>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Using package names allows to have better structure of template files in case of any workflows exist in given project.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Templates can reference following parameters to provide more tailored forms</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the process definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the process definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional description of the process definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version of the process definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url where the data should be send (posted) to start new instance</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When the addon is used and form template is not defined for given workflow then a default form is returned. Default forms are
+for information only and do not allow to submit. Users can change the default templates providing template files with following
+names:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>workflow-not-found.html</code> - to provide a form when no dedicate template for workflow exists</p>
+</li>
+<li>
+<p><code>workflow-not-authorized.html</code> - to provide a form when user is not authorized to create instances of given workflow</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Same parameters are available to default templates as described above, with one exception that <code>url</code> is not given for not authorized
+form.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_user_tasks_email_notifications"><a class="anchor" href="#_user_tasks_email_notifications"></a>User tasks email notifications</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -598,6 +711,10 @@ of the user task assigned.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">identifier of the workflow definition user task belongs to</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">current data set for the user task - in form of a Map</p></td>
 </tr>
@@ -633,38 +750,6 @@ The email subject can also be generated based on data object via expressions.
 </td>
 </tr>
 </table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_customize_email_templates"><a class="anchor" href="#_customize_email_templates"></a>Customize email templates</h3>
-<div class="paragraph">
-<p>In cases where email templates have to customized at runtime they can be provided via application
-property that points to a folder where <code>*.html</code> files will be loaded at startup and registered.</p>
-</div>
-<div class="paragraph">
-<p>It can be given as environment variable <code>QUARKUS_AUTOMATIKO_TEMPLATES_FOLDER=/templates</code> or system property
-<code>-Dquarkus.automatiko.templates.folder=/templates</code></p>
-</div>
-<div class="paragraph">
-<p>Naming convention is the same as for creating templates as part of the source code.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_configure_2"><a class="anchor" href="#_configure_2"></a>Configure</h3>
-<div class="paragraph">
-<p>To enable user tasks email addon add following dependency to your service</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
-  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
-  &lt;artifactId&gt;automatiko-user-tasks-email-addon&lt;/artifactId&gt;
-&lt;/dependency&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In addition to that there must be configuration of your email server also provided. Usually this is set in
-<code>application.properties</code> of your service but can also be given as system properties or environment variables</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -705,6 +790,407 @@ to provide custom implementation of <code>io.automatiko.engine.addons.usertasks.
 is responsible for resolving user and groups to their email addresses.
 You can also use that interface to suppress sending emails for certain users and/or groups.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_slack_notifications"><a class="anchor" href="#_user_tasks_slack_notifications"></a>User tasks slack notifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Similar to email notifications, slack messages can also be used as notifications for user tasks. Slack integration is based on
+<a href="https://www.google.com/search?client=safari&amp;rls=en&amp;q=slack+incoming+webhook&amp;ie=UTF-8&amp;oe=UTF-8">incoming webhooks feature in Slack</a> and allows to send messages to given channel.</p>
+</div>
+<div class="paragraph">
+<p>To be able to use slack integration, the channel (as name) needs to be specified on user task via custom attributes. The custom attribute
+is called <code>slack-channel</code></p>
+</div>
+<div class="paragraph">
+<p>The content of the message that will be posted to the Slack channel can be made user task specific as it is based on templates.</p>
+</div>
+<div class="paragraph">
+<p>Naming convention of the template files is as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>task name property defined on the user task with suffix <code>-slack.txt</code></p>
+</li>
+<li>
+<p>name of the user task with suffix <code>-slack.txt</code></p>
+</li>
+<li>
+<p>workflow identifier with task name property defined on the user task with suffix <code>-slack.txt</code></p>
+</li>
+<li>
+<p>workflow identifier with name of the user task with suffix <code>-slack.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example when you have a task named <code>My Task</code> that has task name property <code>approval</code> within workflow with id 'vacations'
+ then you can create following template files that will be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approval-slack.txt</code></p>
+</li>
+<li>
+<p><code>vacations.approval-slack.txt</code></p>
+</li>
+<li>
+<p><code>My Task-slack.txt</code></p>
+</li>
+<li>
+<p><code>vacations.My Task-slack.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There might be some special cases where extra information should be included but by default notifications via slack
+aim at not exposing too much of the task context like input information.</p>
+</div>
+<div class="paragraph">
+<p>Since these files are considered to be templates there are several variables given that will represent various data
+of the user task assigned.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the user task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the user task (can be null or empty)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">taskId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the task instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instanceId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the workflow instance task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identifier of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current data set for the user task - in form of a Map</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">direct and absolute link to the form for user task</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Since the template for Slack is JSON based, the regular parts of the JSON structure <code>{</code> and <code>}</code> must be escaped in the template with <code>\{</code> and <code>\}</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of Slack template</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">\{
+	"blocks": [
+		\{
+			"type": "section",
+			"text": \{
+				"type": "mrkdwn",
+				"text": "Process '{processName}' requires user action on instance {instanceId}"
+			\}
+		\},
+		\{
+			"type": "section",
+			"text": \{
+				"type": "mrkdwn",
+				"text": "A new task ({name}) has been assigned\n\n&lt;{link}|View task details&gt;"
+			\}
+		\}
+	]
+\}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_2"><a class="anchor" href="#_configure_2"></a>Configure</h3>
+<div class="paragraph">
+<p>To enable user tasks slack addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-slack-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that there must be configuration of your slack channels webhook urls. Usually this is set in
+<code>application.properties</code> of your service but can also be given as system properties or environment variables</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.notifications.slack.test=https://hooks.slack.com......
+quarkus.automatiko.notifications.slack.another=https://hooks.slack.com......
+quarkus.automatiko.notifications.slack.onemore=https://hooks.slack.com......</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There can be many channels defined and the names of the channels in <code>application.properties</code> file (e.g. <code>test</code>, <code>another</code>) are those that should be
+referenced in the user task custom attributes via <code>slack-channel</code>. This provides an abstraction layer on top of real channel names
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_teams_notifications"><a class="anchor" href="#_user_tasks_teams_notifications"></a>User tasks teams notifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Similar to slack notifications, Microsoft Teams messages can also be used as notifications for user tasks. Teams integration is based on
+<a href="https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet">incoming webhooks feature in MS Teams</a> and allows to send messages to given channel.</p>
+</div>
+<div class="paragraph">
+<p>To be able to use teams integration, the channel (as name) needs to be specified on user task via custom attributes. The custom attribute
+is called <code>teams-channel</code></p>
+</div>
+<div class="paragraph">
+<p>The content of the message that will be posted to the Teams channel can be made user task specific as it is based on templates.</p>
+</div>
+<div class="paragraph">
+<p>Naming convention of the template files is as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>task name property defined on the user task with suffix <code>-teams.txt</code></p>
+</li>
+<li>
+<p>name of the user task with suffix <code>-teams.txt</code></p>
+</li>
+<li>
+<p>workflow identifier with task name property defined on the user task with suffix <code>-teams.txt</code></p>
+</li>
+<li>
+<p>workflow identifier with name of the user task with suffix <code>-teams.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example when you have a task named <code>My Task</code> that has task name property <code>approval</code> within workflow with id 'vacations'
+ then you can create following template files that will be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approval-teams.txt</code></p>
+</li>
+<li>
+<p><code>vacations.approval-teams.txt</code></p>
+</li>
+<li>
+<p><code>My Task-teams.txt</code></p>
+</li>
+<li>
+<p><code>vacations.My Task-teams.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There might be some special cases where extra information should be included but by default notifications via teams
+aim at not exposing too much of the task context like input information.</p>
+</div>
+<div class="paragraph">
+<p>Since these files are considered to be templates there are several variables given that will represent various data
+of the user task assigned.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the user task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the user task (can be null or empty)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">taskId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the task instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instanceId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the workflow instance task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identifier of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current data set for the user task - in form of a Map</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">direct and absolute link to the form for user task</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Since the template for MS Teams is JSON based, the regular parts of the JSON structure <code>{</code> and <code>}</code> must be escaped in the template with <code>\{</code> and <code>\}</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of MS Teams template</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">\{
+  "@type": "MessageCard",
+  "@context": "http://schema.org/extensions",
+  "themeColor": "0076D7",
+  "summary": "Task assigned - {name}",
+  "sections": [
+    \{
+      "activityTitle": "Task assigned - {name}",
+      "activitySubtitle": "{description}",
+      "markdown": true
+    \}
+  ],
+  "potentialAction": [
+    \{
+      "@type": "OpenUri",
+      "name": "View task details",
+      "targets": [
+        \{
+          "os": "default",
+          "uri": "{link}"
+        \}
+      ]
+    \}
+  ]
+\}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_3"><a class="anchor" href="#_configure_3"></a>Configure</h3>
+<div class="paragraph">
+<p>To enable user tasks teams addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-teams-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that there must be configuration of your teams channels webhook urls. Usually this is set in
+<code>application.properties</code> of your service but can also be given as system properties or environment variables</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.notifications.teams.test=https://mycompany.webhook.office.com/webhook......
+quarkus.automatiko.notifications.teams.another=https://mycompany.webhook.office.com/webhook......
+quarkus.automatiko.notifications.teams.onemore=https://mycompany.webhook.office.com/webhook......</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There can be many channels defined and the names of the channels in <code>application.properties</code> file (e.g. <code>test</code>, <code>another</code>) are those that should be
+referenced in the user task custom attributes via <code>teams-channel</code>. This provides an abstraction layer on top of real channel names
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customize_templates"><a class="anchor" href="#_customize_templates"></a>Customize templates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In cases where (email, slack, teams) templates have to customized at runtime they can be provided via application
+property that points to a folder where <code><strong>.html</code> or <code></strong>.txt</code> files will be loaded at startup and registered.</p>
+</div>
+<div class="paragraph">
+<p>It can be given as environment variable <code>QUARKUS_AUTOMATIKO_TEMPLATES_FOLDER=/templates</code> or system property
+<code>-Dquarkus.automatiko.templates.folder=/templates</code></p>
+</div>
+<div class="paragraph">
+<p>Naming convention is the same as for creating templates as part of the source code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_notification"><a class="anchor" href="#_custom_notification"></a>Custom notification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Users can build custom notifications by implementing a <code>io.automatiko.engine.addons.usertasks.notification.NotificationEmitter</code> interface.</p>
+</div>
+<div class="paragraph">
+<p>This interface is located in <code>io.automatiko.addons:automatiko-user-tasks-notification</code></p>
+</div>
+<div class="paragraph">
+<p>The implementation must be a CDI bean so it can be discovered and registered automatically.</p>
 </div>
 </div>
 </div>

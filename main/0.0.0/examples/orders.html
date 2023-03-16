@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Orders :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.22.0/examples/orders.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.23.0/examples/orders.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -179,6 +179,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.23.0/about.html">0.23.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.22.0/about.html">0.22.0</a>
         </li>
         <li class="version">
@@ -257,7 +260,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.22.0/about.html" class="home-link"></a>
+  <a href="../../0.23.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -267,6 +270,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.23.0/examples/orders.html">0.23.0</a>
     <a class="version" href="../../0.22.0/examples/orders.html">0.22.0</a>
     <a class="version" href="../../0.21.0/examples/orders.html">0.21.0</a>
     <a class="version" href="../../0.20.0/examples/orders.html">0.20.0</a>
@@ -336,10 +340,10 @@ Note that this example is currently not equipped with user facing UI
 <div class="sectionbody">
 <div class="paragraph">
 <p>The only thing that is needed is Apache Kafka running that will be accessible.
-It needs to be given as part of run command via environment variable <code>KAFKA_SERVERS</code></p>
+It needs to be given as part of run command via environment variable <code>KAFKA_BOOTSTRAP_SERVERS</code></p>
 </div>
 <div class="paragraph">
-<p><code>docker run -e KAFKA_SERVERS=KAFKA_HOST:9092 -p 8080:8080 automatiko/event-streams-orders</code></p>
+<p><code>docker run -e KAFKA_BOOTSTRAP_SERVERS=KAFKA_HOST:9092 -p 8080:8080 automatiko/event-streams-orders</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -349,8 +353,8 @@ It needs to be given as part of run command via environment variable <code>KAFKA
 </td>
 <td class="content">
 To get quickly a running instance of Apache Kafka to run the tests
-a spotify kafka container image can be handy, visit
-<a href="https://hub.docker.com/r/spotify/kafka/">Docker Hub</a> for details
+a Redpanda container image can be handy, visit
+<a href="https://docs.redpanda.com/docs/get-started/quick-start/?quickstart=docker#deploy-redpanda">Redpanda installation</a> for details
 </td>
 </tr>
 </table>
