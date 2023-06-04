@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>User registration function :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.30.0/examples/userregistration-function.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.30.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.30.0.html">0.30.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.30.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.30.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.23.0/about.html">0.23.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.22.0/about.html">0.22.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.21.0/about.html">0.21.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.20.0/about.html">0.20.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.19.0/about.html">0.19.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.18.0/about.html">0.18.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.17.0/about.html">0.17.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.16.0/about.html">0.16.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.15.0/about.html">0.15.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li><a href="userregistration-function.html">User registration function</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.30.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="userregistration-function.html">0.30.0</a>
+    <a class="version" href="../../0.23.0/examples/userregistration-function.html">0.23.0</a>
+    <a class="version" href="../../0.22.0/examples/userregistration-function.html">0.22.0</a>
+    <a class="version" href="../../0.21.0/examples/userregistration-function.html">0.21.0</a>
+    <a class="version" href="../../0.20.0/examples/userregistration-function.html">0.20.0</a>
+    <a class="version" href="../../0.19.0/examples/userregistration-function.html">0.19.0</a>
+    <a class="version" href="../../0.18.0/examples/userregistration-function.html">0.18.0</a>
+    <a class="version" href="../../0.17.0/examples/userregistration-function.html">0.17.0</a>
+    <a class="version" href="../../0.16.0/examples/userregistration-function.html">0.16.0</a>
+    <a class="version" href="../../0.15.0/examples/userregistration-function.html">0.15.0</a>
+    <a class="version" href="../../0.14.0/examples/userregistration-function.html">0.14.0</a>
+    <a class="version" href="../../0.13.0/examples/userregistration-function.html">0.13.0</a>
+    <a class="version" href="../../0.12.0/examples/userregistration-function.html">0.12.0</a>
+    <a class="version" href="../../0.11.0/examples/userregistration-function.html">0.11.0</a>
+    <a class="version" href="../../0.10.0/examples/userregistration-function.html">0.10.0</a>
+    <a class="version is-missing" href="../../0.9.0/about.html">0.9.0</a>
+    <a class="version is-missing" href="../../0.8.0/about.html">0.8.0</a>
+    <a class="version is-missing" href="../../0.7.0/about.html">0.7.0</a>
+    <a class="version is-missing" href="../../0.6.0/about.html">0.6.0</a>
+    <a class="version is-missing" href="../../0.5.0/about.html">0.5.0</a>
+    <a class="version is-missing" href="../../0.4.0/about.html">0.4.0</a>
+    <a class="version is-missing" href="../../0.3.0/about.html">0.3.0</a>
+    <a class="version is-missing" href="../../0.2.0/about.html">0.2.0</a>
+    <a class="version is-missing" href="../../0.1.0/about.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/examples/userregistration-function.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">User registration function</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>User registration example illustrates <code>Workflow as a Function</code> concept that allows to deploy the function to
+various cloud providers such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Azure Functions</p>
+</li>
+<li>
+<p>Google Cloud Functions</p>
+</li>
+<li>
+<p>Amazon Lambda</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This example takes a simple user registration use case and implements it as workflow. The logic behind is
+composed of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>validating provided user information</p>
+</li>
+<li>
+<p>generating username and password</p>
+</li>
+<li>
+<p>verifying that given user name is not yet registered in the Swagger PetStore service</p>
+</li>
+<li>
+<p>creating user in the Swagger PetStore service</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So the workflow defines multiple types of operations that are being invoked, starting from java services
+implemented within the service and finishing at REST invocation based on OpenAPI definitions.</p>
+</div>
+<div class="paragraph">
+<p>In addition to that REST calls are equipped with error handling to tackle unexpected responses like server
+errors during creation of a user in Swagger PetStore service or expected situations like user not found in Swagger
+PetStore service.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/examples-user-registration-func.png" alt="examples user registration func"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_run_it"><a class="anchor" href="#_run_it"></a>Run it</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Depending on which environment you are targeting there will be different requirements</p>
+</div>
+<div class="paragraph">
+<p>First select proper profile to build the functon for target environment</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Azure functions use <code>-Pazure</code></p>
+</li>
+<li>
+<p>Google Cloud Functions use <code>-Pgcp</code></p>
+</li>
+<li>
+<p>Amazon Lambda use <code>-Plambda</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_azure_functions"><a class="anchor" href="#_azure_functions"></a>Azure functions</h3>
+<div class="paragraph">
+<p>Azure configuration uses <code>azure-functions-maven-plugin</code> and thus requires additional configuration to be set.
+Either by editing pom.xml file or using <code>-D</code> on the command lines. Here are the properties that must be set</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>functionResourceGroup</code> - resource group in your Azure subscription to be used</p>
+</li>
+<li>
+<p><code>functionAppPlan</code> - application plan to be used</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once this is done Azure function deployment can be done via maven plugin</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">mvn clean package azure-functions:deploy -Pazure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Completion of the build should end with similar output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">[INFO] HTTP Trigger Urls:
+[INFO] 	 userregistration : https://automatiko-user-registration-example.azurewebsites.net/api/{*path}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the url that should be used to invoke function, where <code>{*path}</code> should be replaced with the function name, in this case <code>userregistration</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_google_cloud_functions"><a class="anchor" href="#_google_cloud_functions"></a>Google Cloud functions</h3>
+<div class="paragraph">
+<p>For Google Cloud functions it should be build with <code>gcp</code> profile</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">mvn clean package -Pgcp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And then deployed to your Google Cloud project using <code>gcloud</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">gcloud functions deploy automatiko-user-registration-example \
+  --entry-point=io.quarkus.gcp.functions.http.QuarkusHttpFunction \
+  --runtime=java11 --trigger-http --source=target/deployment</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will give you as output a <code>httpsTrigger.url</code> that points to your function.</p>
+</div>
+<div class="paragraph">
+<p>There are multiple paths that can be taken during the user registration
+<span class="image"><img src="../_images/user-registration-workflow.png" alt="user registration workflow"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_happy_path"><a class="anchor" href="#_the_happy_path"></a>The happy path</h3>
+<div class="paragraph">
+<p>Happy path consists of steps that will lead to successful user registration.</p>
+</div>
+<div class="sect3">
+<h4 id="_try_it"><a class="anchor" href="#_try_it"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the happy path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Login to a curler pod that enables an easy access to the broker to send requests as it might not be exposed to
+external traffic (e.g. ingress). If your Knative broker is exposed to external traffic you can skip the curler step.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Issue following curl command from the pod running within cluster so the broker url will be properly resolved.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "FUNCTION_ENDPOINT_URL/api/userregistration" \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"user" : {"email" : "mike.strong@email.com",  "firstName" : "mike",  "lastName" : "strong"}}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively you can send request to start user registration for user using GET</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "FUNCTION_ENDPOINT_URL/api/userregistration?user.email=john@email.com&amp;user.firstName=John&amp;user.lastName=Strong"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will respond with something like the following response</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{"id":"3ac3032b-ed91-409c-8faf-7bf3ee9b0482","user":{"id":null,"username":"jstrong","firstName":"John","lastName":"Strong","email":"john@email.com","password":"S3cr3T","phone":null,"userStatus":100}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Important part is the <code>userStatus</code> field that represents the output of the function</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>100 - successful registration</p>
+</li>
+<li>
+<p>300 - already registered</p>
+</li>
+<li>
+<p>400 - invalid data</p>
+</li>
+<li>
+<p>500 - server error on registering user in Swagger PetStore</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Taking into consideration that this request was sent for the first time it should register user in Swagger PetStore.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It might result in a already registered when the user was already registered so consider updating the first name
+and last name in the request payload with custom data that will ensure new user
+</td>
+</tr>
+</table>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_invalid_data_path"><a class="anchor" href="#_the_invalid_data_path"></a>The invalid data path</h3>
+<div class="paragraph">
+<p>Invalid data path consists of steps that will lead to fast finish without user registration.</p>
+</div>
+<div class="sect3">
+<h4 id="_try_it_2"><a class="anchor" href="#_try_it_2"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the invalid data path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Login to a curler pod that enables an easy access to the broker to send requests as it might not be exposed to
+external traffic (e.g. ingress). If your Knative broker is exposed to external traffic you can skip the curler step.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Issue following curl command from the pod running within cluster so the broker url will be properly resolved.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "FUNCTION_ENDPOINT_URL/api/userregistration" \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"user" : {"email" : "mike.strong@email.com",  "firstName" : "mike",  "lastName" : ""}}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively you can send request to start user registration for user using GET</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "FUNCTION_ENDPOINT_URL/api/userregistration?user.email=john@email.com&amp;user.firstName=John&amp;user.lastName="</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will respond with something like the following response</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{"id":"3ac3032b-ed91-409c-8faf-7bf3ee9b0482","user":{"id":null,"username":"jstrong","firstName":"John","lastName":"Strong","email":"john@email.com","password":"S3cr3T","phone":null,"userStatus":100}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Important part is the <code>userStatus</code> field that represents the output of the function</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>100 - successful registration</p>
+</li>
+<li>
+<p>300 - already registered</p>
+</li>
+<li>
+<p>400 - invalid data</p>
+</li>
+<li>
+<p>500 - server error on registering user in Swagger PetStore</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since user&#8217;s last name is not set the workflow will reject processing due to invalid data</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_already_registered_path"><a class="anchor" href="#_the_already_registered_path"></a>The already registered path</h3>
+<div class="paragraph">
+<p>Already registered path consists of steps that will lead to fast finish without user registration.</p>
+</div>
+<div class="sect3">
+<h4 id="_try_it_3"><a class="anchor" href="#_try_it_3"></a>Try it</h4>
+<div class="paragraph">
+<p>Follow steps in the <code>Details</code> section to see the already registered path in action.</p>
+</div>
+<details>
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Login to a curler pod that enables an easy access to the broker to send requests as it might not be exposed to
+external traffic (e.g. ingress). If your Knative broker is exposed to external traffic you can skip the curler step.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Issue following curl command from the pod running within cluster so the broker url will be properly resolved.
+Main rule here is that there should be already user with same first and last name registered. For example
+that the happy path has been executed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "FUNCTION_ENDPOINT_URL/api/userregistration" \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"user" : {"email" : "mike.strong@email.com",  "firstName" : "mike",  "lastName" : "strong"}}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively you can send request to start user registration for user using GET</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">curl -v "FUNCTION_ENDPOINT_URL/api/userregistration?user.email=john@email.com&amp;user.firstName=John&amp;user.lastName=Strong"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will respond with something like the following response</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>{"id":"3ac3032b-ed91-409c-8faf-7bf3ee9b0482","user":{"id":null,"username":"jstrong","firstName":"John","lastName":"Strong","email":"john@email.com","password":"S3cr3T","phone":null,"userStatus":100}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Important part is the <code>userStatus</code> field that represents the output of the function</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>100 - successful registration</p>
+</li>
+<li>
+<p>300 - already registered</p>
+</li>
+<li>
+<p>400 - invalid data</p>
+</li>
+<li>
+<p>500 - server error on registering user in Swagger PetStore</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since user was already registered processing is stopped</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
