@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>User tasks :: Automatiko</title>
-    <link rel="canonical" href="https://docs.automatiko.io/main/0.30.0/components/user-tasks.html">
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.31.0/components/user-tasks.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
@@ -182,6 +182,9 @@
       <span class="title">Automatiko Documentation</span>
       <ul class="versions">
         <li class="version is-latest">
+          <a href="../../0.31.0/about.html">0.31.0</a>
+        </li>
+        <li class="version">
           <a href="../../0.30.0/about.html">0.30.0</a>
         </li>
         <li class="version">
@@ -266,7 +269,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../0.30.0/about.html" class="home-link"></a>
+  <a href="../../0.31.0/about.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../about.html">Automatiko Documentation</a></li>
@@ -277,6 +280,7 @@
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">0.0.0</button>
   <div class="version-menu">
+    <a class="version" href="../../0.31.0/components/user-tasks.html">0.31.0</a>
     <a class="version" href="../../0.30.0/components/user-tasks.html">0.30.0</a>
     <a class="version" href="../../0.23.0/components/user-tasks.html">0.23.0</a>
     <a class="version" href="../../0.22.0/components/user-tasks.html">0.22.0</a>
@@ -332,6 +336,15 @@ them.</p>
 </li>
 <li>
 <p>automatiko-user-tasks-teams-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-index-fs-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-index-db-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-index-mongodb-addon</p>
 </li>
 </ul>
 </div>
@@ -1198,6 +1211,413 @@ property that points to a folder where <code><strong>.html</code> or <code></str
 </div>
 <div class="paragraph">
 <p>The implementation must be a CDI bean so it can be discovered and registered automatically.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_index"><a class="anchor" href="#_user_tasks_index"></a>User tasks index</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>User task index allows to collect all user tasks created within given service and expose it for queries. Most common
+use case is to find tasks assigned to given user, taking into consideration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tasks assigned to users</p>
+</li>
+<li>
+<p>tasks assigned to groups</p>
+</li>
+<li>
+<p>tasks excluding users</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to that, task information can also be targeted as filter criteria.</p>
+</div>
+<div class="paragraph">
+<p>Out of the box filter criteria are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code> - name of the task, partial match</p>
+</li>
+<li>
+<p><code>description</code> - description of the task, partial match</p>
+</li>
+<li>
+<p><code>state</code> - state of the task (Ready, Completed, Aborted)</p>
+</li>
+<li>
+<p><code>priority</code> - priority of the task, partial match</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additional queries can be defined as custom that will provide more specific ways of searching for tasks. Such as taking into
+account other task properties or even inputs and outputs of the tasks. Though this is dependent on the type of storage used.
+This concept is known as <code>CustomQueryBuilder</code> and is described in details in each supported index addon.</p>
+</div>
+<div class="paragraph">
+<p>Result can also be sorted either ascending or descending by task fields.</p>
+</div>
+<div class="paragraph">
+<p>Once addon is added to the service, it will expose additional REST endpoint under <code>/index/usertasks</code> with following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>find tasks by filter criteria</p>
+</li>
+<li>
+<p>find task by id</p>
+</li>
+<li>
+<p>query with custom queries</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>User tasks are kept in the index according to instance end configuration. Instance end property can be set to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>remove - (default) that removes process instances upon its completion</p>
+</li>
+<li>
+<p>keep - to keep instances in the storage after they are completed</p>
+</li>
+<li>
+<p>archive - to archive process instances upon their completion</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Index will be default remove tasks that are completed to keep the index size manageable. But if the instance end configuration is set to keep then tasks will be kept in the index even when they are completed. That allows to search for tasks that were already completed.</p>
+</div>
+<div class="paragraph">
+<p>Tasks are automatically indexed after addon activation. Each task created within the service will be added to the index and
+by that can be searched for.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+User task index is only supported with file system, db and mongodb persistence
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_index_for_file_system_persistence"><a class="anchor" href="#_index_for_file_system_persistence"></a>Index for file system persistence</h3>
+<div class="paragraph">
+<p>File system persistence utilizes <a href="https://github.com/npgall/cqengine">CQEngine</a> for efficient indexing and searching. This allows to collected and efficiently search big volumes of tasks.</p>
+</div>
+<div class="sect3">
+<h4 id="_custom_query_builder"><a class="anchor" href="#_custom_query_builder"></a>Custom query builder</h4>
+<div class="paragraph">
+<p>Custom query builder in file system index addon requires two things to be done:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>register additional indexes on non yet indexed fields</p>
+</li>
+<li>
+<p>define where clause based on incoming parameters</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each custom query builder must implement methods of <code>io.automatiko.addons.usertasks.index.fs.CQEngineCustomQueryBuilder</code></p>
+</div>
+<div class="paragraph">
+<p>Following is an example building a custom query to filter out by process id.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import static com.googlecode.cqengine.query.QueryFactory.in;
+
+import java.util.List;
+import java.util.Map;
+
+import com.googlecode.cqengine.attribute.SimpleAttribute;
+import com.googlecode.cqengine.index.suffix.SuffixTreeIndex;
+import com.googlecode.cqengine.query.Query;
+import com.googlecode.cqengine.query.option.QueryOptions;
+
+import io.automatiko.addons.usertasks.index.fs.CQEngineBasedIndex;
+import io.automatiko.addons.usertasks.index.fs.CQEngineCustomQueryBuilder;
+import io.automatiko.addons.usertasks.index.fs.CQEngineUserTaskInfo;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+
+@ApplicationScoped<i class="conum" data-value="1"></i><b>(1)</b>
+public class ByProcessCustomQueryBuilder extends CQEngineCustomQueryBuilder {
+
+    public static final SimpleAttribute&lt;CQEngineUserTaskInfo, String&gt; PROCESS_ID = new SimpleAttribute&lt;&gt;("processId") {<i class="conum" data-value="2"></i><b>(2)</b>
+        public String getValue(CQEngineUserTaskInfo task, QueryOptions queryOptions) {
+            return task.getProcessId();
+        }
+    };
+
+    public ByProcessCustomQueryBuilder() {
+    }
+
+    @Inject
+    public ByProcessCustomQueryBuilder(CQEngineBasedIndex index) {
+        index.get().addIndex(SuffixTreeIndex.onAttribute(PROCESS_ID));<i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+    @Override
+    public Query&lt;CQEngineUserTaskInfo&gt; build(Map&lt;String, List&lt;String&gt;&gt; parameters) {
+
+        return in(PROCESS_ID, parameters.get("pid"));<i class="conum" data-value="4"></i><b>(4)</b>
+    }
+
+    @Override
+    public String id() {
+        return "byprocess";<i class="conum" data-value="5"></i><b>(5)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Make the class a CDI bean so it can be discovered</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create attribute definition for CQEngine index for given field</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Register new index for <code>PROCESS_ID</code> field</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>build CQEngine where clause</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Assign unique id for the query builder</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configure_4"><a class="anchor" href="#_configure_4"></a>Configure</h4>
+<div class="paragraph">
+<p>To enable user tasks fs index addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-index-fs-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that there must be path provided where the index should be stored. Usually this is set in
+<code>application.properties</code> of your service but can also be given as system properties or environment variables</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.index.usertasks.fs.path=/data</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The path should point to directory that is writable and upon start a file <code>automatiko-user-tasks.dat</code> will be created.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_index_for_data_base_persistence"><a class="anchor" href="#_index_for_data_base_persistence"></a>Index for data base persistence</h3>
+<div class="paragraph">
+<p>Data base index addon creates new table (<code>USER_TASK_INDEX</code>) that will keep all user tasks of the service. This table
+is then queries to get tasks for given user.</p>
+</div>
+<div class="sect3">
+<h4 id="_custom_query_builder_2"><a class="anchor" href="#_custom_query_builder_2"></a>Custom query builder</h4>
+<div class="paragraph">
+<p>Custom query builder in db index addon requires to create a instance of <code>io.automatiko.addons.usertasks.index.db.DbQueryFilter</code>
+that provides a <code>JPQL</code> where clause and set of values for bind parameters.</p>
+</div>
+<div class="paragraph">
+<p>Each custom query builder must implement methods of <code>io.automatiko.addons.usertasks.index.db.DbCustomQueryBuilder</code></p>
+</div>
+<div class="paragraph">
+<p>Following is an example building a custom query to filter out by process id.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import java.util.List;
+import java.util.Map;
+
+import io.automatiko.addons.usertasks.index.db.DbCustomQueryBuilder;
+import io.automatiko.addons.usertasks.index.db.DbQueryFilter;
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped <i class="conum" data-value="1"></i><b>(1)</b>
+public class ByProcessIdDbCustomQueryBuilder extends DbCustomQueryBuilder {
+
+    @Override
+    public DbQueryFilter build(Map&lt;String, List&lt;String&gt;&gt; parameters) {
+
+        return new DbQueryFilter("t.processId = :process", Map.of("process", parameters.get("process").get(0))); <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+
+    @Override
+    public String id() {
+        return "byProcess"; <i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Make the class a CDI bean so it can be discovered</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create where clause based on parameters</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Assign unique id for the query builder</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configure_5"><a class="anchor" href="#_configure_5"></a>Configure</h4>
+<div class="paragraph">
+<p>To enable user tasks db index addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-index-db-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_index_for_mongodb_persistence"><a class="anchor" href="#_index_for_mongodb_persistence"></a>Index for MongoDB persistence</h3>
+<div class="paragraph">
+<p>MongoDB index addon creates new collection <code>usertasks</code> in the same database as the service. This collection is the queries to
+find tasks for given user and filter criteria.</p>
+</div>
+<div class="sect3">
+<h4 id="_custom_query_builder_3"><a class="anchor" href="#_custom_query_builder_3"></a>Custom query builder</h4>
+<div class="paragraph">
+<p>Custom query builder in mongodb index addon requires to create <code>Bson</code> filters according to MongoDB requirements.</p>
+</div>
+<div class="paragraph">
+<p>Each custom query builder must implement methods of <code>io.automatiko.addons.usertasks.index.mongo.MongoDBCustomQueryBuilder</code></p>
+</div>
+<div class="paragraph">
+<p>Following is an example building a custom query to filter out by process id.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import java.util.List;
+import java.util.Map;
+
+import org.bson.conversions.Bson;
+
+import com.mongodb.client.model.Filters;
+
+import io.automatiko.addons.usertasks.index.mongo.MongoDBCustomQueryBuilder;
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped <i class="conum" data-value="1"></i><b>(1)</b>
+public class OrderAmountQuery extends MongoDBCustomQueryBuilder {
+
+    @Override
+    public Bson build(Map&lt;String, List&lt;String&gt;&gt; parameters) {
+        Bson filter = Filters.and(Filters.eq("processId", "orderItems"),
+                Filters.gt("inputs.order.total", Double.parseDouble(parameters.get("amount").get(0)))); <i class="conum" data-value="2"></i><b>(2)</b>
+        return filter;
+    }
+
+    @Override
+    public String id() {
+        return "orderAmount"; <i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Make the class a CDI bean so it can be discovered</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create where clause based on parameters as <code>Bson</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Assign unique id for the query builder</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configure_6"><a class="anchor" href="#_configure_6"></a>Configure</h4>
+<div class="paragraph">
+<p>To enable user tasks db index addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-index-mongodb-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_task_index_management"><a class="anchor" href="#_user_task_index_management"></a>User task index management</h3>
+<div class="paragraph">
+<p>When user tasks index addon on is configured it will also provide a management API. API is available under <code>/management/index/tasks</code> endpoint. Main usage of this api is to perform initial reindex after index addon was introduced or to resolve any out of sync instances.</p>
+</div>
+<div class="paragraph">
+<p>This API is by default hidden in OpenAPI and has following capabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>reindex all processes within the service</p>
+</li>
+<li>
+<p>reindex instances of a given process (by id)</p>
+</li>
+<li>
+<p>reindex only a single process instance of a given process (by id)</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
