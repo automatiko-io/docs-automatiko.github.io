@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Event publishers :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.35.0/components/event-publishers.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.35.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management.html">Process management</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.30.0.html">0.30.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.35.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../about.html">0.35.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.34.0/about.html">0.34.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.33.0/about.html">0.33.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.32.0/about.html">0.32.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.31.0/about.html">0.31.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.1/about.html">0.30.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.0/about.html">0.30.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.23.0/about.html">0.23.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.22.0/about.html">0.22.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.21.0/about.html">0.21.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.20.0/about.html">0.20.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.19.0/about.html">0.19.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.18.0/about.html">0.18.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.17.0/about.html">0.17.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.16.0/about.html">0.16.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.15.0/about.html">0.15.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.14.0/about.html">0.14.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.13.0/about.html">0.13.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.12.0/about.html">0.12.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.11.0/about.html">0.11.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.10.0/about.html">0.10.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.9.0/about.html">0.9.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.8.0/about.html">0.8.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.7.0/about.html">0.7.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.6.0/about.html">0.6.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.5.0/about.html">0.5.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.4.0/about.html">0.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.3.0/about.html">0.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.2.0/about.html">0.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.1.0/about.html">0.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Components</li>
+    <li><a href="event-publishers.html">Event publishers</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.35.0</button>
+  <div class="version-menu">
+    <a class="version is-current" href="event-publishers.html">0.35.0</a>
+    <a class="version" href="../../0.34.0/components/event-publishers.html">0.34.0</a>
+    <a class="version" href="../../0.33.0/components/event-publishers.html">0.33.0</a>
+    <a class="version" href="../../0.32.0/components/event-publishers.html">0.32.0</a>
+    <a class="version" href="../../0.31.0/components/event-publishers.html">0.31.0</a>
+    <a class="version" href="../../0.30.1/components/event-publishers.html">0.30.1</a>
+    <a class="version" href="../../0.30.0/components/event-publishers.html">0.30.0</a>
+    <a class="version" href="../../0.23.0/components/event-publishers.html">0.23.0</a>
+    <a class="version" href="../../0.22.0/components/event-publishers.html">0.22.0</a>
+    <a class="version" href="../../0.21.0/components/event-publishers.html">0.21.0</a>
+    <a class="version" href="../../0.20.0/components/event-publishers.html">0.20.0</a>
+    <a class="version" href="../../0.19.0/components/event-publishers.html">0.19.0</a>
+    <a class="version" href="../../0.18.0/components/event-publishers.html">0.18.0</a>
+    <a class="version" href="../../0.17.0/components/event-publishers.html">0.17.0</a>
+    <a class="version" href="../../0.16.0/components/event-publishers.html">0.16.0</a>
+    <a class="version" href="../../0.15.0/components/event-publishers.html">0.15.0</a>
+    <a class="version" href="../../0.14.0/components/event-publishers.html">0.14.0</a>
+    <a class="version" href="../../0.13.0/components/event-publishers.html">0.13.0</a>
+    <a class="version" href="../../0.12.0/components/event-publishers.html">0.12.0</a>
+    <a class="version" href="../../0.11.0/components/event-publishers.html">0.11.0</a>
+    <a class="version" href="../../0.10.0/components/event-publishers.html">0.10.0</a>
+    <a class="version" href="../../0.9.0/components/event-publishers.html">0.9.0</a>
+    <a class="version" href="../../0.8.0/components/event-publishers.html">0.8.0</a>
+    <a class="version" href="../../0.7.0/components/event-publishers.html">0.7.0</a>
+    <a class="version" href="../../0.6.0/components/event-publishers.html">0.6.0</a>
+    <a class="version" href="../../0.5.0/components/event-publishers.html">0.5.0</a>
+    <a class="version" href="../../0.4.0/components/event-publishers.html">0.4.0</a>
+    <a class="version" href="../../0.3.0/components/event-publishers.html">0.3.0</a>
+    <a class="version" href="../../0.2.0/components/event-publishers.html">0.2.0</a>
+    <a class="version is-missing" href="../../0.1.0/about.html">0.1.0</a>
+    <a class="version" href="../../0.0.0/components/event-publishers.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Event publishers</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Event publishers allows to capture internal events generated during workflow execution to be pushed out
+to external systems. There are different types of events being published</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>workflow instance</p>
+</li>
+<li>
+<p>user task</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Workflow instance</strong> provides information about given context of the instance that includes its:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>instance data (data objects)</p>
+</li>
+<li>
+<p>metadata information such as instance id, parent and root instance ids, state, business key and so on</p>
+</li>
+<li>
+<p>node instances (activities) executed in the given request</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>User task</strong> provides information about tasks assigned to human actors. This is mainly to allow advanced searches
+across assigned tasks to be able to efficiently find and work on assigned tasks. User tasks consists of</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>input data</p>
+</li>
+<li>
+<p>optional output data</p>
+</li>
+<li>
+<p>potential owners</p>
+</li>
+<li>
+<p>task metadata such as id, name, description, status etc</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Event publishers can do any transformation or filtering of the received events.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There are several event publishers available out of the box.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_elasticsearch_event_publisher"><a class="anchor" href="#_elasticsearch_event_publisher"></a>ElasticSearch event publisher</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Elastic search event publisher allows to push events to ElasticSearch cluster. It publishes three types of events</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>workflow instances events</p>
+</li>
+<li>
+<p>user task events</p>
+</li>
+<li>
+<p>audit events</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_workflow_instance_events"><a class="anchor" href="#_workflow_instance_events"></a>Workflow instance events</h3>
+<div class="paragraph">
+<p>Workflow instance events are being pushed to dedicated index in elastic cluster that is named based on
+workflow definition id. Every instance that belongs to that definition will be placed into the same index.
+That means there will be one index for each workflow definition in the service.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The workflow definition id used for index name will also include version if it was defined in the workflow.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The primary context of the workflow instance event is the data. So the top level of the document in elastic
+will have all data object of given instance. In addition to that there will be <code>_metadata</code> attribute that
+contains workflow instance specific information such as id of root or parent instance, business key, state, etc.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_task_events"><a class="anchor" href="#_user_task_events"></a>User task events</h3>
+<div class="paragraph">
+<p>User task events are build from every user task executed in the workflow instance. User tasks are meant to
+delegate work to human actors for gathering information. In many cases it will be required to build up
+an efficient list of tasks for individuals or groups. By that elastic event publisher will index all user
+tasks regardless of the workflow definition or instance they belong to in single index named <code>tasks</code>.</p>
+</div>
+<div class="paragraph">
+<p>This will allow to build the index across all tasks that human actors can interact with like searching by
+inputs, metadata and potential owners.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_audit_events"><a class="anchor" href="#_audit_events"></a>Audit events</h3>
+<div class="paragraph">
+<p>Audit events are build from the workflow instance events content by extracting node instances executed.
+This will provide a complete audit trial of what has been executed in given workflow instance.</p>
+</div>
+<div class="paragraph">
+<p>All audit log information are stored in the same index in elastic cluster named <code>atk_audit</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Name od audit index name is configurable so can be changed to provide more domain specific name
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h3>
+<div class="paragraph">
+<p>To use elastic event publisher your service must have following dependency</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-events-elastic-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additional configuration should be placed in <code>application.properties</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.events.elastic.instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_EVENTS_ELASTIC_INSTANCE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if workflow instances events should be published to elastic cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.events.elastic.tasks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_EVENTS_ELASTIC_TASKS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if user task events should be published to elastic cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.events.elastic.audit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_EVENTS_ELASTIC_AUDIT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if audit (node instances) events should be published to elastic cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.events.elastic.audit-index</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_EVENTS_ELASTIC_AUDIT_INDEX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies name of the index in elastic cluster for audit events</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">atk_audit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_websocket_event_publisher"><a class="anchor" href="#_websocket_event_publisher"></a>Websocket event publisher</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Websocket event publisher allows to have websocket sessions connected to the service to receive events real time.
+It publishes three types of events</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>workflow instances events</p>
+</li>
+<li>
+<p>user task events</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Websocket event publisher will enforce security restriction on events to make sure it will push the events
+to authorized sessions.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This event publisher does not make any transformation to the event thus they will be pushed to websocket session clients
+in cloud event format.</p>
+</div>
+<div class="sect2">
+<h3 id="_configuration_2"><a class="anchor" href="#_configuration_2"></a>Configuration</h3>
+<div class="paragraph">
+<p>To use elastic event publisher your service must have following dependency</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-events-websocket-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additional configuration should be placed in <code>application.properties</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.events.websocket.instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_EVENTS_WEBSOCKET_INSTANCE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if workflow instances events should be published to websocket session</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.events.websocket.tasks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_EVENTS_WEBSOCKET_TASKS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if user task events should be published to websocket session</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
