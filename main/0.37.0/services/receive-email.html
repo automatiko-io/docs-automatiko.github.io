@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Receive Email :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.43.0/services/receive-email.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.37.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../components/audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="email.html">Send Email</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.30.0.html">0.30.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.37.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../0.43.0/about.html">0.43.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.2/about.html">0.42.2</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.1/about.html">0.42.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.0/about.html">0.42.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.41.0/about.html">0.41.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.40.0/about.html">0.40.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.2/about.html">0.39.2</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.1/about.html">0.39.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.0/about.html">0.39.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.38.0/about.html">0.38.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../about.html">0.37.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.36.0/about.html">0.36.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.35.0/about.html">0.35.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.34.0/about.html">0.34.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.33.0/about.html">0.33.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.32.0/about.html">0.32.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.31.0/about.html">0.31.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.1/about.html">0.30.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.0/about.html">0.30.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../0.43.0/about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Services</li>
+    <li><a href="receive-email.html">Receive Email</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.37.0</button>
+  <div class="version-menu">
+    <a class="version" href="../../0.43.0/services/receive-email.html">0.43.0</a>
+    <a class="version" href="../../0.42.2/services/receive-email.html">0.42.2</a>
+    <a class="version" href="../../0.42.1/services/receive-email.html">0.42.1</a>
+    <a class="version" href="../../0.42.0/services/receive-email.html">0.42.0</a>
+    <a class="version" href="../../0.41.0/services/receive-email.html">0.41.0</a>
+    <a class="version" href="../../0.40.0/services/receive-email.html">0.40.0</a>
+    <a class="version" href="../../0.39.2/services/receive-email.html">0.39.2</a>
+    <a class="version" href="../../0.39.1/services/receive-email.html">0.39.1</a>
+    <a class="version" href="../../0.39.0/services/receive-email.html">0.39.0</a>
+    <a class="version" href="../../0.38.0/services/receive-email.html">0.38.0</a>
+    <a class="version is-current" href="receive-email.html">0.37.0</a>
+    <a class="version" href="../../0.36.0/services/receive-email.html">0.36.0</a>
+    <a class="version" href="../../0.35.0/services/receive-email.html">0.35.0</a>
+    <a class="version" href="../../0.34.0/services/receive-email.html">0.34.0</a>
+    <a class="version" href="../../0.33.0/services/receive-email.html">0.33.0</a>
+    <a class="version" href="../../0.32.0/services/receive-email.html">0.32.0</a>
+    <a class="version" href="../../0.31.0/services/receive-email.html">0.31.0</a>
+    <a class="version" href="../../0.30.1/services/receive-email.html">0.30.1</a>
+    <a class="version" href="../../0.30.0/services/receive-email.html">0.30.0</a>
+    <a class="version" href="../../0.0.0/services/receive-email.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Receive Email</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Email message received can be automatically converted to an object of type <code>io.automatiko.engine.addons.services.receiveemail.EmailMessage</code>
+that has following properties</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>from - from address</p>
+</li>
+<li>
+<p>replyTo - reply to address if found</p>
+</li>
+<li>
+<p>to - list of TO recipients as string</p>
+</li>
+<li>
+<p>cc - list of CC recipients as string</p>
+</li>
+<li>
+<p>bcc - list of BCC recipients as string</p>
+</li>
+<li>
+<p>subject - email subject</p>
+</li>
+<li>
+<p>body - string representation of the email body</p>
+</li>
+<li>
+<p>attachments - list of attachments if found any in the email (of type <code>io.automatiko.engine.api.workflow.files.File&lt;byte[]&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In case you can to extract more from the email message than what is provided out of the box
+then you should define new type and implement <code>io.automatiko.engine.api.io.InputConverter&lt;T&gt;</code> for that type.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition to automatic email conversion to a java object, there is also a function (that will be made available
+to your workflow definition) that can be used for correlating emails to proper workflow instances.</p>
+</div>
+<div class="paragraph">
+<p>That function is <code>replyMessageId(message)</code> it takes the received message and extracts the correlation attribute that
+is actually based on the <code>In-Reply-To</code> header of the email. This goes hand in hand with sending correlated email
+that will attach proper information to be able to use it on both ends.</p>
+</div>
+<div class="paragraph">
+<p>Use of this function is via <code>corrrelationExpression</code> of the message within workflow definition.
+See <a href="../components/messaging.html#_correlation" class="page">correlation section in Messaging</a> for more details.</p>
+</div>
+<div class="paragraph">
+<p>And here is an example how it can be used</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/receive-email-1.png" alt="receive email 1">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage"><a class="anchor" href="#_usage"></a>Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To be able to use this service addon a project must be given following dependency</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons.services&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-receive-email-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is a need to provide email server configuration via <code>application.properties</code> file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">email.user=YOUR_EMAIL_USER@gmail.com
+email.password=YOUR_EMAIL_PASSWORD
+
+mp.messaging.incoming.email-received.endpoint-uri=imaps://imap.gmail.com?username=${email.user}&amp;password=${email.password}&amp;delete=false&amp;unseen=true&amp;delay=60000&amp;closeFolder=false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <code>email-received</code> is the name of the message within your workflow definition.</p>
+</div>
+<div class="paragraph">
+<p>A complete example of this service can be found
+in <a href="https://github.com/automatiko-io/automatiko-engine/tree/main/integration-tests/automatiko-email">integration tests of the Automatiko project</a></p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

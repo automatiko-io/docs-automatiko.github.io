@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Handling files :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.43.0/components/files.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.41.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.30.0.html">0.30.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.41.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../0.43.0/about.html">0.43.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.2/about.html">0.42.2</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.1/about.html">0.42.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.0/about.html">0.42.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../about.html">0.41.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.40.0/about.html">0.40.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.2/about.html">0.39.2</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.1/about.html">0.39.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.0/about.html">0.39.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.38.0/about.html">0.38.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.37.0/about.html">0.37.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.36.0/about.html">0.36.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.35.0/about.html">0.35.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.34.0/about.html">0.34.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.33.0/about.html">0.33.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.32.0/about.html">0.32.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.31.0/about.html">0.31.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.1/about.html">0.30.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.0/about.html">0.30.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../0.43.0/about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Components</li>
+    <li><a href="files.html">Handling files</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.41.0</button>
+  <div class="version-menu">
+    <a class="version" href="../../0.43.0/components/files.html">0.43.0</a>
+    <a class="version" href="../../0.42.2/components/files.html">0.42.2</a>
+    <a class="version" href="../../0.42.1/components/files.html">0.42.1</a>
+    <a class="version" href="../../0.42.0/components/files.html">0.42.0</a>
+    <a class="version is-current" href="files.html">0.41.0</a>
+    <a class="version" href="../../0.40.0/components/files.html">0.40.0</a>
+    <a class="version" href="../../0.39.2/components/files.html">0.39.2</a>
+    <a class="version" href="../../0.39.1/components/files.html">0.39.1</a>
+    <a class="version" href="../../0.39.0/components/files.html">0.39.0</a>
+    <a class="version" href="../../0.38.0/components/files.html">0.38.0</a>
+    <a class="version" href="../../0.37.0/components/files.html">0.37.0</a>
+    <a class="version" href="../../0.36.0/components/files.html">0.36.0</a>
+    <a class="version" href="../../0.35.0/components/files.html">0.35.0</a>
+    <a class="version" href="../../0.34.0/components/files.html">0.34.0</a>
+    <a class="version" href="../../0.33.0/components/files.html">0.33.0</a>
+    <a class="version" href="../../0.32.0/components/files.html">0.32.0</a>
+    <a class="version" href="../../0.31.0/components/files.html">0.31.0</a>
+    <a class="version" href="../../0.30.1/components/files.html">0.30.1</a>
+    <a class="version" href="../../0.30.0/components/files.html">0.30.0</a>
+    <a class="version" href="../../0.0.0/components/files.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Handling files</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>One of common requirements when working with workflows is the ability to handle files or documents. These can be of
+various types such as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>documents (word, excel, pdf, etc)</p>
+</li>
+<li>
+<p>images</p>
+</li>
+<li>
+<p>text files</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Regardless of the type of file there will be a need to store it as part of execution of a workflow instance.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko comes with following types of file that abstract the concept of binary data</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Content based file</strong> - a file that contains its data</p>
+</li>
+<li>
+<p><strong>Location based file</strong> - a file that reference data using a location usually represented as URL</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These two file types are provided as following implementation classes that should be used within workflow definition
+as types of data objects (aka variables).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Content based file</strong> - <code>io.automatiko.engine.workflow.file.ByteArrayFile</code></p>
+</li>
+<li>
+<p><strong>Location based file</strong> - <code>io.automatiko.engine.workflow.file.UrlFile</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These types are properly configured so they can be used as API types and these will only expose relevant information.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>By default, file types are treated exactly the same way as other type and thus will be stored together with
+other data objects of the workflow instance. That might cause certain issues depending on type of persistence store used
+and the size of the files being managed.</p>
+</div>
+<div class="paragraph">
+<p>To address this, there are addons that bring in various back ends that can store files in reliable and secure way.
+Currently there are following addons</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>File System</p>
+</li>
+<li>
+<p><a href="https://aws.amazon.com/s3/">Amazon S3</a></p>
+</li>
+<li>
+<p><a href="https://cloud.google.com/storage">Google Storage</a></p>
+</li>
+<li>
+<p>MongoDB based on GridFS</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Depending on the selected file addon there will be additional configuration needed. Though regardless of the type used they work
+in the same way - intercept use of Content based files (<code>ByteArrayFile</code>) and replace it with its dedicated flavor
+that extends the <code>ByteArrayFile</code>.</p>
+</div>
+<div class="paragraph">
+<p>Most important role of the addon is to offload the workflow from the content of the file and instead provide link to
+get the content on demand. At the same time, call to the <code>content</code> method of the <code>ByteArrayFile</code> will automatically load the
+content so when content is actually needed within the workflow instance execution it can be easily retrieved.
+An example of that is when such file needs to be sent as email attachment where the content is mandatory.</p>
+</div>
+<div class="paragraph">
+<p>All files that are content based (with <code>ByteArrayFile</code>) will be intercepted and replaced with flavor of that type provided by addon.
+At the time it is stored, content is removed and stored externally and an url to fetch this file will be set.</p>
+</div>
+<div class="paragraph">
+<p>So in a case where service receives a content based file through the service interface in following format</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "file": {
+    "content": "Y29udGVudA==",
+    "name": "test.txt"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>it will be replaced with addon specific file that will look like</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "file": {
+    "name": "test.txt",
+    "attributes": null,
+    "url": "http://localhost:8080/management/files/download/files/1.0/5184aa18-0b93-4ba0-abba-636d95ce91e0/file/test.txt"
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen, content of the file is no longer shipped but the url is set with location where the content can be easily fetched.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The host and port of the url is set based on <code>quarkus.automatiko.service-url</code> property.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_system_addon"><a class="anchor" href="#_file_system_addon"></a>File System AddOn</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>File System AddOn allows to put file content on local file system. The data will not be persisted with workflow instance
+itself but externalized. In addition to that a dedicated endpoint to download the file is also provided.</p>
+</div>
+<div class="paragraph">
+<p>To enable this addon add following dependency to the project</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-files-filesystem-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that, add following property to <code>application.properties</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.files.fs.location=ABSOLUTE_PATH</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Replace <code>ABSOLUTE_PATH</code> with the actual path where files should be stored.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amazon_s3_addon"><a class="anchor" href="#_amazon_s3_addon"></a>Amazon S3 AddOn</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Amazon S3 AddOn allows to put file content in to Amazon S3 bucket. The data will not be persisted with workflow instance
+itself but externalized. In addition to that a dedicated endpoint to download the file is also provided.</p>
+</div>
+<div class="paragraph">
+<p>To enable this addon add following dependency to the project</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-files-s3-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that, add following property to <code>application.properties</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.files.s3.bucket=BUCKET_NAME
+quarkus.s3.aws.region=YOUR_REGION
+quarkus.s3.aws.credentials.type=default</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Replace <code>BUCKET_NAME</code> with the actual name of the bucket where files should be stored and
+<code>YOUR_REGION</code> with the region where your S3 bucket was created
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>quarkus.s3.aws.credentials.type</code> - use the <code>default</code> credentials provider chain that looks for credentials in this order:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java System Properties - <code>aws.accessKeyId</code> and <code>aws.secretAccessKey</code></p>
+</li>
+<li>
+<p>Environment Variables - <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code></p>
+</li>
+<li>
+<p>Credential profiles file at the default location (<code>~/.aws/credentials</code>) shared by all AWS SDKs and the AWS CLI</p>
+</li>
+<li>
+<p>Credentials delivered through the Amazon ECS if the <code>AWS_CONTAINER_CREDENTIALS_RELATIVE_URI</code> environment variable is set and the security manager has permission to access the variable,</p>
+</li>
+<li>
+<p>Instance profile credentials delivered through the Amazon EC2 metadata service</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_google_storage_addon"><a class="anchor" href="#_google_storage_addon"></a>Google Storage AddOn</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Google Storage AddOn allows to put file content in to Google Storage bucket. The data will not be persisted with workflow instance
+itself but externalized. In addition to that a dedicated endpoint to download the file is also provided.</p>
+</div>
+<div class="paragraph">
+<p>To enable this addon add following dependency to the project</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-files-google-storage-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that, add following property to <code>application.properties</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.files.google-storage.bucket=BUCKET_NAME
+quarkus.google.cloud.project-id=PROJECT_ID
+quarkus.google.cloud.service-account-location=/path/service-account-key.json</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Replace <code>BUCKET_NAME</code> with the actual name of the bucket where files should be stored and
+<code>PROJECT_ID</code> with the Google Cloud project to be used. Lastly, point to service account key to
+authorize access to the Google Cloud Storage service
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mongodb_gridfs_addon"><a class="anchor" href="#_mongodb_gridfs_addon"></a>MongoDB (GridFS) AddOn</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MongoDB (based on GridFS) AddOn allows to put file content into MongoDB instance. The data will not be persisted with workflow instance
+itself but externalized. In addition to that a dedicated endpoint to download the file is also provided.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+See more information about <a href="https://www.mongodb.com/docs/manual/core/gridfs">MongoDB GridFS</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To enable this addon add following dependency to the project</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-files-mongodb-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that, following properties can be set in <code>application.properties</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.files.mongodb.database=NAME_OF_DB
+quarkus.automatiko.files.mongodb.chunk-size=12345</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Replace <code>NAME_OF_DB</code> with the name of database where files should be stored, if not given it defaults to <code>automatiko</code>. Chunk size
+can also be given (in bytes) to control the size of the chunks stored in Mongo via GridFS.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_files_as_part_of_data_objects_pojos"><a class="anchor" href="#_using_files_as_part_of_data_objects_pojos"></a>Using files as part of data objects (POJOs)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Files are usually used as type of data objects but sometimes there is a need to have files embedded into
+other types. Like an email message can consist of both body and attachments and this requires to have files included in the
+object representing these properties.</p>
+</div>
+<div class="paragraph">
+<p>To make this happen such object needs to implement <code>io.automatiko.engine.api.workflow.files.HasFiles&lt;T&gt;</code> interface.
+This interface provides access to files managed by the instance and allows to accept the augmented versions of the files
+that are changed by the storage mechanism used.</p>
+</div>
+<div class="paragraph">
+<p><code>io.automatiko.engine.api.workflow.files.HasFiles&lt;T&gt;</code> uses a parametrized type which can be one of the following</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>single file represented by <code>io.automatiko.engine.api.workflow.files.File&lt;T&gt;</code></p>
+</li>
+<li>
+<p>collection of files represented by <code>Collection&lt;io.automatiko.engine.api.workflow.files.File&lt;T&gt;&gt;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

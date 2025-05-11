@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>User tasks :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.43.0/components/user-tasks.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.39.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.30.0.html">0.30.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.39.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../0.43.0/about.html">0.43.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.2/about.html">0.42.2</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.1/about.html">0.42.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.0/about.html">0.42.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.41.0/about.html">0.41.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.40.0/about.html">0.40.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.2/about.html">0.39.2</a>
+        </li>
+        <li class="version is-current">
+          <a href="../about.html">0.39.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.0/about.html">0.39.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.38.0/about.html">0.38.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.37.0/about.html">0.37.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.36.0/about.html">0.36.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.35.0/about.html">0.35.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.34.0/about.html">0.34.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.33.0/about.html">0.33.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.32.0/about.html">0.32.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.31.0/about.html">0.31.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.1/about.html">0.30.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.0/about.html">0.30.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../0.43.0/about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Components</li>
+    <li><a href="user-tasks.html">User tasks</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.39.1</button>
+  <div class="version-menu">
+    <a class="version" href="../../0.43.0/components/user-tasks.html">0.43.0</a>
+    <a class="version" href="../../0.42.2/components/user-tasks.html">0.42.2</a>
+    <a class="version" href="../../0.42.1/components/user-tasks.html">0.42.1</a>
+    <a class="version" href="../../0.42.0/components/user-tasks.html">0.42.0</a>
+    <a class="version" href="../../0.41.0/components/user-tasks.html">0.41.0</a>
+    <a class="version" href="../../0.40.0/components/user-tasks.html">0.40.0</a>
+    <a class="version" href="../../0.39.2/components/user-tasks.html">0.39.2</a>
+    <a class="version is-current" href="user-tasks.html">0.39.1</a>
+    <a class="version" href="../../0.39.0/components/user-tasks.html">0.39.0</a>
+    <a class="version" href="../../0.38.0/components/user-tasks.html">0.38.0</a>
+    <a class="version" href="../../0.37.0/components/user-tasks.html">0.37.0</a>
+    <a class="version" href="../../0.36.0/components/user-tasks.html">0.36.0</a>
+    <a class="version" href="../../0.35.0/components/user-tasks.html">0.35.0</a>
+    <a class="version" href="../../0.34.0/components/user-tasks.html">0.34.0</a>
+    <a class="version" href="../../0.33.0/components/user-tasks.html">0.33.0</a>
+    <a class="version" href="../../0.32.0/components/user-tasks.html">0.32.0</a>
+    <a class="version" href="../../0.31.0/components/user-tasks.html">0.31.0</a>
+    <a class="version" href="../../0.30.1/components/user-tasks.html">0.30.1</a>
+    <a class="version" href="../../0.30.0/components/user-tasks.html">0.30.0</a>
+    <a class="version" href="../../0.0.0/components/user-tasks.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">User tasks</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>User assigned tasks are rather common in workflow based systems. They usually represent some need of either doing
+manual work by human actors or there is a need to collect some data from users. In anyway there is often the need
+to present this is human readable way (user interface) and to make sure people are aware of the tasks is to notify
+them.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko comes with following addons that help with user tasks within workflows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>automatiko-user-tasks-management-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-email-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-slack-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-teams-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-index-fs-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-index-db-addon</p>
+</li>
+<li>
+<p>automatiko-user-tasks-index-mongodb-addon</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Regardless of type of notifications it can be disabled globally by setting (<code>QUARKUS_AUTOMATIKO_NOTIFICATIONS_DISABLED=true</code>)
+or on each user task via custom attribute called <code>notification</code> with value set to <code>disabled</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_management"><a class="anchor" href="#_user_tasks_management"></a>User tasks management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>User task management addon brings basic support for displaying user focused information about tasks assigned
+to human actors. That is usually in form format where users can provide input required to continue with
+the workflow instance.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Automatiko does not aim at providing you with auto generated forms as this is usually more complex than
+automatic generation can handle. For instance layout of the form might be really complex, data that the form
+displays can come from various places and not all of them are kept in workflow instance etc.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Forms are based on templates that are suppose to be given as part of your service where Automatiko can locate them
+and present to the user when requested. All will be rendered as fully featured website so it can be easily embedded
+ in custom websites for integration purpose.</p>
+</div>
+<div class="paragraph">
+<p>Templates are based on <a href="https://quarkus.io/guides/qute">Qute templating engine</a>.</p>
+</div>
+<div class="paragraph">
+<p>Developers can build their templates for each task to ensure that proper readability of the work to be done is given
+to users who get tasks assigned. Template files should be located in <code>src/main/resources/templates</code> folder of your
+service project. Files are expected to have following extensions</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>.html</code></p>
+</li>
+<li>
+<p><code>.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is recommended to use <code>html</code> as it is closer to the actual content of it.</p>
+</div>
+<div class="paragraph">
+<p>Naming convention of the template files is as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>task name property defined on the user task</p>
+</li>
+<li>
+<p>name of the user task</p>
+</li>
+<li>
+<p>workflow identifier with task name property defined on the user task</p>
+</li>
+<li>
+<p>workflow identifier with name of the user task</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example when you have a task named <code>My Task</code> that has task name property <code>approval</code> within workflow with id 'vacations'
+ then you can create following template files that will be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approval.html</code></p>
+</li>
+<li>
+<p><code>vacations.approval.html</code></p>
+</li>
+<li>
+<p><code>My Task.html</code></p>
+</li>
+<li>
+<p><code>vacations.My Task.html</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Recommended it to use simple names that are defined as <code>TaskName</code> property of the user task as template name as it
+is also used as part of service api (REST api) so it will be easier to correlate these two.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Since these files are considered to be templates there are several variables given that will represent various data
+of the user task assigned.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">task instance in simplified format giving access to task name, description workflow metadata etc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link to the endpoint to work on a user task instance, allows to push data and complete it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input data of the user task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">results</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">results data of the user task - this will be populated with inputs if the match by name and do not have value set</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When there is no template file found for given task a default form will be returned but it will only
+provide simple text based form inputs. It is recommended to always provide custom templates for user tasks.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_external_templates_loaded_at_runtime"><a class="anchor" href="#_external_templates_loaded_at_runtime"></a>External templates loaded at runtime</h4>
+<div class="paragraph">
+<p>Not always templates can be provided at build time, for instance when the existing ones should be customized.
+To be able to allow customization templates can be loaded at runtime based on folder path given by
+<code>quarkus.automatiko.templates-folder</code> configuration property.</p>
+</div>
+<div class="paragraph">
+<p>All files with <code>.html</code> extension will be loaded and registered to the templating engine and by that can
+be used by user task forms and emails.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure"><a class="anchor" href="#_configure"></a>Configure</h3>
+<div class="paragraph">
+<p>To enable user tasks management addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-management-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_start_process_forms"><a class="anchor" href="#_start_process_forms"></a>Start process forms</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As part of user task management addon, forms to start instances can also be provided. It works in exactly the same way as user tasks forms
+- based on template files. Templates must be named in following way:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>{processid}.html</code> where <code>processid</code> is the identifier used for process definition</p>
+</li>
+<li>
+<p><code>{processid}_{version}.html</code> where <code>processid</code> is the identifier used for process definition and <code>version</code> of the process definition if version is used</p>
+</li>
+<li>
+<p><code>org/acme/test/{processid}.html</code> where <code>org/acme/test</code> is the package name used for process definition transformed to a path (<code>org.acme.test</code>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Using package names allows to have better structure of template files in case of any workflows exist in given project.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Templates can reference following parameters to provide more tailored forms</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the process definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the process definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional description of the process definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version of the process definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url where the data should be send (posted) to start new instance</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When the addon is used and form template is not defined for given workflow then a default form is returned. Default forms are
+for information only and do not allow to submit. Users can change the default templates providing template files with following
+names:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>workflow-not-found.html</code> - to provide a form when no dedicate template for workflow exists</p>
+</li>
+<li>
+<p><code>workflow-not-authorized.html</code> - to provide a form when user is not authorized to create instances of given workflow</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Same parameters are available to default templates as described above, with one exception that <code>url</code> is not given for not authorized
+form.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_email_notifications"><a class="anchor" href="#_user_tasks_email_notifications"></a>User tasks email notifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Human actors usually prefer to receive notifications when there is an awaiting task assigned to them. This is where
+email notifications come handy. Similar to forms, email notifications are template based but here relying on defaults
+might be actually a good thing.</p>
+</div>
+<div class="paragraph">
+<p>Here is a sample email with default template for user task</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/email-notification.png" alt="email notification">
+</div>
+</div>
+<div class="paragraph">
+<p>Them main purpose for the notification is to give a hint there is something and provide base set of information.</p>
+</div>
+<div class="paragraph">
+<p>Naming convention of the template files is as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>task name property defined on the user task with suffix <code>-email.html</code></p>
+</li>
+<li>
+<p>name of the user task with suffix <code>-email.html</code></p>
+</li>
+<li>
+<p>workflow identifier with task name property defined on the user task with suffix <code>-email.html</code></p>
+</li>
+<li>
+<p>workflow identifier with name of the user task with suffix <code>-email.html</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example when you have a task named <code>My Task</code> that has task name property <code>approval</code> within workflow with id 'vacations'
+ then you can create following template files that will be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approval-email.html</code></p>
+</li>
+<li>
+<p><code>vacations.approval-email.html</code></p>
+</li>
+<li>
+<p><code>My Task-email.html</code></p>
+</li>
+<li>
+<p><code>vacations.My Task-email.html</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There might be some special cases where extra information should be included but by default notifications via email
+aim at not exposing too much of the task context like input information.</p>
+</div>
+<div class="paragraph">
+<p>Note that in case of multiple users are assigned to the task or assignment is based on group, all of these will receive an email
+It will be sent with dedicated link to the form so access to the task is really simple.</p>
+</div>
+<div class="paragraph">
+<p>Since these files are considered to be templates there are several variables given that will represent various data
+of the user task assigned.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the user task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the user task (can be null or empty)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">taskId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the task instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instanceId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the workflow instance task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identifier of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current data set for the user task - in form of a Map</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">direct and absolute link to the form for user task</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_customize_email_subject_for_notifications"><a class="anchor" href="#_customize_email_subject_for_notifications"></a>Customize email subject for notifications</h3>
+<div class="paragraph">
+<p>Email subject that is sent for user task notifications is by default a fixed name
+with following value:</p>
+</div>
+<div class="paragraph">
+<p><code>New task has been assigned to you (NAME OF THE TASK)</code></p>
+</div>
+<div class="paragraph">
+<p>That&#8217;s not always desired and more tailored email subject is required.
+This can be achieved on each user task level by setting the
+<code>EmailSubject</code> data input to the value that should be used for
+actual notification email subject.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The email subject can also be generated based on data object via expressions.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.mailer.auth-methods=DIGEST-MD5 CRAM-SHA256 CRAM-SHA1 CRAM-MD5 PLAIN LOGIN
+quarkus.mailer.from=YOUR_EMAIL@gmail.com
+quarkus.mailer.host=smtp.gmail.com
+quarkus.mailer.port=587
+quarkus.mailer.start-tls=REQUIRED
+quarkus.mailer.username=YOUR_EMAIL@gmail.com
+quarkus.mailer.password=PASSWORD</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition, service url must also be defined as it is used to construct the absolute url of the form sent out
+via email.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.serviceUrl=https://myservice.hostname.com</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When you run your service in development mode or test mode email are not being sent out so you can easily
+work on them without spamming too much. You can also use mock inbox to validate emails being sent out in your tests.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Email is sent only to valid email addresses so when your user ids are not represented as email address then you need
+to provide custom implementation of <code>io.automatiko.engine.addons.usertasks.email.EmailAddressResolver</code> interface that
+is responsible for resolving user and groups to their email addresses.
+You can also use that interface to suppress sending emails for certain users and/or groups.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_slack_notifications"><a class="anchor" href="#_user_tasks_slack_notifications"></a>User tasks slack notifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Similar to email notifications, slack messages can also be used as notifications for user tasks. Slack integration is based on
+<a href="https://www.google.com/search?client=safari&amp;rls=en&amp;q=slack+incoming+webhook&amp;ie=UTF-8&amp;oe=UTF-8">incoming webhooks feature in Slack</a> and allows to send messages to given channel.</p>
+</div>
+<div class="paragraph">
+<p>To be able to use slack integration, the channel (as name) needs to be specified on user task via custom attributes. The custom attribute
+is called <code>slack-channel</code></p>
+</div>
+<div class="paragraph">
+<p>The content of the message that will be posted to the Slack channel can be made user task specific as it is based on templates.</p>
+</div>
+<div class="paragraph">
+<p>Naming convention of the template files is as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>task name property defined on the user task with suffix <code>-slack.txt</code></p>
+</li>
+<li>
+<p>name of the user task with suffix <code>-slack.txt</code></p>
+</li>
+<li>
+<p>workflow identifier with task name property defined on the user task with suffix <code>-slack.txt</code></p>
+</li>
+<li>
+<p>workflow identifier with name of the user task with suffix <code>-slack.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example when you have a task named <code>My Task</code> that has task name property <code>approval</code> within workflow with id 'vacations'
+ then you can create following template files that will be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approval-slack.txt</code></p>
+</li>
+<li>
+<p><code>vacations.approval-slack.txt</code></p>
+</li>
+<li>
+<p><code>My Task-slack.txt</code></p>
+</li>
+<li>
+<p><code>vacations.My Task-slack.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There might be some special cases where extra information should be included but by default notifications via slack
+aim at not exposing too much of the task context like input information.</p>
+</div>
+<div class="paragraph">
+<p>Since these files are considered to be templates there are several variables given that will represent various data
+of the user task assigned.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the user task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the user task (can be null or empty)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">taskId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the task instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instanceId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the workflow instance task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identifier of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current data set for the user task - in form of a Map</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">direct and absolute link to the form for user task</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Since the template for Slack is JSON based, the regular parts of the JSON structure <code>{</code> and <code>}</code> must be escaped in the template with <code>\{</code> and <code>\}</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of Slack template</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">\{
+	"blocks": [
+		\{
+			"type": "section",
+			"text": \{
+				"type": "mrkdwn",
+				"text": "Process '{processName}' requires user action on instance {instanceId}"
+			\}
+		\},
+		\{
+			"type": "section",
+			"text": \{
+				"type": "mrkdwn",
+				"text": "A new task ({name}) has been assigned\n\n&lt;{link}|View task details&gt;"
+			\}
+		\}
+	]
+\}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_2"><a class="anchor" href="#_configure_2"></a>Configure</h3>
+<div class="paragraph">
+<p>To enable user tasks slack addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-slack-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that there must be configuration of your slack channels webhook urls. Usually this is set in
+<code>application.properties</code> of your service but can also be given as system properties or environment variables</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.notifications.slack.test=https://hooks.slack.com......
+quarkus.automatiko.notifications.slack.another=https://hooks.slack.com......
+quarkus.automatiko.notifications.slack.onemore=https://hooks.slack.com......</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There can be many channels defined and the names of the channels in <code>application.properties</code> file (e.g. <code>test</code>, <code>another</code>) are those that should be
+referenced in the user task custom attributes via <code>slack-channel</code>. This provides an abstraction layer on top of real channel names
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_teams_notifications"><a class="anchor" href="#_user_tasks_teams_notifications"></a>User tasks teams notifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Similar to slack notifications, Microsoft Teams messages can also be used as notifications for user tasks. Teams integration is based on
+<a href="https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet">incoming webhooks feature in MS Teams</a> and allows to send messages to given channel.</p>
+</div>
+<div class="paragraph">
+<p>To be able to use teams integration, the channel (as name) needs to be specified on user task via custom attributes. The custom attribute
+is called <code>teams-channel</code></p>
+</div>
+<div class="paragraph">
+<p>The content of the message that will be posted to the Teams channel can be made user task specific as it is based on templates.</p>
+</div>
+<div class="paragraph">
+<p>Naming convention of the template files is as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>task name property defined on the user task with suffix <code>-teams.txt</code></p>
+</li>
+<li>
+<p>name of the user task with suffix <code>-teams.txt</code></p>
+</li>
+<li>
+<p>workflow identifier with task name property defined on the user task with suffix <code>-teams.txt</code></p>
+</li>
+<li>
+<p>workflow identifier with name of the user task with suffix <code>-teams.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example when you have a task named <code>My Task</code> that has task name property <code>approval</code> within workflow with id 'vacations'
+ then you can create following template files that will be found</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>approval-teams.txt</code></p>
+</li>
+<li>
+<p><code>vacations.approval-teams.txt</code></p>
+</li>
+<li>
+<p><code>My Task-teams.txt</code></p>
+</li>
+<li>
+<p><code>vacations.My Task-teams.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There might be some special cases where extra information should be included but by default notifications via teams
+aim at not exposing too much of the task context like input information.</p>
+</div>
+<div class="paragraph">
+<p>Since these files are considered to be templates there are several variables given that will represent various data
+of the user task assigned.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the user task</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the user task (can be null or empty)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">taskId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the task instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">instanceId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique identifier of the workflow instance task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identifier of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the workflow definition user task belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">current data set for the user task - in form of a Map</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">direct and absolute link to the form for user task</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Since the template for MS Teams is JSON based, the regular parts of the JSON structure <code>{</code> and <code>}</code> must be escaped in the template with <code>\{</code> and <code>\}</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of MS Teams template</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">\{
+  "@type": "MessageCard",
+  "@context": "http://schema.org/extensions",
+  "themeColor": "0076D7",
+  "summary": "Task assigned - {name}",
+  "sections": [
+    \{
+      "activityTitle": "Task assigned - {name}",
+      "activitySubtitle": "{description}",
+      "markdown": true
+    \}
+  ],
+  "potentialAction": [
+    \{
+      "@type": "OpenUri",
+      "name": "View task details",
+      "targets": [
+        \{
+          "os": "default",
+          "uri": "{link}"
+        \}
+      ]
+    \}
+  ]
+\}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_3"><a class="anchor" href="#_configure_3"></a>Configure</h3>
+<div class="paragraph">
+<p>To enable user tasks teams addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-teams-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that there must be configuration of your teams channels webhook urls. Usually this is set in
+<code>application.properties</code> of your service but can also be given as system properties or environment variables</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.notifications.teams.test=https://mycompany.webhook.office.com/webhook......
+quarkus.automatiko.notifications.teams.another=https://mycompany.webhook.office.com/webhook......
+quarkus.automatiko.notifications.teams.onemore=https://mycompany.webhook.office.com/webhook......</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There can be many channels defined and the names of the channels in <code>application.properties</code> file (e.g. <code>test</code>, <code>another</code>) are those that should be
+referenced in the user task custom attributes via <code>teams-channel</code>. This provides an abstraction layer on top of real channel names
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customize_templates"><a class="anchor" href="#_customize_templates"></a>Customize templates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In cases where (email, slack, teams) templates have to customized at runtime they can be provided via application
+property that points to a folder where <code><strong>.html</code> or <code></strong>.txt</code> files will be loaded at startup and registered.</p>
+</div>
+<div class="paragraph">
+<p>It can be given as environment variable <code>QUARKUS_AUTOMATIKO_TEMPLATES_FOLDER=/templates</code> or system property
+<code>-Dquarkus.automatiko.templates.folder=/templates</code></p>
+</div>
+<div class="paragraph">
+<p>Naming convention is the same as for creating templates as part of the source code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_notification"><a class="anchor" href="#_custom_notification"></a>Custom notification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Users can build custom notifications by implementing a <code>io.automatiko.engine.addons.usertasks.notification.NotificationEmitter</code> interface.</p>
+</div>
+<div class="paragraph">
+<p>This interface is located in <code>io.automatiko.addons:automatiko-user-tasks-notification</code></p>
+</div>
+<div class="paragraph">
+<p>The implementation must be a CDI bean so it can be discovered and registered automatically.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_tasks_index"><a class="anchor" href="#_user_tasks_index"></a>User tasks index</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>User task index allows to collect all user tasks created within given service and expose it for queries. Most common
+use case is to find tasks assigned to given user, taking into consideration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tasks assigned to users</p>
+</li>
+<li>
+<p>tasks assigned to groups</p>
+</li>
+<li>
+<p>tasks excluding users</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to that, task information can also be targeted as filter criteria.</p>
+</div>
+<div class="paragraph">
+<p>Out of the box filter criteria are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code> - name of the task, partial match</p>
+</li>
+<li>
+<p><code>description</code> - description of the task, partial match</p>
+</li>
+<li>
+<p><code>state</code> - state of the task (Ready, Completed, Aborted)</p>
+</li>
+<li>
+<p><code>priority</code> - priority of the task, partial match</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additional queries can be defined as custom that will provide more specific ways of searching for tasks. Such as taking into
+account other task properties or even inputs and outputs of the tasks. Though this is dependent on the type of storage used.
+This concept is known as <code>CustomQueryBuilder</code> and is described in details in each supported index addon.</p>
+</div>
+<div class="paragraph">
+<p>Result can also be sorted either ascending or descending by task fields.</p>
+</div>
+<div class="paragraph">
+<p>Once addon is added to the service, it will expose additional REST endpoint under <code>/index/usertasks</code> with following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>find tasks by filter criteria</p>
+</li>
+<li>
+<p>find task by id</p>
+</li>
+<li>
+<p>query with custom queries</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>User tasks are kept in the index according to instance end configuration. Instance end property can be set to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>remove - (default) that removes process instances upon its completion</p>
+</li>
+<li>
+<p>keep - to keep instances in the storage after they are completed</p>
+</li>
+<li>
+<p>archive - to archive process instances upon their completion</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Index will be default remove tasks that are completed to keep the index size manageable. But if the instance end configuration is set to keep then tasks will be kept in the index even when they are completed. That allows to search for tasks that were already completed.</p>
+</div>
+<div class="paragraph">
+<p>Tasks are automatically indexed after addon activation. Each task created within the service will be added to the index and
+by that can be searched for.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+User task index is only supported with file system, db and mongodb persistence
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_index_for_file_system_persistence"><a class="anchor" href="#_index_for_file_system_persistence"></a>Index for file system persistence</h3>
+<div class="paragraph">
+<p>File system persistence utilizes <a href="https://github.com/npgall/cqengine">CQEngine</a> for efficient indexing and searching. This allows to collected and efficiently search big volumes of tasks.</p>
+</div>
+<div class="sect3">
+<h4 id="_custom_query_builder"><a class="anchor" href="#_custom_query_builder"></a>Custom query builder</h4>
+<div class="paragraph">
+<p>Custom query builder in file system index addon requires two things to be done:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>register additional indexes on non yet indexed fields</p>
+</li>
+<li>
+<p>define where clause based on incoming parameters</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each custom query builder must implement methods of <code>io.automatiko.addons.usertasks.index.fs.CQEngineCustomQueryBuilder</code></p>
+</div>
+<div class="paragraph">
+<p>Following is an example building a custom query to filter out by process id.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import static com.googlecode.cqengine.query.QueryFactory.in;
+
+import java.util.List;
+import java.util.Map;
+
+import com.googlecode.cqengine.attribute.SimpleAttribute;
+import com.googlecode.cqengine.index.suffix.SuffixTreeIndex;
+import com.googlecode.cqengine.query.Query;
+import com.googlecode.cqengine.query.option.QueryOptions;
+
+import io.automatiko.addons.usertasks.index.fs.CQEngineBasedIndex;
+import io.automatiko.addons.usertasks.index.fs.CQEngineCustomQueryBuilder;
+import io.automatiko.addons.usertasks.index.fs.CQEngineUserTaskInfo;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+
+@ApplicationScoped<i class="conum" data-value="1"></i><b>(1)</b>
+public class ByProcessCustomQueryBuilder extends CQEngineCustomQueryBuilder {
+
+    public static final SimpleAttribute&lt;CQEngineUserTaskInfo, String&gt; PROCESS_ID = new SimpleAttribute&lt;&gt;("processId") {<i class="conum" data-value="2"></i><b>(2)</b>
+        public String getValue(CQEngineUserTaskInfo task, QueryOptions queryOptions) {
+            return task.getProcessId();
+        }
+    };
+
+    public ByProcessCustomQueryBuilder() {
+    }
+
+    @Inject
+    public ByProcessCustomQueryBuilder(CQEngineBasedIndex index) {
+        index.get().addIndex(SuffixTreeIndex.onAttribute(PROCESS_ID));<i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+    @Override
+    public Query&lt;CQEngineUserTaskInfo&gt; build(Map&lt;String, List&lt;String&gt;&gt; parameters) {
+
+        return in(PROCESS_ID, parameters.get("pid"));<i class="conum" data-value="4"></i><b>(4)</b>
+    }
+
+    @Override
+    public String id() {
+        return "byprocess";<i class="conum" data-value="5"></i><b>(5)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Make the class a CDI bean so it can be discovered</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create attribute definition for CQEngine index for given field</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Register new index for <code>PROCESS_ID</code> field</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>build CQEngine where clause</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Assign unique id for the query builder</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configure_4"><a class="anchor" href="#_configure_4"></a>Configure</h4>
+<div class="paragraph">
+<p>To enable user tasks fs index addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-index-fs-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to that there must be path provided where the index should be stored. Usually this is set in
+<code>application.properties</code> of your service but can also be given as system properties or environment variables</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-plain hljs" data-lang="plain">quarkus.automatiko.index.usertasks.fs.path=/data</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The path should point to directory that is writable and upon start a file <code>automatiko-user-tasks.dat</code> will be created.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_index_for_data_base_persistence"><a class="anchor" href="#_index_for_data_base_persistence"></a>Index for data base persistence</h3>
+<div class="paragraph">
+<p>Data base index addon creates new table (<code>USER_TASK_INDEX</code>) that will keep all user tasks of the service. This table
+is then queries to get tasks for given user.</p>
+</div>
+<div class="sect3">
+<h4 id="_custom_query_builder_2"><a class="anchor" href="#_custom_query_builder_2"></a>Custom query builder</h4>
+<div class="paragraph">
+<p>Custom query builder in db index addon requires to create a instance of <code>io.automatiko.addons.usertasks.index.db.DbQueryFilter</code>
+that provides a <code>JPQL</code> where clause and set of values for bind parameters.</p>
+</div>
+<div class="paragraph">
+<p>Each custom query builder must implement methods of <code>io.automatiko.addons.usertasks.index.db.DbCustomQueryBuilder</code></p>
+</div>
+<div class="paragraph">
+<p>Following is an example building a custom query to filter out by process id.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import java.util.List;
+import java.util.Map;
+
+import io.automatiko.addons.usertasks.index.db.DbCustomQueryBuilder;
+import io.automatiko.addons.usertasks.index.db.DbQueryFilter;
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped <i class="conum" data-value="1"></i><b>(1)</b>
+public class ByProcessIdDbCustomQueryBuilder extends DbCustomQueryBuilder {
+
+    @Override
+    public DbQueryFilter build(Map&lt;String, List&lt;String&gt;&gt; parameters) {
+
+        return new DbQueryFilter("t.processId = :process", Map.of("process", parameters.get("process").get(0))); <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+
+    @Override
+    public String id() {
+        return "byProcess"; <i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Make the class a CDI bean so it can be discovered</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create where clause based on parameters</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Assign unique id for the query builder</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configure_5"><a class="anchor" href="#_configure_5"></a>Configure</h4>
+<div class="paragraph">
+<p>To enable user tasks db index addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-index-db-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_index_for_mongodb_persistence"><a class="anchor" href="#_index_for_mongodb_persistence"></a>Index for MongoDB persistence</h3>
+<div class="paragraph">
+<p>MongoDB index addon creates new collection <code>usertasks</code> in the same database as the service. This collection is the queries to
+find tasks for given user and filter criteria.</p>
+</div>
+<div class="sect3">
+<h4 id="_custom_query_builder_3"><a class="anchor" href="#_custom_query_builder_3"></a>Custom query builder</h4>
+<div class="paragraph">
+<p>Custom query builder in mongodb index addon requires to create <code>Bson</code> filters according to MongoDB requirements.</p>
+</div>
+<div class="paragraph">
+<p>Each custom query builder must implement methods of <code>io.automatiko.addons.usertasks.index.mongo.MongoDBCustomQueryBuilder</code></p>
+</div>
+<div class="paragraph">
+<p>Following is an example building a custom query to filter out by process id.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import java.util.List;
+import java.util.Map;
+
+import org.bson.conversions.Bson;
+
+import com.mongodb.client.model.Filters;
+
+import io.automatiko.addons.usertasks.index.mongo.MongoDBCustomQueryBuilder;
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped <i class="conum" data-value="1"></i><b>(1)</b>
+public class OrderAmountQuery extends MongoDBCustomQueryBuilder {
+
+    @Override
+    public Bson build(Map&lt;String, List&lt;String&gt;&gt; parameters) {
+        Bson filter = Filters.and(Filters.eq("processId", "orderItems"),
+                Filters.gt("inputs.order.total", Double.parseDouble(parameters.get("amount").get(0)))); <i class="conum" data-value="2"></i><b>(2)</b>
+        return filter;
+    }
+
+    @Override
+    public String id() {
+        return "orderAmount"; <i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Make the class a CDI bean so it can be discovered</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create where clause based on parameters as <code>Bson</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Assign unique id for the query builder</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configure_6"><a class="anchor" href="#_configure_6"></a>Configure</h4>
+<div class="paragraph">
+<p>To enable user tasks db index addon add following dependency to your service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-user-tasks-index-mongodb-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_task_index_management"><a class="anchor" href="#_user_task_index_management"></a>User task index management</h3>
+<div class="paragraph">
+<p>When user tasks index addon on is configured it will also provide a management API. API is available under <code>/management/index/tasks</code> endpoint. Main usage of this api is to perform initial reindex after index addon was introduced or to resolve any out of sync instances.</p>
+</div>
+<div class="paragraph">
+<p>This API is by default hidden in OpenAPI and has following capabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>reindex all processes within the service</p>
+</li>
+<li>
+<p>reindex instances of a given process (by id)</p>
+</li>
+<li>
+<p>reindex only a single process instance of a given process (by id)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

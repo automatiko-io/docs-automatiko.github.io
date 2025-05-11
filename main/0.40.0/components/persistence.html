@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Persistence :: Automatiko</title>
+    <link rel="canonical" href="https://docs.automatiko.io/main/0.43.0/components/persistence.html">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2G3H6TJRK"></script>
+    <script>function gtag(){dataLayer.push(arguments)};window.dataLayer=window.dataLayer||[];gtag('js',new Date());gtag('config','G-R2G3H6TJRK')</script>
+    <link rel="icon" href="../../../_/img/automatiko-logo-circle.png" type="image/png">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://docs.automatiko.io"><img src="../../../_/img/automatiko-logo-circle.png" width="52px"/>Automatiko</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/automatiko-io">Souce code</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/issues">Issues</a>
+            <a class="navbar-item" href="https://github.com/automatiko-io/automatiko-engine/blob/master/CONTRIBUTING.md">Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="main" data-version="0.40.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../about.html">Automatiko Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-service.html">Workflow as a service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function.html">Workflow as a function</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../workflow-function-flow.html">Workflow as a function flow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases.html">Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-bpmn.html">Based on BPMN2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-sw.html">Based on Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started-code.html">Based on Java DSL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../best-practice.html">Best practice</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../service-interfaces.html">Service interface</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Components</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="messaging.html">Messaging</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="persistence.html">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="service-invocation.html">Service invocation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="errors.html">Error handling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="management.html">Process management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="event-publishers.html">Event publishers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-tasks.html">User tasks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-execution.html">Async Execution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="files.html">Handling files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="audit.html">Audit</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../configuration.html">Configuration reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/archive.html">Archive</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/email.html">Send Email</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../services/receive-email.html">Receive Email</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Migration guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.30.0.html">0.30.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.16.0.html">0.16.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.13.0.html">0.13.0</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../migration-guide/0.11.0.html">0.11.0</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Automatiko Documentation</span>
+    <span class="version">0.40.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Automatiko Documentation</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../0.43.0/about.html">0.43.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.2/about.html">0.42.2</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.1/about.html">0.42.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.42.0/about.html">0.42.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.41.0/about.html">0.41.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../about.html">0.40.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.2/about.html">0.39.2</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.1/about.html">0.39.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.39.0/about.html">0.39.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.38.0/about.html">0.38.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.37.0/about.html">0.37.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.36.0/about.html">0.36.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.35.0/about.html">0.35.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.34.0/about.html">0.34.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.33.0/about.html">0.33.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.32.0/about.html">0.32.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.31.0/about.html">0.31.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.1/about.html">0.30.1</a>
+        </li>
+        <li class="version">
+          <a href="../../0.30.0/about.html">0.30.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.0.0/about.html">0.0.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../0.43.0/about.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../about.html">Automatiko Documentation</a></li>
+    <li>Components</li>
+    <li><a href="persistence.html">Persistence</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.40.0</button>
+  <div class="version-menu">
+    <a class="version" href="../../0.43.0/components/persistence.html">0.43.0</a>
+    <a class="version" href="../../0.42.2/components/persistence.html">0.42.2</a>
+    <a class="version" href="../../0.42.1/components/persistence.html">0.42.1</a>
+    <a class="version" href="../../0.42.0/components/persistence.html">0.42.0</a>
+    <a class="version" href="../../0.41.0/components/persistence.html">0.41.0</a>
+    <a class="version is-current" href="persistence.html">0.40.0</a>
+    <a class="version" href="../../0.39.2/components/persistence.html">0.39.2</a>
+    <a class="version" href="../../0.39.1/components/persistence.html">0.39.1</a>
+    <a class="version" href="../../0.39.0/components/persistence.html">0.39.0</a>
+    <a class="version" href="../../0.38.0/components/persistence.html">0.38.0</a>
+    <a class="version" href="../../0.37.0/components/persistence.html">0.37.0</a>
+    <a class="version" href="../../0.36.0/components/persistence.html">0.36.0</a>
+    <a class="version" href="../../0.35.0/components/persistence.html">0.35.0</a>
+    <a class="version" href="../../0.34.0/components/persistence.html">0.34.0</a>
+    <a class="version" href="../../0.33.0/components/persistence.html">0.33.0</a>
+    <a class="version" href="../../0.32.0/components/persistence.html">0.32.0</a>
+    <a class="version" href="../../0.31.0/components/persistence.html">0.31.0</a>
+    <a class="version" href="../../0.30.1/components/persistence.html">0.30.1</a>
+    <a class="version" href="../../0.30.0/components/persistence.html">0.30.0</a>
+    <a class="version" href="../../0.0.0/components/persistence.html">0.0.0</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Persistence</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automatiko by default runs without any persistent storage so it can be used
+without additional components. Though in many cases workflow instances are
+long lived and thus require storage to persist its state.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko comes with several options to chose from</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>File system</strong> based storage</p>
+</li>
+<li>
+<p><strong>Database</strong> based storage</p>
+</li>
+<li>
+<p><strong>Amazon DynamoDB</strong> based storage</p>
+</li>
+<li>
+<p><strong>Apache Cassandra</strong> based storage</p>
+</li>
+<li>
+<p><strong>MongoDB</strong> based storage</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+More is on their way and as soon as they will be implemented they will
+be listed here.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_system_based_storage"><a class="anchor" href="#_file_system_based_storage"></a>File system based storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The most basic but quite powerful storage option is based on file system.
+This means each workflow instance will be stored in dedicated file in
+configured directory.</p>
+</div>
+<div class="paragraph">
+<p>In addition to file itself, Automatiko will store some metadata that allows
+to more efficiently look up instances without loading it completely.</p>
+</div>
+<div class="paragraph">
+<p>Depending on file system capabilities these metadata will be stored as</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>extended file attributes if file system supports it</p>
+</li>
+<li>
+<p><code>dot file</code> next to the actual file as a fallback option when file system does
+not support extended attributes</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h3>
+<div class="paragraph">
+<p>To use file system based perssitence your service must have following dependency</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-filesystem-persistence-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note that each persistence addon comes with job service implementation as well
+to provide persistence of timers defined in workflows
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Additional configuration should be placed in <code>application.properties</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.type</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify what persistence should be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.filesystem.path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_FILESYSTEM_PATH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system that will be used to store persistent state</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.type</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies type of jobs implementation to be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.filesystem.path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_FILESYSTEM_PATH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system where jobs persistent state will be stored</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.filesystem.threads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_FILESYSTEM_THREADS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for jobs execution</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This storage option can be used for pretty much any use case but it has certain drawbacks
+depending on the file system being used. It might not be the best option when
+horizontal scalability is important.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_database_based_storage"><a class="anchor" href="#_database_based_storage"></a>Database based storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Database based storage is mainly dedicated to cover <code>Database record processing</code>
+as it requires workflow data objects to be</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>simple types</p>
+</li>
+<li>
+<p>entities</p>
+</li>
+<li>
+<p>collection of entities</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Its main applicability is to store workflow state next to the data it is
+processing.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Data model of the workflow becomes an entity as well, which on
+database level will be represented as table.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Every workflow definition will be stored in dedicated table that is constructed
+based on workflow identifier and version. The table will also have all simple
+type data objects in the same table and reference any entity data objects.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../_images/db-persistence-model.png" alt="db persistence model"></span></p>
+</div>
+<div class="paragraph">
+<p>Green tables are those defined as data objects and annotated as entities.
+Orange tables are generated based on workflow definitions</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>vacations is the top level (public) process for handling vacation requests</p>
+</li>
+<li>
+<p>requests is the sub workflow (private) that handles individual request</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Blue table is used by jobs service that stores its data in db as well
+to support persistent timers defined in the workflow.</p>
+</div>
+<div class="sect2">
+<h3 id="_data_management"><a class="anchor" href="#_data_management"></a>Data management</h3>
+<div class="paragraph">
+<p>Since workflows operate on database records (entities defined as data objects)
+it has an option to manage these records. One of the important aspects is what
+should happen to the data after workflow instance completes?</p>
+</div>
+<div class="paragraph">
+<p>There are two options provided by Automatiko</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>keep the data as they are at workflow instance completion</p>
+</li>
+<li>
+<p>remove data that the workflow instance has worked with</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default data is not removed at the completion of workflow instance
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_2"><a class="anchor" href="#_configuration_2"></a>Configuration</h3>
+<div class="paragraph">
+<p>To use database based persistence your service must have following dependency</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-db-persistence-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note that each persistence addon comes with job service implementation as well
+to provide persistence of timers defined in workflows
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Additional configuration should be placed in <code>application.properties</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Automatiko specific configuration properties</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.type</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify what persistence should be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.db.remove-at-completion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if entities created during instance execution should be removed when instance completes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.db.interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DB_INTERVAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies interval (in minutes) how often look for another chunk of jobs to execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.db.threads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DB_THREADS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for job execution</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Datasource specific configuration properties</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.datasource.db-kind</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify what kind of data base should be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.datasource.username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_DATASOURCE_USERNAME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify user name to be used to connect to data base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.datasource.password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_DATASOURCE_PASSWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify password to be used to connect to data base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.datasource.jdbc.url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_DATASOURCE_JDBC_URL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify url to be used to connect to data base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Full configuration reference for data source can be found <a href="https://quarkus.io/guides/datasource#jdbc-configuration">here</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dynamodb_based_storage"><a class="anchor" href="#_dynamodb_based_storage"></a>DynamoDB based storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DynamoDB based storage allows to rely on Amazon managed DynamoDB. It allows to offload most of the storage
+heavy lifting (such as replication, scalability etc) to managed persistence service.</p>
+</div>
+<div class="paragraph">
+<p>Automatiko takes advantages of highly scalable nature of DynamoDB that nicely fits into workflow data model - being
+key value based.</p>
+</div>
+<div class="paragraph">
+<p>Every workflow definition will be stored in dedicated table that is constructed
+based on workflow identifier and version. That will result in each workflow definition to have
+dedicated storage location. Automatiko by default creates all required tables so there is no need
+to dive into the details but if such need arise automatic table creation can be disabled.</p>
+</div>
+<div class="paragraph">
+<p>The table structure will have following attributes</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>InstanceId</strong> - (of type string) this is the unique id of each workflow instance</p>
+</li>
+<li>
+<p><strong>Content</strong> - (of type binary) this is the actual workflow instance serialized</p>
+</li>
+<li>
+<p><strong>Tags</strong> - (of type list) this is the workflow instance tags - it also includes <code>instance id</code> and <code>business key</code></p>
+</li>
+<li>
+<p><strong>PIStatus</strong> - current status of the workflow instance</p>
+</li>
+<li>
+<p><strong>VersionTrack</strong> - current version of the workflow instance (increment with each change)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In addition when table is created it assigns default values for read and write capacity set to 10, it can be
+changed via configuration properties
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_configuration_3"><a class="anchor" href="#_configuration_3"></a>Configuration</h3>
+<div class="paragraph">
+<p>To use DynamoDB based persistence your service must have following dependency</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-dynamodb-persistence-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note that each persistence addon comes with job service implementation as well
+to provide persistence of timers defined in workflows
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Additional configuration should be placed in <code>application.properties</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Automatiko specific configuration properties</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.type</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify what persistence should be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.dynamodb.create-tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_DYNAMODB_CREATE_TABLES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if tables should be automatically created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.dynamodb.read-capacity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_DYNAMODB_READ_CAPACITY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies read capacity to be applied to created DynamoDB tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.dynamodb.write-capacity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_DYNAMODB_WRITE_CAPACITY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies write capacity to be applied to created DynamoDB tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.dynamodb.create-tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DYNAMODB_CREATE_TABLES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if tables should be automatically created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.dynamodb.read-capacity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DYNAMODB_READ_CAPACITY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies read capacity to be applied to created DynamoDB tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.dynamodb.write-capacity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DYNAMODB_WRITE_CAPACITY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies write capacity to be applied to created DynamoDB tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.dynamodb.interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DYNAMODB_INTERVAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies interval (in minutes) how often look for another chunk of jobs to execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.dynamodb.threads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_DYNAMODB_THREADS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for job execution</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Dynamodb specific configuration properties</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.dynamodb.endpoint-override</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_DYNAMODB_ENDPOINT_OVERRIDE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The endpoint URI with which the SDK should communicate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.dynamodb.aws.region</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_DYNAMODB_AWS_REGION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An Amazon Web Services region that hosts the given service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.dynamodb.aws.credentials.type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_DYNAMODB_AWS_CREDENTIALS_TYPE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure the credentials provider that should be used to authenticate with AWS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Full configuration reference for dynamodb can be found <a href="https://quarkus.io/guides/amazon-dynamodb#configuration-reference">here</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_apache_cassandra_based_storage"><a class="anchor" href="#_apache_cassandra_based_storage"></a>Apache Cassandra based storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apache Casandra based storage allows to rely on advanced distributed data store for highly available use cases.
+It enables use of multiple data centers to replicate workflow instance data securely to make it available in
+all available locations.</p>
+</div>
+<div class="paragraph">
+<p>Every workflow definition will be stored in dedicated table that is constructed
+based on workflow identifier and version. That will result in each workflow definition to have
+dedicated storage location. Automatiko by default creates all required tables so there is no need
+to dive into the details but if such need arise automatic table creation can be disabled.</p>
+</div>
+<div class="paragraph">
+<p>The table structure will have following attributes</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>InstanceId</strong> - (of type text) this is the unique id of each workflow instance</p>
+</li>
+<li>
+<p><strong>Content</strong> - (of type blob) this is the actual workflow instance serialized</p>
+</li>
+<li>
+<p><strong>Tags</strong> - (of type set) this is the workflow instance tags - it also includes <code>instance id</code> and <code>business key</code></p>
+</li>
+<li>
+<p><strong>PIStatus</strong> - current status of the workflow instance</p>
+</li>
+<li>
+<p><strong>VersionTrack</strong> - current version of the workflow instance (increment with each change)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to tables, Automatiko will create key space as well with configured name. If name is not given then it
+defaults to <code>automatiko</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Automatic keyspace creation is most basic setup as it uses <code>simple replication strategy</code> with replication
+factor set to 1. For more advanced (production like) use cases key space should be created manually and its name
+should be given via configuration.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Next to tables, each workflow definition will get an index to be able to query more efficiently.</p>
+</div>
+<div class="sect2">
+<h3 id="_configuration_4"><a class="anchor" href="#_configuration_4"></a>Configuration</h3>
+<div class="paragraph">
+<p>To use Apache Cassandra based persistence your service must have following dependency</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-cassandra-persistence-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note that each persistence addon comes with job service implementation as well
+to provide persistence of timers defined in workflows
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Additional configuration should be placed in <code>application.properties</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Automatiko specific configuration properties</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.type</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify what persistence should be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.cassandra.create-keyspace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_CASSANDRA_CREATE_KEYSPACE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if keyspace should be automatically created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.cassandra.create-tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_CASSANDRA_CREATE_TABLES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if tables should be automatically created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.cassandra.keyspace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_CASSANDRA_KEYSPACE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies key space name to be used for tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.cassandra.create-keyspace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_CASSANDRA_CREATE_KEYSPACE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if keyspace should be automatically created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.cassandra.create-tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_CASSANDRA_CREATE_TABLES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies if tables should be automatically created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.cassandra.keyspace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_CASSANDRA_KEYSPACE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies key space name to be used for tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.cassandra.interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_CASSANDRA_INTERVAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies interval (in minutes) how often look for another chunk of jobs to execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.cassandra.threads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_CASSANDRA_THREADS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for job execution</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Datasource specific configuration properties</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.cassandra.contact-points</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_CASSANDRA_CONTACT_POINTS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify url to the cassandra data base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.cassandra.local-datacenter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_CASSANDRA_LOCAL_DATACENTER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify data senter to be used on cassandra</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Full configuration reference for Apache Cassandra can be found <a href="https://quarkus.io/guides/cassandra#advanced-driver-configuration">here</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mongodb_based_storage"><a class="anchor" href="#_mongodb_based_storage"></a>MongoDB based storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Document databases are very popular and makes a good fit in cloud environments. MongoDB based persistence addon
+allows to keep workflow information as a document. Most important part is that data objects of the workflow
+instance is stored as nested document and by that can be used as target of queries.</p>
+</div>
+<div class="paragraph">
+<p>Every workflow definition will be stored in dedicated table that is constructed
+based on workflow identifier and version. That will result in each workflow definition to have
+dedicated storage location. Automatiko by default creates all required collections and default indexes
+ so there is no need to dive into the details but if such need arise collections can be created up front.</p>
+</div>
+<div class="paragraph">
+<p>The table structure will have following attributes</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>instanceId</strong> - (of type text) this is the unique id of each workflow instance</p>
+</li>
+<li>
+<p><strong>content</strong> - (of type binary) this is the actual workflow instance serialized</p>
+</li>
+<li>
+<p><strong>tags</strong> - (of type set) this is the workflow instance tags - it also includes <code>instance id</code> and <code>business key</code></p>
+</li>
+<li>
+<p><strong>piStatus</strong> - current status of the workflow instance</p>
+</li>
+<li>
+<p><strong>versionTrack</strong> - current version of the workflow instance (increment with each change)</p>
+</li>
+<li>
+<p><strong>variables</strong> - a nested document that represents all variables</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_configuration_5"><a class="anchor" href="#_configuration_5"></a>Configuration</h3>
+<div class="paragraph">
+<p>To use MongoDB based persistence your service must have following dependency</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.automatiko.addons&lt;/groupId&gt;
+  &lt;artifactId&gt;automatiko-mongodb-persistence-addon&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note that each persistence addon comes with job service implementation as well
+to provide persistence of timers defined in workflows
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Additional configuration should be placed in <code>application.properties</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.type</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify what persistence should be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.mongodb.database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_MONGODB_DATABASE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the database where collections for workflows will be created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.type</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies type of jobs implementation to be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.mongodb.database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_MONGODB_DATABASE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the database where collection for jobs (atk_jobs) will be created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">automatiko</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.mongodb.interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_MONGODB_INTERVAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies interval (in minutes) how often look for another chunk of jobs to execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.jobs.mongodb.threads</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_JOBS_MONGODB_THREADS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many threads should be used for job execution</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. MongoDB specific configuration properties</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.mongodb.hosts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_MONGODB_HOSTS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configures the MongoDB server addressed (one if single mode). The addresses are passed as host:port.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Full configuration reference for mongodb can be found <a href="https://quarkus.io/guides/mongodb#configuration-reference">here</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_transaction_log"><a class="anchor" href="#_transaction_log"></a>Transaction log</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Use of transaction log comes with performance penalty as it records to disk each activity
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When using persistence, regardless what is the actual data store (file system, Cassandra, DynamoDB, MongoDB etc) there is
+always a risk that the service might crash while performing operations and before the result of the operation is
+written to data store.</p>
+</div>
+<div class="paragraph">
+<p>At the same time, service can be one of the mission critical services that cannot effort to loose the work that was
+in flight. To allow to have more fault tolerance support to avoid lost work a transaction log can be enabled in the service
+to record individual steps and in case of a crash perform automatic recovery on next start of the service.</p>
+</div>
+<div class="paragraph">
+<p>Transaction log records every activity of the workflow that is being executed and stores it in transaction log
+store. In case of a crash of the system, next start will look up into transaction log store to find in flight transactions.
+Every in flight transaction found will be automatically recovered from the last activity recorded meaning it won&#8217;t
+re-execute already performed activities and resume from last one directly. No need to have administrators to do any
+action to make this happen.</p>
+</div>
+<div class="paragraph">
+<p>Worth noting is that recovery is done as part of the startup process which blocks and prevents from complete startup until
+recovery is completed. This is done on purpose to ensure no requests get in the way during recovery. This is important from
+health check probes point of view especially readiness check as it might lead to service being killed by orchestrator
+(e.g. Kubernetes) during recovery. Recovery is usually very fast but if there are many instances to be recovered or the actions recovery starts from is
+blocking for long time it might affect overall startup time.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Configure readiness check accordingly to avoid intermittent pod evictions during long recovery.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_configuration_6"><a class="anchor" href="#_configuration_6"></a>Configuration</h3>
+<div class="paragraph">
+<p>Transaction log is disabled by default and must be explicitly enabled. Once enabled it must provide a folder location
+where transaction logs will be written. This folder must be a persistent folder that will survive service crashes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Transaction log configuration parameters</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property name</th>
+<th class="tableblock halign-left valign-top">Environment variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">BuildTime only</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.transaction-log.enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_TRANSACTION_LOG_ENABLED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables transaction log for workflows to always record activities that are performed to automatically recover after crash</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.automatiko.persistence.transaction-log.folder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUARKUS_AUTOMATIKO_PERSISTENCE_TRANSACTION_LOG_FOLDER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location on file system that will be used to store transaction log entries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes (if transaction log is enabled)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_transaction_log_store"><a class="anchor" href="#_transaction_log_store"></a>Transaction log store</h3>
+<div class="paragraph">
+<p>Transaction log records every activity execution and places that into transaction log store. Currently there is
+only one transaction log store based on file system that records individual instances grouped by transaction id.
+It is not the most efficient storage option but already provides significant value but with more performance overhead.</p>
+</div>
+<div class="paragraph">
+<p>Transaction log store can be provided by application developers by implementing
+<code>io.automatiko.engine.api.uow.TransactionLogStore</code> interface. In addition there are plans to also implement other
+store implementation out of the box.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p class="text-center">© 2020 Automatiko. All rights reserved.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
